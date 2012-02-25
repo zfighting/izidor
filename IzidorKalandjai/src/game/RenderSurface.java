@@ -26,7 +26,7 @@ public class RenderSurface extends JPanel
 		// móka...
         Graphics2D g2d = (Graphics2D) g;
 
-        g2d.setColor(Color.blue);
+        g2d.setColor(Color.red);
 
         int num = 30;
         for (int i = 0; i < num; i++)
