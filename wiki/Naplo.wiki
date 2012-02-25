@@ -1,3 +1,5 @@
+#summary Munkanapló.
+
 = Napló =
 
 || *Dátum* || *Mettől* || *Meddig* || *Ki* || *Mit* ||
