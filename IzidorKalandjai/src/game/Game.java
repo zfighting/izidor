@@ -33,7 +33,7 @@ public class Game extends JFrame
 		setVisible(true);
 	}
 	
-	// XML teszt függvény
+	// XML teszt függveny, TORLENDO
 	private static void XMLTeszt() throws ParserConfigurationException, SAXException, IOException
 	{
 		XMLReader.loadFromXML("\\res\\XMLTeszt.xml");
@@ -52,24 +52,21 @@ public class Game extends JFrame
 		// mi menő! 1 sor öcsém, EGY SOR!
 		new Game();
 		
-		// XML teszt
+		// XML teszt, TORLENDO
 		try
 		{
 			XMLTeszt();
 		}
 		catch (ParserConfigurationException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		catch (SAXException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		catch (IOException e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }
