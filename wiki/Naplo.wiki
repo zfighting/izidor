@@ -1,8 +1,21 @@
 #summary Munkanapló.
 
-= Napló =
+= Aktuális beadandó naplója =
 
-|| *Dátum* || *Mettől* || *Meddig* || *Ki* || *Mit* ||
-|| 02.25.  ||  22:00   || 03:00    || Farkas || Programváz modell szinten ||
-|| 02.25.  ||  22:00   || 03:00    || Horváth || Kiszolgáló osztályok modellezése ||
-|| 02.25.  ||  22:00   || 03:00    || Varga || SVN szerver létrehozása, konfigurálása, Subversion konfigurálása ||
+|| *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
+|| 02.24.  ||  22:00   || 03:00    || Farkas  || Programváz modell szinten ||
+|| 02.24.  ||  22:00   || 03:00    || Horváth || Kiszolgáló osztályok modellezése ||
+|| 02.24.  ||  22:00   || 03:00    || Varga   || SVN szerver létrehozása, konfigurálása, Subversion konfigurálása ||
+|| 02.24.  ||  14:00   || 16:00    || Varga   || Class diagramok rajzolása ||
+
+= Előre végzett feladatok naplója =
+
+|| *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
+|| 02.25.  ||  ??:??   || ??:??    || Farkas  || Ma délután írd be ||
+|| 02.25.  ||  21:00   || ??:??    || Böjti   || Te is ||
+|| 02.25.  ||  22:00   || 03:00    || Varga   || XMLReader osztály megírása ||
+
+
+= Már leadott naplók =
+
+Egyelőre üres, az első beadandó naplóját majd ha lesz időm beírom.
