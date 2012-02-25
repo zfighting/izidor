@@ -3,10 +3,11 @@
 = Aktuális beadandó naplója =
 
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
-|| 02.24.  ||  22:00   || 03:00    || Farkas  || Programváz modell szinten ||
-|| 02.24.  ||  22:00   || 03:00    || Horváth || Kiszolgáló osztályok modellezése ||
-|| 02.24.  ||  22:00   || 03:00    || Varga   || SVN szerver létrehozása, konfigurálása, Subversion konfigurálása ||
-|| 02.24.  ||  14:00   || 16:00    || Varga   || Class diagramok rajzolása ||
+|| 02.24.  ||  22:00   || 23:00    || Farkas, Horváth, Varga  || Értekezlet. Döntés: Esti fejlesztősession beosztása, szerepek: lásd következő pontok ||
+|| 02.24.  ||  22:00   || 03:00    || Farkas  || Programmodell megalkotása, modellezés, brainstorming||
+|| 02.24.  ||  22:00   || 03:00    || Horváth || Kiszolgáló osztályok modellezése, brainstorming||
+|| 02.24.  ||  22:00   || 03:00    || Varga   || SVN szerver létrehozása, konfigurálása, Subversion konfigurálása, brainstorming||
+|| 02.25.  ||  14:00   || 16:00    || Varga   || Class diagramok rajzolása ||
 
 = Előre végzett feladatok naplója =
 
