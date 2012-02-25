@@ -12,9 +12,9 @@
 = Előre végzett feladatok naplója =
 
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
-|| 02.25.  ||  ??:??   || ??:??    || Farkas  || Ma délután írd be ||
-|| 02.25.  ||  21:00   || ??:??    || Böjti   || Te is ||
-|| 02.25.  ||  22:00   || 03:00    || Varga   || XMLReader osztály megírása ||
+|| 02.25.  ||  21:00   || 00:00    || Farkas  || Osztályhierarchia tervezése, felelősségek meghatározása ||
+|| 02.25.  ||  21:00   || 00:00    || Böjti   || Osztályhierarchia tervezése, felelősségek meghatározása ||
+|| 02.25.  ||  16:00   || 19:00    || Varga   || XMLReader osztály megírása ||
 
 
 = Már leadott naplók =
