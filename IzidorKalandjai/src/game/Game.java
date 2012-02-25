@@ -1,7 +1,12 @@
 package game;
 
 import java.awt.*;
+import java.io.IOException;
+
 import javax.swing.*;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
 
 // legfőbb osztály...
 public class Game extends JFrame
@@ -28,6 +33,12 @@ public class Game extends JFrame
 		setVisible(true);
 	}
 	
+	// XML teszt függvény
+	private static void XMLTeszt() throws ParserConfigurationException, SAXException, IOException
+	{
+		XMLReader.loadFromXML("\\res\\XMLTeszt.xml");
+	}
+
 	// konstruktor
 	public Game()
 	{
@@ -40,5 +51,26 @@ public class Game extends JFrame
     {
 		// mi menő! 1 sor öcsém, EGY SOR!
 		new Game();
+		
+		// XML teszt
+		try
+		{
+			XMLTeszt();
+		}
+		catch (ParserConfigurationException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (SAXException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 }
