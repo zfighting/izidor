@@ -1,0 +1,12 @@
+#summary One-sentence summary of this page.
+
+= Bevezető =
+
+Itt találhatók az elkészült UML-diagramok.
+
+
+= Részletek =
+
+*Game Class Diagram*
+
+http://www.dj-beat.hu/phimage/content/20120225163454_c07750b42d.png
