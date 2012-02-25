@@ -1,7 +1,0 @@
-= Napló =
-
-|| *Dátum* || *Mettől* || *Meddig* || *Ki* || *Mit* ||
-|| 02.25.  ||  22:00   || 03:00    || Farkas || Programváz modell szinten ||
-|| 02.25.  ||  22:00   || 03:00    || Horváth || Kiszolgáló osztályok modellezése ||
-|| 02.25.  ||  22:00   || 03:00    || Varga || SVN szerver létrehozása, konfigurálása, Subversion konfigurálása ||
- 
