@@ -15,7 +15,10 @@
 || 02.25.  ||  21:00   || 00:00    || Farkas  || Osztályhierarchia tervezése, felelősségek meghatározása ||
 || 02.25.  ||  21:00   || 00:00    || Böjti   || Osztályhierarchia tervezése, felelősségek meghatározása ||
 || 02.25.  ||  16:00   || 19:00    || Varga   || XMLReader osztály megírása ||
-
+|| 02.26.  ||  18:00   || 22:00    || Farkas  || Osztálydiagram fejlesztése||
+|| 02.26.  ||  18:00   || 22:00    || Horváth  || Szekvenciadiagram rajzolása||
+|| 02.26.  ||  18:00   || 22:00    || Böjti  || Szekvenciadiagram rajzolása||
+|| 02.26.  ||  ??   || ??    ||Varga || Elkészült rajzok digitalizálása||
 
 = Már leadott naplók =
 
