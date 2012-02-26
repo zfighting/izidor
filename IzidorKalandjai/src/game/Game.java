@@ -1,12 +1,15 @@
 package game;
 
 import java.awt.*;
+import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 
 import javax.swing.*;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
+
+import engine.Vector2d;
 
 // legfőbb osztály...
 public class Game extends JFrame
@@ -48,7 +51,7 @@ public class Game extends JFrame
 	
 	// main
 	public static void main(String[] args)
-    {
+    {		
 		// mi menő! 1 sor öcsém, EGY SOR!
 		new Game();
 		
