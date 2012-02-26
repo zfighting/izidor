@@ -1,4 +1,5 @@
 #summary Itt találhatók az elkészült UML-diagramok.
+#labels Deprecated
 
 = Bevezető =
 
