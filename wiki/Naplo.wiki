@@ -11,7 +11,7 @@
 || 02.26.  ||  18:00   || 22:00    || Farkas  || Osztálydiagram fejlesztése||
 || 02.26.  ||  18:00   || 22:00    || Horváth  || Szekvenciadiagram rajzolása||
 || 02.26.  ||  18:00   || 22:00    || Böjti  || Szekvenciadiagram rajzolása||
-|| 02.26.  ||  21:00   || 01:30   ||Varga || Elkészült rajzok digitalizálása||
+|| 02.26.  ||  21:00   || 01:30   ||Varga || UML, javítás, dokumentumszerkesztés||
 
 = Előre végzett feladatok naplója =
 
