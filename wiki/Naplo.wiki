@@ -19,6 +19,7 @@
 || 02.25.  ||  21:00   || 00:00    || Farkas  || Osztályhierarchia tervezése, felelősségek meghatározása ||
 || 02.25.  ||  21:00   || 00:00    || Böjti   || Osztályhierarchia tervezése, felelősségek meghatározása ||
 || 02.25.  ||  16:00   || 19:00    || Varga   || XMLReader osztály megírása ||
+|| 02.28.  ||  22:00   || 00:30    || Farkas   || class diagram továbbfejlesztése; néhány hiányzó metódus implementálása; szín, gradiens és textúrakezelés megvalósítása és tesztelése ||
 
 
 = Már leadott naplók =
