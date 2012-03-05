@@ -2,16 +2,7 @@
 
 = Aktuális beadandó naplója =
 
-|| *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
-|| 02.24.  ||  22:00   || 23:00    || Farkas, Horváth, Varga  || Értekezlet. Döntés: Esti fejlesztősession beosztása, lásd következő pontok ||
-|| 02.24.  ||  22:00   || 03:00    || Farkas  || Programmodell megalkotása, modellezés, brainstorming||
-|| 02.24.  ||  22:00   || 03:00    || Horváth || Kiszolgáló osztályok modellezése, brainstorming||
-|| 02.24.  ||  22:00   || 03:00    || Varga   || SVN szerver létrehozása, konfigurálása, Subversion konfigurálása, brainstorming||
-|| 02.25.  ||  14:00   || 16:00    || Varga   || Class diagramok rajzolása ||
-|| 02.26.  ||  18:00   || 22:00    || Farkas  || Osztálydiagram fejlesztése||
-|| 02.26.  ||  18:00   || 22:00    || Horváth  || Szekvenciadiagram rajzolása||
-|| 02.26.  ||  18:00   || 22:00    || Böjti  || Szekvenciadiagram rajzolása||
-|| 02.26.  ||  21:00   || 01:30   ||Varga || UML, javítás, dokumentumszerkesztés||
+
 
 = Előre végzett feladatok naplója =
 
@@ -25,3 +16,14 @@
 = Már leadott naplók =
 
 Egyelőre üres, az első beadandó naplóját majd ha lesz időm beírom.
+
+|| *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
+|| 02.24.  ||  22:00   || 23:00    || Farkas, Horváth, Varga  || Értekezlet. Döntés: Esti fejlesztősession beosztása, lásd következő pontok ||
+|| 02.24.  ||  22:00   || 03:00    || Farkas  || Programmodell megalkotása, modellezés, brainstorming||
+|| 02.24.  ||  22:00   || 03:00    || Horváth || Kiszolgáló osztályok modellezése, brainstorming||
+|| 02.24.  ||  22:00   || 03:00    || Varga   || SVN szerver létrehozása, konfigurálása, Subversion konfigurálása, brainstorming||
+|| 02.25.  ||  14:00   || 16:00    || Varga   || Class diagramok rajzolása ||
+|| 02.26.  ||  18:00   || 22:00    || Farkas  || Osztálydiagram fejlesztése||
+|| 02.26.  ||  18:00   || 22:00    || Horváth  || Szekvenciadiagram rajzolása||
+|| 02.26.  ||  18:00   || 22:00    || Böjti  || Szekvenciadiagram rajzolása||
+|| 02.26.  ||  21:00   || 01:30   ||Varga || UML, javítás, dokumentumszerkesztés||
