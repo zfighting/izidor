@@ -7,6 +7,7 @@
 || 03.05.  ||  09:00   || 13:00    || Farkas  || Objektumkatalógus ||
 || 03.05.  ||  09:00   || 13:00    || Böjti  || Szekvenciadiagram készítése||
 || 03.05.  ||  09:00   || 13:00    || Varga  || Szekvenciadiagram készítése, dokumentumszerkesztés ||
+|| 03.05.  ||  09:00   || 11:00    || Horváth  || Kisegítés ||
 
 
 = Előre végzett feladatok naplója =
