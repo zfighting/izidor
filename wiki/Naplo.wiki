@@ -2,6 +2,11 @@
 
 = Aktuális beadandó naplója =
 
+|| *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
+|| 03.05.  ||  00:00   || 5:00    || Farkas  || Osztályok kifejtése ||
+|| 03.05.  ||  09:00   || 13:00    || Farkas  || Objektumkatalógus ||
+|| 03.05.  ||  09:00   || 13:00    || Böjti  || Szekvenciadiagram készítése||
+|| 03.05.  ||  09:00   || 13:00    || Varga  || Szekvenciadiagram készítése, dokumentumszerkesztés ||
 
 
 = Előre végzett feladatok naplója =
