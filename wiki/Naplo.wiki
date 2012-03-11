@@ -3,11 +3,7 @@
 = Aktuális beadandó naplója =
 
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
-|| 03.05.  ||  00:00   || 5:00    || Farkas  || Osztályok kifejtése ||
-|| 03.05.  ||  09:00   || 13:00    || Farkas  || Objektumkatalógus ||
-|| 03.05.  ||  09:00   || 13:00    || Böjti  || Szekvenciadiagram készítése||
-|| 03.05.  ||  09:00   || 13:00    || Varga  || Szekvenciadiagram készítése, dokumentumszerkesztés ||
-|| 03.05.  ||  09:00   || 11:00    || Horváth  || Kisegítés ||
+
 
 
 = Előre végzett feladatok naplója =
@@ -33,3 +29,8 @@ Egyelőre üres, az első beadandó naplóját majd ha lesz időm beírom.
 || 02.26.  ||  18:00   || 22:00    || Horváth  || Szekvenciadiagram rajzolása||
 || 02.26.  ||  18:00   || 22:00    || Böjti  || Szekvenciadiagram rajzolása||
 || 02.26.  ||  21:00   || 01:30   ||Varga || UML, javítás, dokumentumszerkesztés||
+|| 03.05.  ||  00:00   || 5:00    || Farkas  || Osztályok kifejtése ||
+|| 03.05.  ||  09:00   || 13:00    || Farkas  || Objektumkatalógus ||
+|| 03.05.  ||  09:00   || 13:00    || Böjti  || Szekvenciadiagram készítése||
+|| 03.05.  ||  09:00   || 13:00    || Varga  || Szekvenciadiagram készítése, dokumentumszerkesztés ||
+|| 03.05.  ||  09:00   || 11:00    || Horváth  || Kisegítés ||
