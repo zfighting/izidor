@@ -3,7 +3,9 @@
 = Aktuális beadandó naplója =
 
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
-
+|| 03. 10. || 20:00    || 23:00    || Farkas  || értekezlet, use case diagramok megrajzolása papíron ||
+|| 03. 10. || 20:00    || 23:00    || Böjti  || értekezlet, use case diagramok megrajzolása papíron ||
+|| 03. 10. || 20:00    || 23:00    || Horváth  || értekezlet, use case diagramok megrajzolása papíron ||
 
 
 = Előre végzett feladatok naplója =
