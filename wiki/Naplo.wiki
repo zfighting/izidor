@@ -2,10 +2,7 @@
 
 = Aktuális beadandó naplója =
 
-|| *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
-|| 03. 10. || 20:00    || 23:00    || Farkas  || értekezlet, use case diagramok megrajzolása papíron ||
-|| 03. 10. || 20:00    || 23:00    || Böjti  || értekezlet, use case diagramok megrajzolása papíron ||
-|| 03. 10. || 20:00    || 23:00    || Horváth  || értekezlet, use case diagramok megrajzolása papíron ||
+
 
 
 = Előre végzett feladatok naplója =
@@ -36,3 +33,10 @@ Egyelőre üres, az első beadandó naplóját majd ha lesz időm beírom.
 || 03.05.  ||  09:00   || 13:00    || Böjti  || Szekvenciadiagram készítése||
 || 03.05.  ||  09:00   || 13:00    || Varga  || Szekvenciadiagram készítése, dokumentumszerkesztés ||
 || 03.05.  ||  09:00   || 11:00    || Horváth  || Kisegítés ||
+|| *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
+|| 03. 10. || 20:00    || 23:00    || Farkas  || értekezlet, use case diagramok megrajzolása papíron ||
+|| 03. 10. || 20:00    || 23:00    || Böjti  || értekezlet, use case diagramok megrajzolása papíron ||
+|| 03. 10. || 20:00    || 23:00    || Horváth  || értekezlet, use case diagramok megrajzolása papíron ||
+|| 03. 11. || 13:00    || 19:00    || Farkas  || Architektúra, tesztesetek ||
+|| 03. 11. || 13:00    || 20:00    || Varga  || Use-case-ek kidolgozása, dokumentálás, digitalizálás ||
+|| 03. 11. || 16:00    || 18:00    || Böjti  || Szkeleton kezelői felület ||
