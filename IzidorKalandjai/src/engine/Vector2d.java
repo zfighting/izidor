@@ -4,19 +4,26 @@ package engine;
 public class Vector2d
 {
 	// koordináták
-	public double x;
-	public double y;
+	public float x;
+	public float y;
 	
 	
 	// konstruktor
-	public Vector2d(double x, double y)
+	public Vector2d(float x, float y)
 	{
 		this.x = x;
 		this.y = y;
 	}
 	
+	// konstruktor
 	public Vector2d()
 	{
 		this.x = this.y = 0;
+	}
+	
+	// vektor hossza
+	public double getLength()
+	{
+		return Math.sqrt(x*x + y*y);
 	}
 }

@@ -1,22 +1,16 @@
 package game;
 
 import java.awt.Graphics2D;
+import java.awt.Paint;
 
 import engine.Vector2d;
 
 // ajtó osztály
-public class Door extends RenderableGameObject
+public class Door extends RectangularRenderableGameObject
 {
 	// konstruktor
-	public Door(byte tileID, Vector2d position)
+	public Door(byte tileID, Vector2d position, Paint paint, float width, float height)
 	{
-		super(tileID, position);
-	}
-
-	// kirajzolás
-	@Override
-	public void render(Graphics2D surface)
-	{
-		// TODO Auto-generated method stub
+		super(tileID, position, paint, width, height);
 	}
 }

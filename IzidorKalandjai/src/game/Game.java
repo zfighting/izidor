@@ -2,9 +2,13 @@ package game;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
+import java.io.File;
 import java.io.IOException;
 
 import javax.swing.*;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
@@ -14,7 +18,12 @@ import engine.Vector2d;
 // legfőbb osztály...
 public class Game extends JFrame
 {
+	// a felület, amelyre renderelünk
 	private RenderSurface renderSurface;
+	
+	// a mainloop folyamatos, fix időközönként való futtatásához felhasznált időzítő
+	private Timer timer;
+	
 	
 	// ablak létrehozása
 	private void initUI(String title, int width, int height)
@@ -39,7 +48,7 @@ public class Game extends JFrame
 	// XML teszt függveny, TORLENDO
 	private static void XMLTeszt() throws ParserConfigurationException, SAXException, IOException
 	{
-		XMLReader.loadFromXML("\\res\\XMLTeszt.xml");
+		XMLReader.loadFromXML(File.separatorChar + "res" + File.separatorChar + "XMLTeszt.xml");
 	}
 
 	// konstruktor
@@ -47,9 +56,25 @@ public class Game extends JFrame
 	{
 		// ablakot nyitunk
 		initUI("Izidor kalandjai", 640, 480);
+		
+		// időzítő létrehozása és elindítása
+		timer = new Timer();
+		timer.scheduleAtFixedRate(new MainLoop(), 100, 20);
 	}
 	
-	// main
+	// beágyazott osztály a mainloop futtatásához
+	class MainLoop extends TimerTask
+	{
+		// az időzítő által fix időközönként meghívott függvény
+		@Override
+		public void run()
+		{
+			// ----------------------- ide jön majd a mainloop, megfelelő gamestate meghívása ----------------------------
+			renderSurface.repaint();	
+		}
+	}
+	
+	// main függvény - az alkalmazás belépési pontja
 	public static void main(String[] args)
     {		
 		// mi menő! 1 sor öcsém, EGY SOR!
