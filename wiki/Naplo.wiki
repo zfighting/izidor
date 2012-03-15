@@ -1,7 +1,8 @@
 #summary Munkanapló.
 
 = Aktuális beadandó naplója =
-
+|| *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
+|| 03.15.  ||  17:00   || 17:50    || Farkas  || Skeleton implementálása ||
 
 
 
