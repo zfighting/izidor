@@ -99,52 +99,8 @@ public class Game extends JFrame
 		{
 			e.printStackTrace();
 		}
-		
-		//tesztesetekhez egy integer beolvasása
-		int val = 0;  //ebben a válzozoban tároljuk a bekért számot
-		while(val<1 || val>5){  //addig kérjük a számot amíg nem megfelelő
-		String line = null;  
-	    System.out.println("Type a number between 1 and 5");
-	    try {
-	      BufferedReader is = new BufferedReader(
-	        new InputStreamReader(System.in));
-	      try
-		{
-			line = is.readLine();
-		}
-		catch (IOException e) //ha nem tudunk beolvasni
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	      val = Integer.parseInt(line);  //ha nem integert írtak be
-	    } catch (NumberFormatException ex) {
-	      System.err.println("Not a valid number: " + line);
-	    }
-	    if(val<1 || val>5) // ha nem megfelelő méretű a szám
-	    {
-	    	System.out.println("Not a valid number, it must be between 1 and 5");
-	    }
-		}
-	    //Tests objektum létrehozása a teszteléshez
-	    Tests cases = new Tests();
-	    
-	    switch (val)
-	    {
-	    //első teszteset meghívása(kulcs felvétele, majd pálya elhagyásának teszje)
-	    case 1: cases.Test1(); break;
-	    //második teszteset meghívása(Tilitoli tesztje)
-	    case 2: cases.Test2(); break;
-	    //harmadik teszteset meghívása(Két tile közötti áthaladás tesztje)
-	    case 3: cases.Test3(); break;
-	    //negyedik teszteset meghívása(Meghalás tesztje)
-	    case 4: cases.Test4(); break;
-	    //ötödik teszteset meghívása(Ütközés tesztje)
-	    case 5: cases.Test5(); break;
-	    
-	    default: break;
-	    
-	    }
+		//Tesztelés elinditása
+		new Tests().Testsrun();
 	    
 	    
     }

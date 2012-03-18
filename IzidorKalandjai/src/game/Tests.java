@@ -1,10 +1,67 @@
 package game;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 //teszteseteket tartalmazó osztály, 
 //5 különböző teszteset(kulcsfelvétele majd pálya elhagyása,tilitoli,két tile közötti áthaladás, meghalás, ütközés)
 public class Tests
 {
 	//konstrukor
 	public Tests(){}
+	
+	//integer beolvasása és tesztesetek elinditására szolgáló függvény
+	public void Testsrun()
+	{	
+			//tesztesetekhez egy integer beolvasása
+			int val = 0;  //ebben a válzozoban tároljuk a bekért számot
+			
+			while(val<1 || val>5){  //addig kérjük a számot amíg nem megfelelő
+			String line = null;  
+		    System.out.println("Type a number between 1 and 5");
+		    try {
+		      BufferedReader is = new BufferedReader(
+		        new InputStreamReader(System.in));
+		      try
+			{
+				line = is.readLine();
+			}
+			catch (IOException e) //ha nem tudunk beolvasni
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		      val = Integer.parseInt(line);  //ha nem integert írtak be
+		    } catch (NumberFormatException ex) {
+		      System.err.println("Not a valid number: " + line);
+		    }
+		    if(val<1 || val>5) // ha nem megfelelő méretű a szám
+		    {
+		    	System.out.println("Not a valid number, it must be between 1 and 5");
+		    }
+			}
+		    //Tests objektum létrehozása a teszteléshez
+		    
+		    
+		    switch (val)
+		    {
+		    //első teszteset meghívása(kulcs felvétele, majd pálya elhagyásának teszje)
+		    case 1: Test1(); break;
+		    //második teszteset meghívása(Tilitoli tesztje)
+		    case 2: Test2(); break;
+		    //harmadik teszteset meghívása(Két tile közötti áthaladás tesztje)
+		    case 3: Test3(); break;
+		    //negyedik teszteset meghívása(Meghalás tesztje)
+		    case 4: Test4(); break;
+		    //ötödik teszteset meghívása(Ütközés tesztje)
+		    case 5: Test5(); break;
+		    
+		    default: break;
+		    
+		    }
+}
+	
 	//Kulcsfelvétele, majd a pálya elhagyásának tesztjének függvénye
 	public void Test1()
 	{
