@@ -1,4 +1,4 @@
-#Sun Feb 26 04:39:03 CET 2012
+#Mon Mar 19 10:25:00 CET 2012
 eclipse.preferences.version=1
 encoding//src/game/Door.java=UTF-8
 encoding//src/game/Game.java=UTF-8
@@ -6,3 +6,4 @@ encoding//src/game/GameObject.java=UTF-8
 encoding//src/game/RenderSurface.java=UTF-8
 encoding//src/game/Renderable.java=UTF-8
 encoding//src/game/RenderableGameObject.java=UTF-8
+encoding//src/game/Tests.java=UTF-8

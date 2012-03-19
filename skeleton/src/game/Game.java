@@ -55,11 +55,11 @@ public class Game extends JFrame
 	public Game()
 	{
 		// ablakot nyitunk
-		initUI("Izidor kalandjai", 640, 480);
+		// initUI("Izidor kalandjai", 640, 480);
 		
 		// időzítő létrehozása és elindítása
 		timer = new Timer();
-		timer.scheduleAtFixedRate(new MainLoop(), 100, 20);
+		timer.scheduleAtFixedRate(new MainLoop(), 100, 1000);
 	}
 	
 	// beágyazott osztály a mainloop futtatásához
