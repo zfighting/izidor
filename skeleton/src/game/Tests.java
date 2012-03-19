@@ -20,11 +20,14 @@ public class Tests
 			while(val<1 || val>5){  //addig kérjük a számot amíg nem megfelelõ
 			String line = null;  
 		    System.out.println("Choose between the test cases [1-5]:");
+		    System.out.println("*************************************");
 		    System.out.println("[1] - Picking up a key, then exiting");
 		    System.out.println("[2] - Sliding puzzle test");
 		    System.out.println("[3] - Transition between two tiles");
 		    System.out.println("[4] - Death");
 		    System.out.println("[5] - Collision with a tile");
+		    System.out.println("*************************************");
+		    System.out.print("Choice: ");
 		    try {
 		      BufferedReader is = new BufferedReader(
 		        new InputStreamReader(System.in));
@@ -70,26 +73,26 @@ public class Tests
 	//Kulcsfelvétele, majd a pálya elhagyásának tesztjének függvénye
 	public void Test1()
 	{
-		System.out.println("I am the first test case");
+		System.out.println("\nI am the first test case");
 	}
 	//Tilitoli tesztjének függvénye
 	public void Test2()
 	{
-		System.out.println("I am the second test case");
+		System.out.println("\nI am the second test case");
 	}
 	//Két tile közötti áthaladás tesztjének a függvénye
 	public void Test3()
 	{
-		System.out.println("I am the third test case");
+		System.out.println("\nI am the third test case");
 	}
 	//Meghalás teszjének a függvénye
 	public void Test4()
 	{
-		System.out.println("I am the fourth test case");
+		System.out.println("\nI am the fourth test case");
 	}
 	//Ütközés tesztjének a meghívása
 	public void Test5()
 	{
-		System.out.println("I am the fifth test case");
+		System.out.println("\n5I am the fifth test case");
 	}
 }
