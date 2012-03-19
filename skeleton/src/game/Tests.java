@@ -1,23 +1,29 @@
 package game;
 
+import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-//teszteseteket tartalmazó osztály, 
-//5 különbözõ teszteset(kulcsfelvétele majd pálya elhagyása,tilitoli,két tile közötti áthaladás, meghalás, ütközés)
+import engine.Vector2d;
+
+//teszteseteket tartalmazï¿½ osztï¿½ly, 
+//5 kï¿½lï¿½nbï¿½zï¿½ teszteset(kulcsfelvï¿½tele majd pï¿½lya elhagyï¿½sa,tilitoli,kï¿½t tile kï¿½zï¿½tti ï¿½thaladï¿½s, meghalï¿½s, ï¿½tkï¿½zï¿½s)
 public class Tests
 {
 	//konstrukor
-	public Tests(){}
+	public Tests()
+	{
 	
-	//integer beolvasása és tesztesetek elinditására szolgáló függvény
+	}
+	
+	//integer beolvasï¿½sa ï¿½s tesztesetek elinditï¿½sï¿½ra szolgï¿½lï¿½ fï¿½ggvï¿½ny
 	public void TestsRun()
 	{	
-			//tesztesetekhez egy integer beolvasása
-			int val = 0;  //ebben a válzozoban tároljuk a bekért számot
+			//tesztesetekhez egy integer beolvasï¿½sa
+			int val = 0;  //ebben a vï¿½lzozoban tï¿½roljuk a bekï¿½rt szï¿½mot
 			
-			while(val<1 || val>5){  //addig kérjük a számot amíg nem megfelelõ
+			while(val<1 || val>5){  //addig kï¿½rjï¿½k a szï¿½mot amï¿½g nem megfelelï¿½
 			String line = null;  
 		    System.out.println("Choose between the test cases [1-5]:");
 		    System.out.println("*************************************");
@@ -40,29 +46,47 @@ public class Tests
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		      val = Integer.parseInt(line);  //ha nem integert írtak be
+		      val = Integer.parseInt(line);  //ha nem integert ï¿½rtak be
 		    } catch (NumberFormatException ex) {
 		      System.err.println("Not a valid number: " + line);
 		    }
-		    if(val<1 || val>5) // ha nem megfelelõ méretû a szám
+		    if(val<1 || val>5) // ha nem megfelelï¿½ mï¿½retï¿½ a szï¿½m
 		    {
 		    	System.out.println("Not a valid number, it must be between 1 and 5.");
 		    }
 			}
-		    //Tests objektum létrehozása a teszteléshez
+		    //Tests objektum lï¿½trehozï¿½sa a tesztelï¿½shez
 		    
 		    
 		    switch (val)
 		    {
-		    //elsõ teszteset meghívása(kulcs felvétele, majd pálya elhagyásának teszje)
-		    case 1: Test1(); break;
-		    //második teszteset meghívása(Tilitoli tesztje)
-		    case 2: Test2(); break;
-		    //harmadik teszteset meghívása(Két tile közötti áthaladás tesztje)
+		    //elsï¿½ teszteset meghï¿½vï¿½sa(kulcs felvï¿½tele, majd pï¿½lya elhagyï¿½sï¿½nak teszje)
+		    case 1: Test1();
+		    {
+					Stage stage = new Stage("test");
+					
+					Key key = new Key((byte) 1, new Vector2d(10, 10), Color.BLACK, 10, 10);
+					Door door = new Door((byte) 1, new Vector2d(10, 10), Color.BLACK, 20, 10);
+					
+					stage.tiles[1][0].addKey(key);
+					stage.tiles[1][0].addObject(door);
+					
+			    	break;
+		    }
+		    
+		    //mï¿½sodik teszteset meghï¿½vï¿½sa(Tilitoli tesztje)
+		    case 2: Test2(); 
+		    {
+				Stage stage = new Stage("test");
+				
+				
+		    	break;
+		    }
+		    //harmadik teszteset meghï¿½vï¿½sa(Kï¿½t tile kï¿½zï¿½tti ï¿½thaladï¿½s tesztje)
 		    case 3: Test3(); break;
-		    //negyedik teszteset meghívása(Meghalás tesztje)
+		    //negyedik teszteset meghï¿½vï¿½sa(Meghalï¿½s tesztje)
 		    case 4: Test4(); break;
-		    //ötödik teszteset meghívása(Ütközés tesztje)
+		    //ï¿½tï¿½dik teszteset meghï¿½vï¿½sa(ï¿½tkï¿½zï¿½s tesztje)
 		    case 5: Test5(); break;
 		    
 		    default: break;
@@ -70,27 +94,27 @@ public class Tests
 		    }
 }
 	
-	//Kulcsfelvétele, majd a pálya elhagyásának tesztjének függvénye
+	//Kulcsfelvï¿½tele, majd a pï¿½lya elhagyï¿½sï¿½nak tesztjï¿½nek fï¿½ggvï¿½nye
 	public void Test1()
 	{
 		System.out.println("\nI am the first test case");
 	}
-	//Tilitoli tesztjének függvénye
+	//Tilitoli tesztjï¿½nek fï¿½ggvï¿½nye
 	public void Test2()
 	{
 		System.out.println("\nI am the second test case");
 	}
-	//Két tile közötti áthaladás tesztjének a függvénye
+	//Kï¿½t tile kï¿½zï¿½tti ï¿½thaladï¿½s tesztjï¿½nek a fï¿½ggvï¿½nye
 	public void Test3()
 	{
 		System.out.println("\nI am the third test case");
 	}
-	//Meghalás teszjének a függvénye
+	//Meghalï¿½s teszjï¿½nek a fï¿½ggvï¿½nye
 	public void Test4()
 	{
 		System.out.println("\nI am the fourth test case");
 	}
-	//Ütközés tesztjének a meghívása
+	//ï¿½tkï¿½zï¿½s tesztjï¿½nek a meghï¿½vï¿½sa
 	public void Test5()
 	{
 		System.out.println("\n5I am the fifth test case");
