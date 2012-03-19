@@ -19,7 +19,12 @@ public class Tests
 			
 			while(val<1 || val>5){  //addig kérjük a számot amíg nem megfelelő
 			String line = null;  
-		    System.out.println("Type a number between 1 and 5");
+		    System.out.println("Choose between the test cases [1-5]:");
+		    System.out.println("[1] - Picking up a key, then exiting");
+		    System.out.println("[2] - Sliding puzzle test");
+		    System.out.println("[3] - Transition between two tiles");
+		    System.out.println("[4] - Death");
+		    System.out.println("[5] - Collision with a tile");
 		    try {
 		      BufferedReader is = new BufferedReader(
 		        new InputStreamReader(System.in));
@@ -38,7 +43,7 @@ public class Tests
 		    }
 		    if(val<1 || val>5) // ha nem megfelelő méretű a szám
 		    {
-		    	System.out.println("Not a valid number, it must be between 1 and 5");
+		    	System.out.println("Not a valid number, it must be between 1 and 5.");
 		    }
 			}
 		    //Tests objektum létrehozása a teszteléshez
@@ -65,26 +70,26 @@ public class Tests
 	//Kulcsfelvétele, majd a pálya elhagyásának tesztjének függvénye
 	public void Test1()
 	{
-		System.out.println("I am the first test method");
+		System.out.println("I am the first test case");
 	}
 	//Tilitoli tesztjének függvénye
 	public void Test2()
 	{
-		System.out.println("I am the second test method");
+		System.out.println("I am the second test case");
 	}
 	//Két tile közötti áthaladás tesztjének a függvénye
 	public void Test3()
 	{
-		System.out.println("I am the third test method");
+		System.out.println("I am the third test case");
 	}
 	//Meghalás teszjének a függvénye
 	public void Test4()
 	{
-		System.out.println("I am the fourth test method");
+		System.out.println("I am the fourth test case");
 	}
 	//Ütközés tesztjének a meghívása
 	public void Test5()
 	{
-		System.out.println("I am the fifth test method");
+		System.out.println("I am the fifth test case");
 	}
 }
