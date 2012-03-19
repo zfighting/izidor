@@ -34,6 +34,18 @@ public class Tile implements Renderable
 		keys = new ArrayList<Key>();
 		reachableTiles = (ArrayList<Byte>[]) new ArrayList[4];
 	}
+	
+	// objektum hozzáadása SZKELETON TESZTHEZ
+	public void addObject(RenderableGameObject rgo)
+	{
+		objects.add(rgo);
+	}
+	
+	// kulcs hozzáadása SZKELETON TESZTHEZ
+	public void addKey(Key key)
+	{
+		keys.add(key);
+	}
 
 	// tile renderelése
 	@Override
