@@ -3,7 +3,9 @@
  */
 package game;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Paint;
 
 import engine.Vector2d;
 
@@ -12,7 +14,8 @@ import engine.Vector2d;
 public class Stage implements Renderable
 {
 	// a pályát felépítő tile-ok mátrixa
-	private Tile[][] tiles;
+	public Tile[][] tiles = {{new Tile((byte) 0),new Tile((byte) 1)},
+							{new Tile((byte) 2),new Tile((byte) 3)}};
 	// a játékos megszületésének / újraszületésének helyszíne
 	private SpawnPoint spawnPoint;
 	// a pálya elhagyásának helyszíne
@@ -27,7 +30,13 @@ public class Stage implements Renderable
 	public Stage(String path)
 	{
 		// pálya betöltése a path által megadott XML fájlból
+		if (path.matches("test") == false)
 		loadFromXML(path);
+		else
+		{
+			
+		}
+		
 	}
 	
 	// pálya betöltése megadott elérési útvonalú XML fájlból
@@ -50,7 +59,7 @@ public class Stage implements Renderable
 	{
 		// üres tile indexeinek megkeresése
 		// ...
-		
+		System.out.print(this.getClass().getName()+".swap("+direction.toString()+")");
 		// ellenőrzés, hogy lehet-e cserélni (üres elem melletti indexek ellenőrzése)
 		boolean canSwap;
 		// ...
