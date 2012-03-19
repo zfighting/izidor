@@ -66,7 +66,7 @@ public class Tests
 					Stage stage = new Stage("test");
 					
 					Key key = new Key((byte) 1, new Vector2d(10, 10), Color.BLACK, 10, 10);
-					Door door = new Door((byte) 1, new Vector2d(10, 10), Color.BLACK, 20, 10);
+					Door door = new Door((byte) 1, new Vector2d(20, 10), Color.BLACK, 10, 10);
 					
 					stage.tiles[1][0].addKey(key);
 					stage.tiles[1][0].addObject(door);
@@ -78,7 +78,7 @@ public class Tests
 		    case 2: Test2(); 
 		    {
 				Stage stage = new Stage("test");
-				
+				stage.swap(Direction.LEFT);
 				
 		    	break;
 		    }
