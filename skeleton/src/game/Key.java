@@ -12,5 +12,6 @@ public class Key extends RectangularRenderableGameObject
 	public Key(byte tileID, Vector2d position, Paint paint, float width, float height)
 	{
 		super(tileID, position, paint, width, height);
+		System.out.println("-> "+this.getClass().getName()+"()");
 	}
 }

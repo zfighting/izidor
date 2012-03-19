@@ -11,6 +11,9 @@ import engine.Vector2d;
 //5 k�l�nb�z� teszteset(kulcsfelv�tele majd p�lya elhagy�sa,tilitoli,k�t tile k�z�tti �thalad�s, meghal�s, �tk�z�s)
 public class Tests
 {
+	
+	public int lvl = 0;
+	
 	//konstrukor
 	public Tests()
 	{
@@ -61,11 +64,9 @@ public class Tests
 		    switch (val)
 		    {
 		    //els� teszteset megh�v�sa(kulcs felv�tele, majd p�lya elhagy�s�nak teszje)
-		    case 1: Test1(); break;
-		    
+		    case 1: Test1(); break;		    
 		    //m�sodik teszteset megh�v�sa(Tilitoli tesztje)
 		    case 2: Test2(); break;
-
 		    //harmadik teszteset megh�v�sa(K�t tile k�z�tti �thalad�s tesztje)
 		    case 3: Test3(); break;
 		    //negyedik teszteset megh�v�sa(Meghal�s tesztje)
@@ -81,20 +82,59 @@ public class Tests
 	//Kulcsfelv�tele, majd a p�lya elhagy�s�nak tesztj�nek f�ggv�nye
 	public void Test1()
 	{
+		int exit = 0;
+		
+		for (int i = 0; i < lvl; i++) System.out.print("\t"); lvl++;
 		Stage stage = new Stage("test");
+		for (int i = 0; i < lvl; i++) System.out.print("\t");
+		Player p = new Player((byte) 1, new Vector2d(1, 10), Color.BLACK, 10, 10);
 		
+		for (int i = 0; i < lvl; i++) System.out.print("\t");
 		Key key = new Key((byte) 1, new Vector2d(10, 10), Color.BLACK, 10, 10);
+		for (int i = 0; i < lvl; i++) System.out.print("\t");
 		Door door = new Door((byte) 1, new Vector2d(20, 10), Color.BLACK, 10, 10);
+		for (int i = 0; i < lvl; i++) System.out.print("\t");
 		
-		stage.tiles[1][0].addKey(key);
-		stage.tiles[1][0].addObject(door);
+		stage.tiles[1][0].addKey(key); System.out.print("\t");
+		stage.tiles[1][0].addObject(door); System.out.print("\t");
+		
+		while (exit != 2)
+		{
+			p.moveTo(new Vector2d(10, 10)); System.out.print("\t");
+			stage.tiles[1][0].pickKey(new Vector2d(10, 10)); System.out.print("\t");
+			if (stage.tiles[1][0].getNumberOfKeys() == 0 && exit == 0)
+			{
+				System.out.print("\t");
+				exit++;
+			}	
+			
+			p.moveTo(new Vector2d(20, 10)); System.out.print("\t");
+			if (exit == 1 && (p.position.x == door.position.x && p.position.y == door.position.y))
+				exit++;
+		}
+	
+		
+		
 		
 	}
 	//Tilitoli tesztj�nek f�ggv�nye
 	public void Test2()
 	{
+		for (int i = 0; i < lvl; i++) System.out.print("\t"); lvl++;
 		Stage stage = new Stage("test");
+		
+		// stage kiírása
+		System.out.println(stage.print()[0]);
+		System.out.println(stage.print()[1]);
+		
+		for (int i = 0; i < lvl; i++) System.out.print("\t"); lvl++;
+		
 		stage.swap(Direction.LEFT);
+		
+		// stage kiírás
+		for (int i = 0; i < lvl; i++) System.out.print("\n\t"); lvl++;
+		System.out.println(stage.print()[0]); System.out.print("\t");
+		System.out.println(stage.print()[1]);
 	}
 	//K�t tile k�z�tti �thalad�s tesztj�nek a f�ggv�nye
 	public void Test3()

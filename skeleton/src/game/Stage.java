@@ -34,11 +34,16 @@ public class Stage implements Renderable
 		loadFromXML(path);
 		else
 		{
-			
+			System.out.println("-> "+this.getClass().getName()+"()");
 		}
 		
 	}
 	
+	public String[] print()
+	{
+		String[] r = {tiles[0][0].toString()+"  "+tiles[0][1].toString(), tiles[1][0].toString()+"  "+tiles[1][1].toString()};
+		return r;
+	}
 	// pálya betöltése megadott elérési útvonalú XML fájlból
 	public void loadFromXML(String path)
 	{
@@ -59,16 +64,20 @@ public class Stage implements Renderable
 	{
 		// üres tile indexeinek megkeresése
 		// ...
-		System.out.print(this.getClass().getName()+".swap("+direction.toString()+")");
+		System.out.print("-> "+this.getClass().getName()+".swap("+direction.toString()+")");
 		// ellenőrzés, hogy lehet-e cserélni (üres elem melletti indexek ellenőrzése)
 		boolean canSwap;
 		// ...
-		canSwap = false;
+		//canSwap = false;
+		canSwap = true;
 		
 		// ha lehetséges, felcseréljük a 2 elemet
 		if( canSwap )
 		{
 			Tile temp;
+			temp = tiles[0][0];
+			tiles[0][0] = tiles[0][1];
+			tiles[0][1] = temp;
 			// ...
 		}
 	}

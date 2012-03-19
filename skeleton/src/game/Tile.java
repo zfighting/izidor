@@ -38,12 +38,14 @@ public class Tile implements Renderable
 	// objektum hozzáadása SZKELETON TESZTHEZ
 	public void addObject(RenderableGameObject rgo)
 	{
+		System.out.println("-> "+this.getClass().getName()+".addObject("+rgo.toString()+")");
 		objects.add(rgo);
 	}
 	
 	// kulcs hozzáadása SZKELETON TESZTHEZ
 	public void addKey(Key key)
 	{
+		System.out.println("-> "+this.getClass().getName()+".addKey("+key.toString()+")");
 		keys.add(key);
 	}
 
@@ -57,8 +59,8 @@ public class Tile implements Renderable
 	// kulcsok számának lekérdezése
 	public int getNumberOfKeys()
 	{
-		System.out.println(this.getClass().getName()+".getNumberOfKeys()");
-		System.out.println("return " + keys.size());
+		System.out.println("-> "+this.getClass().getName()+".getNumberOfKeys()");
+		System.out.println("\t\t<- "+"return " + keys.size());
 		return keys.size();
 	}
 	
@@ -79,7 +81,7 @@ public class Tile implements Renderable
 	// kulcs(ok) felvétele
 	public void pickKey(Vector2d position)
 	{
-		System.out.println(this.getClass().getName()+".pickKey("+position.toString()+")");
+		System.out.println("-> "+this.getClass().getName()+".pickKey("+position.toString()+")");
 		
 		// kulcsok bejárása iterátorral
 		Iterator<Key> iterator = keys.iterator();
@@ -93,7 +95,7 @@ public class Tile implements Renderable
 			// ha egy bizonyos távolságon belül van, töröljük a kulcsot
 			if(distance <= keyPickUpRadius)
 			{
-				System.out.println("	removing key at position: " + k.position.toString());
+				System.out.println("\t\t-> "+"	removing key at position: " + k.position.toString());
 				
 				iterator.remove();
 			}

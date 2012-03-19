@@ -15,6 +15,7 @@ public class Player extends RectangularRenderableGameObject
 	public Player(byte tileID, Vector2d position, Paint paint, float width, float height)
 	{
 		super(tileID, position, paint, width, height);
+		System.out.println("-> "+this.getClass().getName()+"()");
 	}
 	
 	// játékos elhelyezése valahol a játéktéren belül
@@ -26,6 +27,7 @@ public class Player extends RectangularRenderableGameObject
 	
 	public void moveTo(Vector2d position)
 	{
+		System.out.println("-> "+this.getClass().getName()+".moveTo("+position.toString()+")");
 		this.position = position;
 	}
 	
