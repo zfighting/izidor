@@ -3,6 +3,11 @@
 = Aktuális beadandó naplója =
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
 || 03.15.  ||  17:00   || 17:50    || Farkas  || Skeleton implementálása ||
+|| 03.18.  ||  10:00   || 13:00    || Farkas  || Skeletonfejlesztése||
+|| 03.18.  ||  10:00   || 13:00    || Varga   || Skeletonfejlesztése||
+|| 03.18.  ||  10:00   || 13:00    || Böjti   || Dokumentáció||
+|| 03.18.  ||  10:00   || 13:00    || Böjti   || Dokumentáció||
+|| 03.18.  ||  22:00   || 23:00    || Farkas  || Véglegesítás||
 
 
 
