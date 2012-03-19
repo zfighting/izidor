@@ -61,27 +61,11 @@ public class Tests
 		    switch (val)
 		    {
 		    //els� teszteset megh�v�sa(kulcs felv�tele, majd p�lya elhagy�s�nak teszje)
-		    case 1: Test1();
-		    {
-					Stage stage = new Stage("test");
-					
-					Key key = new Key((byte) 1, new Vector2d(10, 10), Color.BLACK, 10, 10);
-					Door door = new Door((byte) 1, new Vector2d(20, 10), Color.BLACK, 10, 10);
-					
-					stage.tiles[1][0].addKey(key);
-					stage.tiles[1][0].addObject(door);
-					
-			    	break;
-		    }
+		    case 1: Test1(); break;
 		    
 		    //m�sodik teszteset megh�v�sa(Tilitoli tesztje)
-		    case 2: Test2(); 
-		    {
-				Stage stage = new Stage("test");
-				stage.swap(Direction.LEFT);
-				
-		    	break;
-		    }
+		    case 2: Test2(); break;
+
 		    //harmadik teszteset megh�v�sa(K�t tile k�z�tti �thalad�s tesztje)
 		    case 3: Test3(); break;
 		    //negyedik teszteset megh�v�sa(Meghal�s tesztje)
@@ -97,12 +81,20 @@ public class Tests
 	//Kulcsfelv�tele, majd a p�lya elhagy�s�nak tesztj�nek f�ggv�nye
 	public void Test1()
 	{
-		System.out.println("\nI am the first test case");
+		Stage stage = new Stage("test");
+		
+		Key key = new Key((byte) 1, new Vector2d(10, 10), Color.BLACK, 10, 10);
+		Door door = new Door((byte) 1, new Vector2d(20, 10), Color.BLACK, 10, 10);
+		
+		stage.tiles[1][0].addKey(key);
+		stage.tiles[1][0].addObject(door);
+		
 	}
 	//Tilitoli tesztj�nek f�ggv�nye
 	public void Test2()
 	{
-		System.out.println("\nI am the second test case");
+		Stage stage = new Stage("test");
+		stage.swap(Direction.LEFT);
 	}
 	//K�t tile k�z�tti �thalad�s tesztj�nek a f�ggv�nye
 	public void Test3()
