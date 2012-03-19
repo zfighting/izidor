@@ -6,7 +6,7 @@
 || 03.18.  ||  10:00   || 13:00    || Farkas  || Skeletonfejlesztése||
 || 03.18.  ||  10:00   || 13:00    || Varga   || Skeletonfejlesztése||
 || 03.18.  ||  10:00   || 13:00    || Böjti   || Dokumentáció||
-|| 03.18.  ||  10:00   || 13:00    || Böjti   || Dokumentáció||
+|| 03.18.  ||  10:00   || 13:00    || Horváth || Dokumentáció||
 || 03.18.  ||  22:00   || 23:00    || Farkas  || Véglegesítás||
 
 
