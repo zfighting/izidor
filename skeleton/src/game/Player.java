@@ -21,6 +21,7 @@ public class Player extends RectangularRenderableGameObject
 	// játékos elhelyezése valahol a játéktéren belül
 	public void moveTo(byte tileID, Vector2d position) throws InvalidTileIDException
 	{
+		System.out.println("-> "+this.getClass().getName()+".moveTo("+tileID+","+ position.toString()+")");
 		this.setTileID(tileID);
 		this.position = position;
 	}

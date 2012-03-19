@@ -21,7 +21,7 @@ public class Tests
 	}
 	
 	//integer beolvas�sa �s tesztesetek elindit�s�ra szolg�l� f�ggv�ny
-	public void TestsRun()
+	public void TestsRun() throws InvalidTileIDException, IOException
 	{	
 			//tesztesetekhez egy integer beolvas�sa
 			int val = 0;  //ebben a v�lzozoban t�roljuk a bek�rt sz�mot
@@ -137,18 +137,89 @@ public class Tests
 		System.out.println(stage.print()[1]);
 	}
 	//K�t tile k�z�tti �thalad�s tesztj�nek a f�ggv�nye
-	public void Test3()
+	public void Test3() throws InvalidTileIDException
 	{
-		System.out.println("\nI am the third test case");
+		// egyelőre 540 px széles egy tile, ez még nincs implementálva pontosan
+		int exit = 0;
+		
+		for (int i = 0; i < lvl; i++) System.out.print("\t"); lvl++;
+		Stage stage = new Stage("test");
+		for (int i = 0; i < lvl; i++) System.out.print("\t");
+		Player p = new Player((byte) 2, new Vector2d(1, 10), Color.BLACK, 10, 10);
+		
+		while (exit != 1)
+		{
+			p.position.x += 60;
+			for (int i = 0; i < lvl; i++) System.out.println("\t tileID = "+p.tileID+", x = "+p.position.x);
+			if (p.position.x > 540) exit++;
+		}
+		
+		for (int i = 0; i < lvl; i++) System.out.print("\t");
+		p.moveTo((byte)3, new Vector2d(1,10)); for (int i = 0; i < lvl; i++) System.out.println("\t");
+		for (int i = 0; i < lvl; i++) System.out.println("\t tileID = "+p.tileID+" x = "+p.position.x);
+		
+		
+		
+		
 	}
 	//Meghal�s teszj�nek a f�ggv�nye
 	public void Test4()
 	{
-		System.out.println("\nI am the fourth test case");
+		int exit = 0;
+		
+		for (int i = 0; i < lvl; i++) System.out.print("\t");
+		Stage stage = new Stage("test");
+		SpawnPoint sp = new SpawnPoint((byte) 2, new Vector2d(1, 100)); for (int i = 0; i < lvl; i++) System.out.print("\t"); lvl++;
+		
+		for (int i = 0; i < lvl; i++) System.out.print("\t");
+		Player p = new Player((byte) 2, sp.position, Color.BLACK, 10, 10);
+		
+		System.out.println("\t player position: "+sp.position);
+		
+		
+		while (exit != 1)
+		{
+			p.position.y -= 20;
+			for (int i = 0; i < lvl; i++) System.out.println("\t tileID = "+p.tileID+", y = "+p.position.y);
+			if (p.position.y < 0) exit++;
+		}
+		for (int i = 0; i < lvl; i++) System.out.print("\t");
+		p.moveTo(sp.position);
+		
+		
 	}
 	//�tk�z�s tesztj�nek a megh�v�sa
-	public void Test5()
+	public void Test5() throws IOException
 	{
-		System.out.println("\n5I am the fifth test case");
+		// egyelőre 540 px széles egy tile
+		int exit = 0;
+		String line;
+		char c = 'a';
+		BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+		
+		for (int i = 0; i < lvl; i++) System.out.print("\t"); lvl++;
+		Stage stage = new Stage("test");
+		
+		for (int i = 0; i < lvl; i++) System.out.print("\t");
+		Player p = new Player((byte) 2, new Vector2d(1, 10), Color.BLACK, 10, 10);
+		
+		while (exit != 1)
+		{
+			p.position.x += 60;
+			for (int i = 0; i < lvl; i++) System.out.println("\t tileID = "+p.tileID+", x = "+p.position.x);
+			if (p.position.x > 540) 
+			{
+				for (int i = 0; i < lvl; i++) System.out.println("\t");
+				p.moveTo(Vector2d.subtract(p.position, new Vector2d(61, 0))); 
+				for (int i = 0; i < lvl; i++) System.out.println("\t");
+				
+				System.out.println("Should we collide again? [y/n]");
+				line = is.readLine();
+				c = line.charAt(0);
+				if (c == 'n') exit = 1;		
+			}	
+			
+		}
+		
 	}
 }

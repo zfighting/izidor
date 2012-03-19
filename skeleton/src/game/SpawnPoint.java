@@ -9,5 +9,6 @@ public class SpawnPoint extends GameObject
 	public SpawnPoint(byte tileID, Vector2d position)
 	{
 		super(tileID, position);
+		System.out.println("-> "+this.getClass().getName()+"()");
 	}
 }

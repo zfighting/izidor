@@ -75,28 +75,11 @@ public class Game extends JFrame
 	}
 	
 	// main függvény - az alkalmazás belépési pontja
-	public static void main(String[] args)
+	public static void main(String[] args) throws InvalidTileIDException, IOException
     {		
 		// mi menő! 1 sor öcsém, EGY SOR!
 		//new Game();
 		
-		// XML teszt, TORLENDO
-		try
-		{
-			XMLTeszt();
-		}
-		catch (ParserConfigurationException e)
-		{
-			e.printStackTrace();
-		}
-		catch (SAXException e)
-		{
-			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
 		new Tests().TestsRun();
     }
 }
