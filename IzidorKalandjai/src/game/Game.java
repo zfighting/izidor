@@ -80,7 +80,7 @@ public class Game extends JFrame
 	public static void main(String[] args)
     {		
 		// mi menő! 1 sor öcsém, EGY SOR!
-		//new Game();
+		new Game();
 		
 		// XML teszt, TORLENDO
 		try
@@ -99,9 +99,5 @@ public class Game extends JFrame
 		{
 			e.printStackTrace();
 		}
-		//Tesztelés elinditása
-		new Tests().Testsrun();
-	    
-	    
     }
 }

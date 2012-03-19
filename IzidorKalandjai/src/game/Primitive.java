@@ -7,21 +7,18 @@ import java.awt.geom.AffineTransform;
 
 import engine.Vector2d;
 
-// megjeleníthető primitívek osztálya
-// primitív lehet: háromszög VAGY téglalap
-public class Primitive extends RenderableGameObject
+// megjeleníthető primitívek ősosztálya
+// primitív lehet: háromszög VAGY téglalap (gyerekosztályok)
+public abstract class Primitive extends RenderableGameObject
 {
-	// primitív típusa
-	protected PrimitiveType type;
 	// kirajzolható, fizikai számításokhoz használható, beágyazott objektum
 	protected Polygon polygon;
 	
 	
 	// konstruktor
-	public Primitive(byte tileID, Vector2d position, Paint paint, PrimitiveType type, Polygon polygon)
+	public Primitive(byte tileID, Vector2d position, Paint paint, Polygon polygon)
 	{
 		super(tileID, position, paint);
-		this.type = type;
 		this.polygon = polygon;
 	}
 
@@ -43,11 +40,5 @@ public class Primitive extends RenderableGameObject
 		
 		// elmentett transzformációs mátrix visszaállítása
 		surface.setTransform(af);
-	}
-
-	// típus lekérdezése
-	public PrimitiveType getType()
-	{
-		return type;
 	}
 }
