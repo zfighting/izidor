@@ -29,7 +29,8 @@ public class RenderSurface extends JPanel
 			bi = ImageIO.read(f);
 			TexturePaint tp = new TexturePaint(bi, new Rectangle2D.Float(0, 0, bi.getWidth(), bi.getHeight()));
 			
-			ojjektum = new RectangularRenderableGameObject((byte)1, new Vector2d(20, 30), tp, bi.getWidth(), bi.getHeight());
+			ojjektum = new RectangularRenderableGameObject((byte)1, new Vector2d(20, 30), tp, 200.0f, 100.0f);
+			ojjektum2 = new RectangularRenderableGameObject((byte)1, new Vector2d(20, 100), Color.red, 40, 20);
 		}
 		catch( Exception e )
 		{
@@ -40,6 +41,7 @@ public class RenderSurface extends JPanel
 	// ------------- TESZT ---------------------------------
 	BufferedImage bi;
 	private RectangularRenderableGameObject ojjektum;
+	private RectangularRenderableGameObject ojjektum2;
 	
 	// renderelés
 	@Override
@@ -57,6 +59,9 @@ public class RenderSurface extends JPanel
         ojjektum.position.x += 0.5f;
         ojjektum.render(g2d);
         
+        ojjektum2.position.x += 0.3f;
+        ojjektum2.render(g2d);
+        
         //ojjektum.position.x = ojjektum.position.x + 250;
         //ojjektum.width = ojjektum.width * 0.8f;
         //ojjektum.render(g2d);
@@ -72,17 +77,6 @@ public class RenderSurface extends JPanel
         	ojjektum.width = w;
         	ojjektum.height = h;
         	ojjektum.render(g2d);
-        }
-        */
-        
-        /*
-        g2d.setColor(Color.red);
-        int num = 30;
-        for (int i = 0; i < num; i++)
-        {
-        	double x = Math.sin(i * 360. / (num-1) * Math.PI / 180.) * 90;
-        	double y = Math.cos(i * 360. / (num-1) * Math.PI / 180.) * 90;
-            g2d.drawOval((int)Math.round(getWidth() / 2. + x) - 100, (int)Math.round(getHeight() / 2. + y) - 100, (int)Math.round(60 * (Math.sin(i/(num-1) * 720 * Math.PI / 180.)+1)*2), (int)Math.round(60 * (Math.cos(i/(num-1) * 720 * Math.PI / 180.)+1)*2));
         }
         */
     }

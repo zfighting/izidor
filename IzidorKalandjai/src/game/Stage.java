@@ -17,10 +17,6 @@ public class Stage implements Renderable
 	private SpawnPoint spawnPoint;
 	// a pálya elhagyásának helyszíne
 	private Door door;
-	// az aktuális tile (amelyen a játékos tartózkodik) aonosítója és indexei a tiles mátrixban
-	private byte currentTileID;
-	private byte currentTileX;
-	private byte currentTileY;
 
 
 	// konstruktor
@@ -33,7 +29,18 @@ public class Stage implements Renderable
 	// pálya betöltése megadott elérési útvonalú XML fájlból
 	public void loadFromXML(String path)
 	{
-		// István írja meg...
+		// üres string - teszt
+		if( path.equals("") )
+		{
+			tiles = new Tile[4][4];
+			for( int x = 0; x < 4; x++ )
+			{
+				for( int y = 0; y < 4; y++ )
+				{
+					tiles[x][y] = new Tile((byte)(x * 3 + y));
+				}
+			}
+		}
 	}
 	
 	// a komplett pályát kirenderelő metódus
@@ -41,6 +48,27 @@ public class Stage implements Renderable
 	public void render(Graphics2D surface)
 	{
 		// ...
+	}
+	
+	// segédfüggvény, amely megadja a paraméterül kapott tileID mátrixbeli koordinátáit
+	class Index
+	{
+		public int x, y;
+		public Index(int x, int y) { this.x = x; this.y = y; }
+	}
+	protected Index getTileIndex(byte tileID)
+	{
+		for( int x = 0; x < tiles.length; x++ )
+		{
+			for( int y = 0; y < tiles[x].length; y++ )
+			{
+				if( tiles[x][y].equals(tileID) )
+				{
+					return new Index(x, y);
+				}
+			}
+		}
+		return new Index(-1, -1);
 	}
 	
 	// tilitoli módban történő nyílbillentyű leütésének lekezelése,
@@ -68,7 +96,8 @@ public class Stage implements Renderable
 	public void movePlayer(Player player)
 	{
 		// ellenőrzés, hogy a játékos elhagyná-e az aktuális tile-t
-		boolean leavesTile = tiles[currentTileX][currentTileY].objectLeaves(player, player.getForce());
+		Index currentTileIndex = getTileIndex(player.getTileID());
+		boolean leavesTile = tiles[currentTileIndex.x][currentTileIndex.y].objectLeaves(player, player.getForce());
 		
 		// ha el akarja hagyni a tile-t...
 		if( leavesTile )
@@ -95,7 +124,7 @@ public class Stage implements Renderable
 				Direction direction = /* ... meghatározni a force alapján ... */ Direction.LEFT;
 				byte destinationTileID = /* ... meghatározni az aktuális tile indexei és a direction alapján ... */ 5;
 				// ha lehetséges az áthaladás...
-				if( tiles[currentTileX][currentTileY].canLeave(direction, destinationTileID) )
+				if( tiles[currentTileIndex.x][currentTileIndex.y].canLeave(direction, destinationTileID) )
 				{
 					// a játékos átkerül a szomszédos tile szélére...
 					try
@@ -114,7 +143,7 @@ public class Stage implements Renderable
 		{
 			// a játékos nem akarja elhagyni az aktuális tile-t, hanem azon belül mozog
 			// megkérdezzük a tile-t, hogy hová kell kerülnie
-			Vector2d newPosition = tiles[currentTileX][currentTileY].moveObject(player, player.getForce());
+			Vector2d newPosition = tiles[currentTileIndex.x][currentTileIndex.y].moveObject(player, player.getForce());
 			
 			// játékos elhelyezése az új helyére
 			player.moveTo(newPosition);

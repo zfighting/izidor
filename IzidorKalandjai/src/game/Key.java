@@ -1,6 +1,5 @@
 package game;
 
-import java.awt.Graphics2D;
 import java.awt.Paint;
 
 import engine.Vector2d;

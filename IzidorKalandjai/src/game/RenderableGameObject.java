@@ -1,9 +1,6 @@
 package game;
 
-import java.awt.Graphics2D;
 import java.awt.Paint;
-import java.awt.geom.AffineTransform;
-
 import engine.Vector2d;
 
 // renderelhető játékelemek ősosztálya

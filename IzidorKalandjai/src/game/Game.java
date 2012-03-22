@@ -1,21 +1,8 @@
 package game;
 
-import java.awt.*;
-import java.awt.geom.Rectangle2D;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 import javax.swing.*;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
-
-import engine.Vector2d;
 
 // legfőbb osztály...
 public class Game extends JFrame
@@ -46,12 +33,6 @@ public class Game extends JFrame
 		// láss csodát! a technika diadala
 		setVisible(true);
 	}
-	
-	// XML teszt függveny, TORLENDO
-	private static void XMLTeszt() throws ParserConfigurationException, SAXException, IOException
-	{
-		XMLReader.loadFromXML(File.separatorChar + "res" + File.separatorChar + "XMLTeszt.xml");
-	}
 
 	// konstruktor
 	public Game()
@@ -79,25 +60,7 @@ public class Game extends JFrame
 	// main függvény - az alkalmazás belépési pontja
 	public static void main(String[] args)
     {		
-		// mi menő! 1 sor öcsém, EGY SOR!
+		// játék példányosítása és futtatása
 		new Game();
-		
-		// XML teszt, TORLENDO
-		try
-		{
-			XMLTeszt();
-		}
-		catch (ParserConfigurationException e)
-		{
-			e.printStackTrace();
-		}
-		catch (SAXException e)
-		{
-			e.printStackTrace();
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
     }
 }
