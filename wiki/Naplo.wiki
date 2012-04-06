@@ -2,6 +2,12 @@
 
 = Aktuális beadandó naplója =
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
+|| 04.04.  ||  20:00   || 21:00    || Farkas  || Közös megbeszélés, kódbázis áttekintése ||
+|| 04.04.  ||  20:00   || 21:00    || Böjti|| Közös megbeszélés, kódbázis áttekintése ||
+|| 04.04.  ||  20:00   || 21:00    || Horváth|| Közös megbeszélés, kódbázis áttekintése ||
+
+= Előző beadandó naplója =
+|| *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
 || 03.15.  ||  17:00   || 17:50    || Farkas  || Skeleton implementálása ||
 || 03.18.  ||  10:00   || 13:00    || Farkas  || Skeletonfejlesztése||
 || 03.18.  ||  10:00   || 13:00    || Varga   || Skeletonfejlesztése||
