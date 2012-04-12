@@ -20,27 +20,17 @@ public class Stage implements Renderable
 
 
 	// konstruktor
-	public Stage(String path)
+	public Stage()
 	{
-		// pálya betöltése a path által megadott XML fájlból
-		loadFromXML(path);
+
 	}
 	
-	// pálya betöltése megadott elérési útvonalú XML fájlból
-	public void loadFromXML(String path)
+	// XMLReader segédosztály, tagváltozókhoz hozzáférést biztosít
+	public void build(Tile[][] t, SpawnPoint sp, Door dr)
 	{
-		// üres string - teszt
-		if( path.equals("") )
-		{
-			tiles = new Tile[4][4];
-			for( int x = 0; x < 4; x++ )
-			{
-				for( int y = 0; y < 4; y++ )
-				{
-					tiles[x][y] = new Tile((byte)(x * 3 + y));
-				}
-			}
-		}
+		tiles = t;
+		spawnPoint = sp;
+		door = dr;
 	}
 	
 	// a komplett pályát kirenderelő metódus
