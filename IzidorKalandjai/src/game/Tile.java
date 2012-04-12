@@ -34,6 +34,16 @@ public class Tile implements Renderable
 		keys = new ArrayList<Key>();
 		reachableTiles = (ArrayList<Byte>[]) new ArrayList[4];
 	}
+	
+	public void addRGO(RenderableGameObject o)
+	{
+		objects.add(o);
+	}
+	
+	public void addKey(Key k)
+	{
+		keys.add(k);
+	}
 
 	// tile renderelése
 	@Override
