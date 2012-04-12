@@ -17,8 +17,10 @@ import org.xml.sax.SAXException;
 
 import engine.Vector2d;
 
+
 import java.awt.Color;
 import java.awt.Paint;
+import java.awt.Polygon;
 import java.io.File;
 import java.io.IOException;
 
@@ -41,17 +43,28 @@ public abstract class XMLReader
 		int height = 0;
 		
 		// Leendo spawnpoint
-		SpawnPoint sp;
 		int	sp_id = -1;
 		Vector2d sp_loc = new Vector2d();
 		
 		// Leendo door
-		Door dr;
 		int	dr_id = -1;
 		Vector2d dr_loc = new Vector2d();
 		Paint dr_p = Color.GREEN;
 		float dr_w = 10;
 		float dr_h = 20;
+		
+		// Leendo key
+		int	ky_id = -1;
+		Vector2d ky_loc = new Vector2d();
+		Paint ky_p = Color.RED;
+		float ky_w = 10;
+		float ky_h = 20;
+		
+		// Leendo rectangle, triangle
+		Polygon vtx = null;
+		int vx = 0;
+		int vy = 0;
+		Paint RGO_p = Color.BLACK;
 			
 		// Fajl megnyitasa, Document kinyerese
 		File fajl = new File(System.getProperty("user.dir") + "\\" + fn);
@@ -62,15 +75,14 @@ public abstract class XMLReader
 		// Aktuálisan feldolgozott node valtozoi
 		Node 		akt;
 		NodeList 	aktList;
+		NodeList	gyList;
+		NodeList	vtxList;
 		
 		// Size feldolgozas
 		aktList = xml.getElementsByTagName("size");
 		akt = aktList.item(0);	// csak 1db lehet
 		width = Integer.parseInt(gyerekTagErtek("width", (Element)akt ));
 		height = Integer.parseInt(gyerekTagErtek("height", (Element)akt ));
-		
-		System.out.println("width: " + width);
-		System.out.println("height: " + height + "\n");
 		
 		// Tudjuk hanyszor hanyas, tileok felepitese
 		tl = new Tile[width][height];
@@ -82,9 +94,6 @@ public abstract class XMLReader
 		sp_loc.x = Integer.parseInt(gyerekTagErtek("x", (Element)akt));
 		sp_loc.y = Integer.parseInt(gyerekTagErtek("y", (Element)akt));
 		
-		System.out.println("spawnpoint tileid: " + sp_id);
-		System.out.println("spawnpoint loc: " + sp_loc.toString() + "\n");
-		
 		// Door feldolgozas
 		aktList = xml.getElementsByTagName("door");
 		akt = aktList.item(0);	// csak 1db lehet
@@ -92,15 +101,10 @@ public abstract class XMLReader
 		dr_loc.x = Integer.parseInt(gyerekTagErtek("x", (Element)akt));
 		dr_loc.y = Integer.parseInt(gyerekTagErtek("y", (Element)akt));
 		
-		System.out.println("door tileid: " + dr_id);
-		System.out.println("door loc: " + dr_loc.toString() + "\n");
-		
 		// Tile feldolgozas
 		aktList = xml.getElementsByTagName("tile");
-		int k, j; // k: akt. tile sora, j: akt. tile oszlopa
-		k = 1;
-		//j = 1;
-		
+		int k = 1; //akt. tile sora
+
 		// Mindegyik tile-on végigmegyünk
 		for (int i = 0; i < aktList.getLength(); i++)
 		{
@@ -110,37 +114,55 @@ public abstract class XMLReader
 			tid = Integer.parseInt(gyerekTagErtek("tileid", (Element)akt));
 			
 			// Eldontjuk a tile tombben hova kerul
-			if (tid < (k * width))
-			{ // aktualis sorban van
-				tl[k - 1][tid - ((k - 1) * width)] = new Tile((byte) tid);
-				
-			}
-			else
+			// Ha masik sorban van, akkor k novelodik, így tl[][]-ben jo helyen lesz
+			if (tid >= (k * width))
+				k++;	
+			
+			// Tile letrehozasa a tileid alapjan szamitott helyen
+			tl[k - 1][tid - ((k - 1) * width)] = new Tile((byte) tid);
+			
+			// Ha van benne kulcs, akkor eltaroljuk
+			gyList = ((Element)akt).getElementsByTagName("key");
+			for (int x = 0; x < gyList.getLength(); x++)
 			{
-				k++;
+				ky_id = Integer.parseInt(gyerekTagErtek("tileid", (Element)akt));
+				ky_loc.x = Integer.parseInt(gyerekTagErtek("x", (Element)gyList.item(x)));
+				ky_loc.y = Integer.parseInt(gyerekTagErtek("y", (Element)gyList.item(x)));				
+				tl[k - 1][tid - ((k - 1) * width)].addKey(new Key((byte)ky_id, new Vector2d(ky_loc.x, ky_loc.y), ky_p, ky_w, ky_h));
 			}
 			
+			// Ha van benne Rectangle eltároljuk
+			gyList = ((Element)akt).getElementsByTagName("rectangle");
+			for (int x = 0; x < gyList.getLength(); x++)
+			{
+				vtx = new Polygon();
+				vtxList = ((Element)gyList.item(x)).getElementsByTagName("vertex");
+				for (int y = 0; y < vtxList.getLength(); y++)
+				{
+					vx = Integer.parseInt(gyerekTagErtek("x", (Element)vtxList.item(y)));
+					vy = Integer.parseInt(gyerekTagErtek("y", (Element)vtxList.item(y)));				
+					vtx.addPoint(vx, vy);
+				}
+				tl[k - 1][tid - ((k - 1) * width)].addRGO(new Rectangle((byte)ky_id, new Vector2d(vtx.xpoints[3], vtx.ypoints[3]), RGO_p, vtx));
+			}
+			
+			// Ha van benne Triangle eltároljuk
+			gyList = ((Element)akt).getElementsByTagName("triangle");
+			for (int x = 0; x < gyList.getLength(); x++)
+			{
+				vtx = new Polygon();
+				vtxList = ((Element)gyList.item(x)).getElementsByTagName("vertex");
+				for (int y = 0; y < vtxList.getLength(); y++)
+				{
+					vx = Integer.parseInt(gyerekTagErtek("x", (Element)vtxList.item(y)));
+					vy = Integer.parseInt(gyerekTagErtek("y", (Element)vtxList.item(y)));				
+					vtx.addPoint(vx, vy);
+				}
+				tl[k - 1][tid - ((k - 1) * width)].addRGO(new Triangle((byte)ky_id, new Vector2d(vtx.xpoints[2], vtx.ypoints[2]), RGO_p, vtx));
+			}
 		}
-		
-		return ret;
-	
-		
-/*	RÉGI DEMO	
- * // objektumok beolvasasa NodeList-be
-		NodeList objLista = xml.getElementsByTagName("tile");
-		
-		// kontener az eppen vizsgalt objektumnak
-		Node aktualisObj;
-		
-		// objektumok egyenkenti feldolgozasa
-		for (int i = 0; i < objLista.getLength(); i++)
-		{
-			// objektum kivetele a listabol
-			aktualisObj = objLista.item(i);
-			// feldolgozzuk
-			Element aktualisElement = (Element) aktualisObj;
-			System.out.println("ID: " + ertek("id", aktualisElement));
-		}*/
+		ret.build(tl, new SpawnPoint((byte) sp_id, sp_loc), new Door((byte) dr_id, dr_loc, dr_p, dr_w, dr_h));
+		return ret;	
 	}
 	
 	/** Ertek tag kiolvaso fugveny. 

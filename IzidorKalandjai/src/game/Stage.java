@@ -21,8 +21,7 @@ public class Stage implements Renderable
 
 	// konstruktor
 	public Stage()
-	{
-
+	{		
 	}
 	
 	// XMLReader segédosztály, tagváltozókhoz hozzáférést biztosít

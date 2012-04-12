@@ -79,5 +79,19 @@
 				<y>10</y>
 			</vertex>	
 		</rectangle>
+		<triangle>
+			<vertex>
+				<x>50</x>
+				<y>50</y>
+			</vertex>
+			<vertex>
+				<x>100</x>
+				<y>100</y>
+			</vertex>	
+			<vertex>
+				<x>50</x>
+				<y>100</y>
+			</vertex>	
+		</triangle>		
 	</tile>
 </stage>
