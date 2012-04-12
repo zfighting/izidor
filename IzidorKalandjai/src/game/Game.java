@@ -1,6 +1,11 @@
 package game;
 
 import javax.swing.*;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -58,9 +63,12 @@ public class Game extends JFrame
 	}
 	
 	// main függvény - az alkalmazás belépési pontja
-	public static void main(String[] args)
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException
     {		
 		// játék példányosítása és futtatása
 		new Game();
+		
+		// ne töröld ki, thx
+		XMLReader.load("res\\teststage.xml");
     }
 }
