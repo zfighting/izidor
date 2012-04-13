@@ -24,7 +24,7 @@ public class RenderSurface extends JPanel
 		
 		// ------------- TESZT ---------------------------------
 		try
-		{			
+		{
 			File f = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "texture.bmp");
 			bi = ImageIO.read(f);
 			TexturePaint tp = new TexturePaint(bi, new Rectangle2D.Float(0, 0, bi.getWidth(), bi.getHeight()));
