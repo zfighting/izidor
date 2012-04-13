@@ -119,15 +119,18 @@ public abstract class XMLReader
 				k++;	
 			
 			// Tile letrehozasa a tileid alapjan szamitott helyen
+			// Ha a tid nagyobb mint az aktualis sor utolso elemenek tid-je, akkor uj sorba kell rakjuk
 			tl[k - 1][tid - ((k - 1) * width)] = new Tile((byte) tid);
 			
 			// Ha vannak benne kulcsok, akkor eltaroljuk oket
 			gyList = ((Element)akt).getElementsByTagName("key");
 			for (int x = 0; x < gyList.getLength(); x++)
 			{
+				// Kiszedjuk az ertekeket egyenkent minden kulcsbol
 				ky_id = Integer.parseInt(gyerekTagErtek("tileid", (Element)akt));
 				ky_loc.x = Integer.parseInt(gyerekTagErtek("x", (Element)gyList.item(x)));
-				ky_loc.y = Integer.parseInt(gyerekTagErtek("y", (Element)gyList.item(x)));				
+				ky_loc.y = Integer.parseInt(gyerekTagErtek("y", (Element)gyList.item(x)));		
+				// Letrehozzuk a kulcsot a tileban
 				tl[k - 1][tid - ((k - 1) * width)].addKey(new Key((byte)ky_id, new Vector2d(ky_loc.x, ky_loc.y), ky_p, ky_w, ky_h));
 			}
 			
@@ -135,14 +138,17 @@ public abstract class XMLReader
 			gyList = ((Element)akt).getElementsByTagName("rectangle");
 			for (int x = 0; x < gyList.getLength(); x++)
 			{
+				// Létrehozunk egy poligont, amit feltoltunk a palya alapjan majd vertexekkel
 				vtx = new Polygon();
 				vtxList = ((Element)gyList.item(x)).getElementsByTagName("vertex");
 				for (int y = 0; y < vtxList.getLength(); y++)
 				{
+					// Minden vertexen vegigmegyunk, es kiolvassuk a koordinatait, majd hozzaadjuk a teglalaphoz
 					vx = Integer.parseInt(gyerekTagErtek("x", (Element)vtxList.item(y)));
 					vy = Integer.parseInt(gyerekTagErtek("y", (Element)vtxList.item(y)));				
 					vtx.addPoint(vx, vy);
 				}
+				// Letrehozzuk a teglalapot a tileban
 				tl[k - 1][tid - ((k - 1) * width)].addRGO(new Rectangle((byte)ky_id, new Vector2d(vtx.xpoints[3], vtx.ypoints[3]), RGO_p, vtx));
 			}
 			
@@ -150,23 +156,28 @@ public abstract class XMLReader
 			gyList = ((Element)akt).getElementsByTagName("triangle");
 			for (int x = 0; x < gyList.getLength(); x++)
 			{
+				// Létrehozunk egy poligont, amit feltoltunk a palya alapjan majd vertexekkel
 				vtx = new Polygon();
 				vtxList = ((Element)gyList.item(x)).getElementsByTagName("vertex");
 				for (int y = 0; y < vtxList.getLength(); y++)
 				{
+					// Minden vertexen vegigmegyunk, es kiolvassuk a koordinatait, majd hozzaadjuk a haromszoghoz
 					vx = Integer.parseInt(gyerekTagErtek("x", (Element)vtxList.item(y)));
 					vy = Integer.parseInt(gyerekTagErtek("y", (Element)vtxList.item(y)));				
 					vtx.addPoint(vx, vy);
 				}
+				// Letrehozzuk a haromszoget a tileban
 				tl[k - 1][tid - ((k - 1) * width)].addRGO(new Triangle((byte)ky_id, new Vector2d(vtx.xpoints[2], vtx.ypoints[2]), RGO_p, vtx));
 			}
 		}
+		// Felepitjuk a stage-et, majd visszaadjuk
 		ret.build(tl, new SpawnPoint((byte) sp_id, sp_loc), new Door((byte) dr_id, dr_loc, dr_p, dr_w, dr_h));
 		return ret;	
 	}
 	
 	/** Ertek tag kiolvaso fugveny. 
 	 * 	Kiolvassa egy Element-en beluli megadott tagbol a PCDATA-t.
+	 *  Csak unique gyerekre mukodik, illetve az elsot adja vissza mindig, ha tobb van.
 	 * 
 	 *	@param nev	Kiolvasando tag neve
 	 *	@param e	Az az Element, aminek a tagjara kivancsiak vagyunk
