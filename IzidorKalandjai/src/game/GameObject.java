@@ -2,7 +2,7 @@ package game;
 
 import engine.*;
 
-// játékbeli ojjektumok ősosztálya
+// játékbeli onjektumok ősosztálya
 public abstract class GameObject
 {
 	// melyik tile-on belül van ez az ojjektum

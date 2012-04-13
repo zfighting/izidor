@@ -11,6 +11,9 @@ import engine.Vector2d;
 // a játékos, tilitoli módban ezek cserélődnek fel...
 public class Tile implements Renderable
 {
+	// minden tile mérete fix - ezek a magic numberek azalapján lettek kitalálva, hogy 3x3-mas pálya még kiférjen a 800x600-as ablakba
+	private static final int width = 250;
+	private static final int height = 170;
 	// a kulcsfelvételnél használt távolság - a játékos akkor veszi fel a kulcsot, ha ennél közelebb van a kulcshoz
 	private static final float keyPickUpRadius = 5;
 	// a tile egyedi azonosítója, a 0-s ID az ÜRES pályarészt jelenti
@@ -19,7 +22,7 @@ public class Tile implements Renderable
 	private ArrayList<RenderableGameObject> objects;
 	// a tile-on található kulcsok listája
 	private ArrayList<Key> keys;
-	// az adott itle-ból az egyes irányokba mely tile-okba lehet átmenni
+	// az adott tile-ból az egyes irányokba mely tile-okba lehet átmenni
 	private ArrayList<Byte>[] reachableTiles;
 	
 	
@@ -61,6 +64,11 @@ public class Tile implements Renderable
 	// megadja, hogy a paraméterül kapott objektum a rá ható erő hatására elhagyná-e a tile-t
 	public boolean objectLeaves(RectangularRenderableGameObject object, Vector2d force)
 	{
+		Vector2d tilesize = new Vector2d(250, 170);
+		Vector2d newposition =	new Vector2d().add(object.position, force);
+	   
+		
+		
 		// kérdezni...
 		return false;
 	}

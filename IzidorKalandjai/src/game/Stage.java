@@ -67,16 +67,67 @@ public class Stage implements Renderable
 	{
 		// üres tile indexeinek megkeresése
 		// ...
+		Index empty = getTileIndex((byte) 0);
 		
 		// ellenőrzés, hogy lehet-e cserélni (üres elem melletti indexek ellenőrzése)
 		boolean canSwap;
+		canSwap = true;
 		// ...
-		canSwap = false;
+		//mekkora maga a játék, 2x2-es vagy 3x3-as
+		int ymax = tiles.length -1; 
+		int xmax = tiles[0].length -1;
+		
+		//ha az empty tile nincs benne a mátrixban
+		if(empty.x <0 || empty.x>xmax || empty.y<0 || empty.y>ymax)
+			canSwap = false;
+		
+		switch(direction){
+		//ha a legalsó sorban van az üres tile, akkor nem tudunk fölfele nyílra mozgatni
+		case UP: if(empty.y == ymax) canSwap = false; break;
+		//ha a legfelső sorban van az üres tile, akkor nem tudunk a lefele nyílra mozgatni
+		case DOWN: if(empty.y == 0) canSwap = false; break;
+		//ha a legbaloldalibb oszlopban van az üres tile, akkor nem tudunk jobb nyíl hatására mozgatni
+		case RIGHT: if(empty.x == 0) canSwap = false; break;
+		
+		case LEFT: if(empty.x == xmax) canSwap = false; break;
+		
+		
+		}
+		
+		
+		//canSwap = false;
 		
 		// ha lehetséges, felcseréljük a 2 elemet
 		if( canSwap )
 		{
-			Tile temp;
+			switch( direction )
+			{
+			
+			case UP:  	Tile temp = tiles[empty.x][empty.y];
+						tiles[empty.x][empty.y] = tiles[empty.x][empty.y + 1];
+						tiles[empty.x][empty.y + 1] = temp;
+						break;
+			
+			case DOWN:  temp = tiles[empty.x][empty.y];
+						tiles[empty.x][empty.y] = tiles[empty.x][empty.y - 1];
+						tiles[empty.x][empty.y - 1] = temp;
+						break;
+
+			
+			case RIGHT: temp = tiles[empty.x][empty.y];
+						tiles[empty.x][empty.y] = tiles[empty.x - 1][empty.y];
+						tiles[empty.x - 1][empty.y] = temp;
+						break;
+
+			
+			case LEFT:  temp = tiles[empty.x][empty.y];
+						tiles[empty.x][empty.y] = tiles[empty.x + 1][empty.y];
+						tiles[empty.x + 1][empty.y] = temp;
+						break;
+
+				
+			
+			}
 			// ...
 		}
 	}
