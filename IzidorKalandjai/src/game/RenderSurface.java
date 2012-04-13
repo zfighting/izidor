@@ -30,7 +30,7 @@ public class RenderSurface extends JPanel
 			TexturePaint tp = new TexturePaint(bi, new Rectangle2D.Float(0, 0, bi.getWidth(), bi.getHeight()));
 			
 			ojjektum = new RectangularRenderableGameObject((byte)1, new Vector2d(20, 30), tp, 200.0f, 100.0f);
-			ojjektum2 = new RectangularRenderableGameObject((byte)1, new Vector2d(20, 100), Color.red, 40, 20);
+			ojjektum2 = new RectangularRenderableGameObject((byte)1, new Vector2d(20, 100), Color.red, 400, 200);
 		}
 		catch( Exception e )
 		{
@@ -57,6 +57,7 @@ public class RenderSurface extends JPanel
         //g2d.translate(10, 10);
         
         ojjektum.position.x += 0.5f;
+        ojjektum.position.y += 0.5f;
         ojjektum.render(g2d);
         
         ojjektum2.position.x += 0.3f;
