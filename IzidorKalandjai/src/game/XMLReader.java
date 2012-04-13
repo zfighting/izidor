@@ -67,7 +67,7 @@ public abstract class XMLReader
 		Paint RGO_p = Color.BLACK;
 			
 		// Fajl megnyitasa, Document kinyerese
-		File fajl = new File(System.getProperty("user.dir") + "\\" + fn);
+		File fajl = new File(System.getProperty("user.dir") + File.separator + fn);
 		DocumentBuilderFactory	dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder 		db = dbf.newDocumentBuilder();
 		Document 				xml = db.parse(fajl);
@@ -121,7 +121,7 @@ public abstract class XMLReader
 			// Tile letrehozasa a tileid alapjan szamitott helyen
 			tl[k - 1][tid - ((k - 1) * width)] = new Tile((byte) tid);
 			
-			// Ha van benne kulcs, akkor eltaroljuk
+			// Ha vannak benne kulcsok, akkor eltaroljuk oket
 			gyList = ((Element)akt).getElementsByTagName("key");
 			for (int x = 0; x < gyList.getLength(); x++)
 			{
