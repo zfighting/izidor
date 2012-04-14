@@ -161,7 +161,8 @@ public class Stage implements Renderable
 			//if( /* ... lefelé akar menni és nincs alatta semmi? ... */ false )
 			if(player.force.y > 0)
 			{
-				
+				//játékos el akarja hagyni a tilet lefele, ha az aktuális tile amin van, a legalsó a mátrixban akkor egyértelműen meghal
+				//ha nem a legalsó tileon van, akkor megnézzük, hogy az alatta lévő tile-ra átkerülhet-e, ha nem akkor is meghal
 				if(currenttile.y == ymax || !tiles[currenttile.x][currenttile.y].canLeave(Direction.DOWN, (tiles[currenttile.x][currenttile.y + 1]).getID()))
 				{
 				
@@ -169,6 +170,38 @@ public class Stage implements Renderable
 					try
 					{
 						player.moveTo(spawnPoint.getTileID(), spawnPoint.position);
+						
+						//erő nullázása
+						player.force.x = player.force.y = 0;
+						return;
+					}
+					catch (InvalidTileIDException e)
+					{
+						// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
+						e.printStackTrace();
+					}
+				}
+				//lefele elhagyja a Tilet
+				else
+				{
+					try
+					{
+						//átmegyünk a másik tile-ra
+						player.moveTo((tiles[currenttile.x][currenttile.y + 1]).getID(), new Vector2d(player.position.x , 0));
+						
+						//kulcsot fel tudunk-e venni
+						tiles[currenttile.x][currenttile.y + 1].pickKey(new Vector2d(player.position.x , 0));
+						
+						//ajtón állunk-e
+						if(player.tileID == door.tileID)
+						{
+							double distance = Vector2d.subtract(player.position, door.position).getLength();
+							if(distance <= tiles[currenttile.x][currenttile.y + 1].keyPickUpRadius)
+							{
+								//ha ajtón vagyunk...
+							}
+						}
+						return;
 					}
 					catch (InvalidTileIDException e)
 					{
@@ -183,20 +216,124 @@ public class Stage implements Renderable
 				// ellenőrzés, hogy az aktuális tile-t az adott irányban elhagyhatja-e a játékos
 				// ehhez először meg kell határozni hogy melyik irányba menne, melyik tile van ott, majd meghívni
 				// az aktuális tile canLeave metódusát ezekkel a paraméterekkel...
-				Direction direction = /* ... meghatározni a force alapján ... */ Direction.LEFT;
-				byte destinationTileID = /* ... meghatározni az aktuális tile indexei és a direction alapján ... */ 5;
-				// ha lehetséges az áthaladás...
-				if( tiles[currentTileIndex.x][currentTileIndex.y].canLeave(direction, destinationTileID) )
+				Direction direction  /* ... meghatározni a force alapján ... */ ;
+				byte destinationTileID  /* ... meghatározni az aktuális tile indexei és a direction alapján ... */ ;
+				
+				if(player.force.y < 0)
 				{
-					// a játékos átkerül a szomszédos tile szélére...
-					try
+					direction = Direction.UP;
+					destinationTileID = tiles[currenttile.x][currenttile.y - 1].getID();
+					if(tiles[currenttile.x][currenttile.y].canLeave(Direction.UP, destinationTileID))
 					{
-						player.moveTo(destinationTileID, new Vector2d(/* a direction alapján meghatározni hogy hol van a széle a tile-nak*/ 0, 0));
+						try
+						{
+							//átmegyünk a másik tile-ra
+							player.moveTo(destinationTileID, new Vector2d(player.position.x , 170-player.height));
+							
+							//kulcsot fel tudunk-e venni
+							tiles[currenttile.x][currenttile.y - 1].pickKey(new Vector2d(player.position.x , 170-player.height));
+							
+							//ajtón állunk-e
+							if(player.tileID == door.tileID)
+							{
+								double distance = Vector2d.subtract(player.position, door.position).getLength();
+								if(distance <= tiles[currenttile.x][currenttile.y - 1].keyPickUpRadius)
+								{
+									//ha ajtón vagyunk...
+								}
+							}
+						
+							
+							return;
+						}
+						catch (InvalidTileIDException e)
+						{
+							// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
+							e.printStackTrace();
+						}	
 					}
-					catch (InvalidTileIDException e)
+					else
 					{
-						// valami nagyon el van szarva...
-						e.printStackTrace();
+					//erő nullázása	
+					player.force.x = player.force.y = 0;
+					}
+					
+				}
+				//jobbra hagyná el a tilet
+				if(player.force.x > 0)
+				{
+					direction = Direction.RIGHT;
+					destinationTileID = tiles[currenttile.x + 1][currenttile.y].getID();
+					if(tiles[currenttile.x][currenttile.y].canLeave(Direction.RIGHT, destinationTileID))
+					{
+						try
+						{
+							//átmegyünk a másik tile-ra
+							player.moveTo(destinationTileID, new Vector2d(0 , player.position.y));
+
+							//kulcsot fel tudunk-e venni
+							tiles[currenttile.x + 1][currenttile.y].pickKey(new Vector2d(0, player.position.y));
+							
+							//ajtón állunk-e
+							if(player.tileID == door.tileID)
+							{
+								double distance = Vector2d.subtract(player.position, door.position).getLength();
+								if(distance <= tiles[currenttile.x + 1][currenttile.y].keyPickUpRadius)
+								{
+									//ha ajtón vagyunk...
+								}
+							}
+							return;
+						}
+						catch (InvalidTileIDException e)
+						{
+							// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
+							e.printStackTrace();
+						}	
+					}
+					else
+					{
+					//erő nullázása
+					player.force.x = player.force.y = 0;
+					}
+				}
+				
+				//balra hagyná el a tilet
+				if(player.force.x < 0)
+				{
+					direction = Direction.LEFT;
+					destinationTileID = tiles[currenttile.x - 1][currenttile.y].getID();
+					if(tiles[currenttile.x][currenttile.y].canLeave(Direction.LEFT, destinationTileID))
+					{
+						try
+						{
+							//átmegyünk a másik tile-ra
+							player.moveTo(destinationTileID, new Vector2d(250-player.width , player.position.y));
+
+							//kulcsot fel tudunk-e venni
+							tiles[currenttile.x - 1][currenttile.y].pickKey(new Vector2d(250-player.width , player.position.y));
+							
+							//ajtón állunk-e
+							if(player.tileID == door.tileID)
+							{
+								double distance = Vector2d.subtract(player.position, door.position).getLength();
+								if(distance <= tiles[currenttile.x - 1][currenttile.y].keyPickUpRadius)
+								{
+									//ha ajtón vagyunk...
+								}
+							}
+							return;
+						}
+						catch (InvalidTileIDException e)
+						{
+							// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
+							e.printStackTrace();
+						}	
+					}
+					else
+					{
+					//erő nullázása
+					player.force.x = player.force.y = 0;
 					}
 				}
 			}
@@ -207,16 +344,32 @@ public class Stage implements Renderable
 			// megkérdezzük a tile-t, hogy hová kell kerülnie
 			CollisionDetectionResult collresult = tiles[currentTileIndex.x][currentTileIndex.y].moveObject(player, player.getForce());
 			//ha volt ütközés
+			//függöleges tengely mentén
 			if(collresult.collisionY == true)
 			{
 				player.force.y = 0;
 			}
+			//vizszintes tengely mentén
 			if(collresult.collisionX == true)
 			{
 				player.force.x = 0;
 			}
 			// játékos elhelyezése az új helyére
 			player.moveTo(collresult.newPosition);
+			
+
+			//kulcsot fel tudunk-e venni
+			tiles[currenttile.x][currenttile.y].pickKey(collresult.newPosition);
+			
+			//ajtón állunk-e
+			if(player.tileID == door.tileID)
+			{
+				double distance = Vector2d.subtract(player.position, door.position).getLength();
+				if(distance <= tiles[currenttile.x][currenttile.y].keyPickUpRadius)
+				{
+					//ha ajtón vagyunk...
+				}
+			}
 		}
 	}
 	

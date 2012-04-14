@@ -15,7 +15,7 @@ public class Tile implements Renderable
 	private static final int width = 250;
 	private static final int height = 170;
 	// a kulcsfelvételnél használt távolság - a játékos akkor veszi fel a kulcsot, ha ennél közelebb van a kulcshoz
-	private static final float keyPickUpRadius = 5;
+	public static final float keyPickUpRadius = 5;
 	// a tile egyedi azonosítója, a 0-s ID az ÜRES pályarészt jelenti
 	private byte tileID;
 	// a tile-t felépítő pályaelemek (téglalapok, háromszögek) listája
