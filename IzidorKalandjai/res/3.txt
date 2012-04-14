@@ -1,0 +1,3 @@
+loadstage teststage.xml 
+addplayer 3 10 20
+stageinfo filename

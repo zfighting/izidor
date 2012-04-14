@@ -1,2 +1,2 @@
-loadstage teststage.xml  
+loadstage teststage.xml 
 stageinfo filename

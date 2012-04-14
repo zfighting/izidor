@@ -1,9 +1,8 @@
-Spawnpoint    	: 0, 0, 0
-Door postion   	: 0, 0, 0
-Key position      : 0, 0, 0
-TileID_1 position : x1, y1
-TileID_2 position : x2, y2
-TileID_3 position : x3, y3
-TileID_4 position : x4, y4
-Remaining keys    : 0
-Player1 position  : 50-x*, y
+Spawnpoint			: 1  20.0  20.0  
+Door postion		: 3  30.0  10.0
+Key position      	: ennek van értelme?
+TileID_1 position 	: 01
+TileID_2 position 	: 00
+TileID_3 position 	: 10
+TileID_4 position 	: 11
+Remaining keys    	: 1

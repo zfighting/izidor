@@ -44,6 +44,9 @@ public class Stage implements Renderable
 	{
 		public int x, y;
 		public Index(int x, int y) { this.x = x; this.y = y; }
+		
+		public String toString()
+		{return Integer.toString(x)+ Integer.toString(y);}
 	}
 	protected Index getTileIndex(byte tileID)
 	{
@@ -51,7 +54,7 @@ public class Stage implements Renderable
 		{
 			for( int y = 0; y < tiles[x].length; y++ )
 			{
-				if( tiles[x][y].equals(tileID) )
+				if( tiles[x][y].getID()==(tileID))   // itt javítottam, .equals() volt és nem működött, -1eket adott végig
 				{
 					return new Index(x, y);
 				}
@@ -215,5 +218,31 @@ public class Stage implements Renderable
 			// játékos elhelyezése az új helyére
 			player.moveTo(collresult.newPosition);
 		}
+	}
+	
+	public String toString()
+	{
+		
+		//kulcsok száma
+		int keys=0;
+		for(int i=0;i <2; i++)
+			for(int j=0;j <2; j++)			
+				keys +=tiles[i][j].getNumberOfKeys();
+		
+		
+		
+		
+		return	(
+				 "Spawnpoint			: " + spawnPoint.tileID +"  "+ spawnPoint.position.x +"  "+ spawnPoint.position.x +"  "+"\n" +
+				 "Door postion		: " + door.tileID +"  "+ door.position.x +"  "+ door.position.y +"\n" +
+				 "Key position      	: " + "ennek van értelme?\n" +
+				 "TileID_1 position 	: " + getTileIndex((byte) 0) + "\n"+
+				 "TileID_2 position 	: " + getTileIndex((byte) 1) + "\n"+
+				 "TileID_3 position 	: " + getTileIndex((byte) 2) + "\n"+
+				 "TileID_4 position 	: " + getTileIndex((byte) 3) + "\n"+
+				 "Remaining keys    	: " +  keys 	+"\n" +
+				 ""
+				 );
+		
 	}
 }
