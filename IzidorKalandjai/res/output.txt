@@ -1,5 +1,5 @@
 Spawnpoint			: 1  20.0  20.0  
-Door postion		: 3  30.0  10.0
+Door postion		: 2  120.0  60.0
 Key position      	: ennek van értelme?
 TileID_1 position 	: 00
 TileID_2 position 	: 01
