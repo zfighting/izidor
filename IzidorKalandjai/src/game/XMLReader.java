@@ -6,6 +6,7 @@
  */
 
 package game;
+import javax.imageio.ImageIO;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.ParserConfigurationException;
@@ -21,6 +22,10 @@ import engine.Vector2d;
 import java.awt.Color;
 import java.awt.Paint;
 import java.awt.Polygon;
+import java.awt.TexturePaint;
+import java.awt.geom.Rectangle2D;
+import java.awt.geom.Rectangle2D.Float;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -49,16 +54,23 @@ public abstract class XMLReader
 		// Leendo door
 		int	dr_id = -1;
 		Vector2d dr_loc = new Vector2d();
-		Paint dr_p = Color.GREEN;
-		float dr_w = 10;
-		float dr_h = 20;
+		File door_file = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "doorSprite.png");
+		BufferedImage door_image;
+		door_image = ImageIO.read(door_file);
+		TexturePaint door_paint = new TexturePaint(door_image, new Rectangle2D.Float(0, 0, door_image.getWidth(), door_image.getHeight()));
+		Paint doorr_paint = new TexturePaint(door_image, new Rectangle2D.Float(0, 0, door_image.getWidth(), door_image.getHeight()));
+		float door_w = 10;
+		float door_h = 20;
 		
 		// Leendo key
 		int	ky_id = -1;
 		Vector2d ky_loc = new Vector2d();
-		Paint ky_p = Color.RED;
-		float ky_w = 10;
-		float ky_h = 20;
+		File key_file = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "keySprite.png");
+		BufferedImage key_image;
+		key_image = ImageIO.read(key_file);
+		TexturePaint key_paint = new TexturePaint(key_image, new Rectangle2D.Float(0, 0, key_image.getWidth(), key_image.getHeight()));
+		float key_width = 20;
+		float key_height = 14;
 		
 		// Leendo rectangle, triangle
 		Polygon vtx = null;
@@ -131,7 +143,7 @@ public abstract class XMLReader
 				ky_loc.x = Integer.parseInt(gyerekTagErtek("x", (Element)gyList.item(x)));
 				ky_loc.y = Integer.parseInt(gyerekTagErtek("y", (Element)gyList.item(x)));		
 				// Letrehozzuk a kulcsot a tileban
-				tl[k - 1][tid - ((k - 1) * width)].addKey(new Key((byte)ky_id, new Vector2d(ky_loc.x, ky_loc.y), ky_p, ky_w, ky_h));
+				tl[k - 1][tid - ((k - 1) * width)].addKey(new Key((byte)ky_id, new Vector2d(ky_loc.x, ky_loc.y), key_paint, key_width, key_height));
 			}
 			
 			// Ha van benne Rectangle eltároljuk
@@ -149,7 +161,7 @@ public abstract class XMLReader
 					vtx.addPoint(vx, vy);
 				}
 				// Letrehozzuk a teglalapot a tileban
-				tl[k - 1][tid - ((k - 1) * width)].addRGO(new Rectangle((byte)ky_id, new Vector2d(vtx.xpoints[3], vtx.ypoints[3]), RGO_p, vtx));
+				tl[k - 1][tid - ((k - 1) * width)].addRenderableGameObject(new Rectangle((byte)ky_id, new Vector2d(0, 0), RGO_p, vtx));
 			}
 			
 			// Ha van benne Triangle eltároljuk
@@ -167,11 +179,11 @@ public abstract class XMLReader
 					vtx.addPoint(vx, vy);
 				}
 				// Letrehozzuk a haromszoget a tileban
-				tl[k - 1][tid - ((k - 1) * width)].addRGO(new Triangle((byte)ky_id, new Vector2d(vtx.xpoints[2], vtx.ypoints[2]), RGO_p, vtx));
+				tl[k - 1][tid - ((k - 1) * width)].addRenderableGameObject(new Triangle((byte)ky_id, new Vector2d(0, 0), RGO_p, vtx));
 			}
 		}
 		// Felepitjuk a stage-et, majd visszaadjuk
-		ret.build(tl, new SpawnPoint((byte) sp_id, sp_loc), new Door((byte) dr_id, dr_loc, dr_p, dr_w, dr_h));
+		ret.build(tl, new SpawnPoint((byte) sp_id, sp_loc), new Door((byte) dr_id, dr_loc, door_paint, door_w, door_h));
 		return ret;	
 	}
 	
