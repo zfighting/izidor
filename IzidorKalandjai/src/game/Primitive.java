@@ -12,7 +12,8 @@ import engine.Vector2d;
 public abstract class Primitive extends RenderableGameObject
 {
 	// kirajzolható, fizikai számításokhoz használható, beágyazott objektum
-	protected Polygon polygon;
+	public Polygon polygon;
+	
 	
 	
 	// konstruktor

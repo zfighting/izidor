@@ -66,29 +66,33 @@ public class Stage implements Renderable
 	public void swap(Direction direction)
 	{
 		// üres tile indexeinek megkeresése
-		// ...
+		
 		Index empty = getTileIndex((byte) 0);
 		
 		// ellenőrzés, hogy lehet-e cserélni (üres elem melletti indexek ellenőrzése)
 		boolean canSwap;
 		canSwap = true;
-		// ...
+		
 		//mekkora maga a játék, 2x2-es vagy 3x3-as
 		int ymax = tiles.length -1; 
 		int xmax = tiles[0].length -1;
 		
 		//ha az empty tile nincs benne a mátrixban
 		if(empty.x <0 || empty.x>xmax || empty.y<0 || empty.y>ymax)
-			canSwap = false;
+			throw new RuntimeException();
 		
 		switch(direction){
+		
 		//ha a legalsó sorban van az üres tile, akkor nem tudunk fölfele nyílra mozgatni
 		case UP: if(empty.y == ymax) canSwap = false; break;
+		
 		//ha a legfelső sorban van az üres tile, akkor nem tudunk a lefele nyílra mozgatni
 		case DOWN: if(empty.y == 0) canSwap = false; break;
-		//ha a legbaloldalibb oszlopban van az üres tile, akkor nem tudunk jobb nyíl hatására mozgatni
+		
+		//ha a legbaloldalibb oszlopban van az üres tile, akkor nem tudunk jobb nyíl hatására tilet mozgatni
 		case RIGHT: if(empty.x == 0) canSwap = false; break;
 		
+		//ha a legjobboldalibb oszlopban van az üres tile, akkor nem tudunk a bal nyíl hatására tilet mozgatni
 		case LEFT: if(empty.x == xmax) canSwap = false; break;
 		
 		
@@ -128,13 +132,20 @@ public class Stage implements Renderable
 				
 			
 			}
-			// ...
+			
 		}
 	}
+	
 	
 	// paraméterül kapott játékos objektum mozgatása
 	public void movePlayer(Player player)
 	{
+		Index currenttile = getTileIndex( player.tileID );
+		
+		//mekkora maga a játék, 2x2-es vagy 3x3-as
+		int ymax = tiles.length -1; 
+		int xmax = tiles[0].length -1;
+		
 		// ellenőrzés, hogy a játékos elhagyná-e az aktuális tile-t
 		Index currentTileIndex = getTileIndex(player.getTileID());
 		boolean leavesTile = tiles[currentTileIndex.x][currentTileIndex.y].objectLeaves(player, player.getForce());
@@ -142,19 +153,27 @@ public class Stage implements Renderable
 		// ha el akarja hagyni a tile-t...
 		if( leavesTile )
 		{
+			
 			// ha lefelé akarja elhagyni, és nincs alatta semmi, meghal (respawnol)
-			if( /* ... lefelé akar menni és nincs alatta semmi? ... */ false )
+			//if( /* ... lefelé akar menni és nincs alatta semmi? ... */ false )
+			if(player.force.y > 0)
 			{
-				// respawnol = visszakerül a spawnpoint-ra
-				try
+				
+				if(currenttile.y == ymax || !tiles[currenttile.x][currenttile.y].canLeave(Direction.DOWN, (tiles[currenttile.x][currenttile.y + 1]).getID()))
 				{
-					player.moveTo(spawnPoint.getTileID(), spawnPoint.position);
+				
+					// respawnol = visszakerül a spawnpoint-ra
+					try
+					{
+						player.moveTo(spawnPoint.getTileID(), spawnPoint.position);
+					}
+					catch (InvalidTileIDException e)
+					{
+						// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
+						e.printStackTrace();
+					}
 				}
-				catch (InvalidTileIDException e)
-				{
-					// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
-					e.printStackTrace();
-				}
+				
 			}
 			else
 			{
@@ -183,10 +202,18 @@ public class Stage implements Renderable
 		{
 			// a játékos nem akarja elhagyni az aktuális tile-t, hanem azon belül mozog
 			// megkérdezzük a tile-t, hogy hová kell kerülnie
-			Vector2d newPosition = tiles[currentTileIndex.x][currentTileIndex.y].moveObject(player, player.getForce());
-			
+			CollisionDetectionResult collresult = tiles[currentTileIndex.x][currentTileIndex.y].moveObject(player, player.getForce());
+			//ha volt ütközés
+			if(collresult.collisionY == true)
+			{
+				player.force.y = 0;
+			}
+			if(collresult.collisionX == true)
+			{
+				player.force.x = 0;
+			}
 			// játékos elhelyezése az új helyére
-			player.moveTo(newPosition);
+			player.moveTo(collresult.newPosition);
 		}
 	}
 }
