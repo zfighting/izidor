@@ -1,0 +1,8 @@
+Spawnpoint			: 1  20.0  20.0  
+Door postion		: 2  120.0  60.0
+Key position      	: ennek van értelme?
+TileID_1 position 	: 00
+TileID_2 position 	: 01
+TileID_3 position 	: 10
+TileID_4 position 	: 11
+Remaining keys    	: 1
