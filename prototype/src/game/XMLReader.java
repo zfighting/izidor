@@ -235,7 +235,7 @@ public abstract class XMLReader
 					vtx.addPoint(vx, vy);
 				}
 				// Letrehozzuk a teglalapot a tileban
-				tl[k - 1][tid - ((k - 1) * width)].addRenderableGameObject(new Rectangle((byte)ky_id, new Vector2d(0, 0), RGO_p, vtx));
+				tl[k - 1][tid - ((k - 1) * width)].addRenderableGameObject(new Rectangle((byte)tid, new Vector2d(0, 0), RGO_p, vtx));
 			}
 			
 			// Ha van benne Triangle eltároljuk
@@ -253,7 +253,7 @@ public abstract class XMLReader
 					vtx.addPoint(vx, vy);
 				}
 				// Letrehozzuk a haromszoget a tileban
-				tl[k - 1][tid - ((k - 1) * width)].addRenderableGameObject(new Triangle((byte)ky_id, new Vector2d(0, 0), RGO_p, vtx));
+				tl[k - 1][tid - ((k - 1) * width)].addRenderableGameObject(new Triangle((byte)tid, new Vector2d(0, 0), RGO_p, vtx));
 			}
 		}
 		// Felepitjuk a stage-et, majd visszaadjuk

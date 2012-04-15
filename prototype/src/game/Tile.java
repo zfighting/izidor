@@ -174,6 +174,7 @@ public class Tile implements Renderable
 	{
 		//ütközés nélkül ide kerülne a rá ható erő hatására
 		Vector2d newposition = Vector2d.add(object.position, force);
+		force.x = 0;
 		// ez lesz a mozgatás eredménye (az objektum új helye)
 		CollisionDetectionResult result = new CollisionDetectionResult(newposition, false, false);
 		//ekkora egységenként mozgatjuk a téglalapot(rect-et)
@@ -199,12 +200,12 @@ public class Tile implements Renderable
 			    {
 			    	RenderableGameObject o = itr.next();
 			    	//megnézzük h téglalap-e
-			    	if( o.getClass() == Rectangle.class)
+			    	if( o.getClass().equals(Rectangle.class))
 			    	{
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
 			    		{
-			    			result.newPosition.y = (float) ((float) 170 - ((((Rectangle)o).polygon.getBounds2D().getHeight() - o.position.y) - 0.01f));
+			    			result.newPosition.y = (float) ((float) 170 - ((Rectangle)o).polygon.getBounds2D().getHeight() - rect.getHeight()) - 0.01f;
 			    			result.collisionY = true;
 			    			break;
 			    		

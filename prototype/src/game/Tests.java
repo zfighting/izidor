@@ -88,8 +88,8 @@ public class Tests
 			
 				if(tokens[0].matches("setforce"))
 				{
-					game.getPlayers().get(Integer.parseInt(tokens[1])).setForce(new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
-					game.stage.movePlayer(game.getPlayers().get(Integer.parseInt(tokens[1])));
+					game.getPlayers().get(Integer.parseInt(tokens[1])).applyForce(new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
+					//game.stage.movePlayer(game.getPlayers().get(Integer.parseInt(tokens[1])));
 				}
 				
 				
@@ -100,14 +100,14 @@ public class Tests
 				
 				if(tokens[0].matches("tick"))
 				{
-					for (int x = 0; x < 200; x++)
+					for (int x = 0; x < 2000; x++)
 						game.globalUpdate();
 				}
 				
 				if(tokens[0].matches("addplayer") ) 
 				{
-						SpawnPoint sp = new SpawnPoint((byte) (Integer.parseInt(tokens[1])), new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
-						game.addPlayer((byte) (Integer.parseInt(tokens[1])), sp.position);
+						game.stage.addSpawnPoint((byte) (Integer.parseInt(tokens[1])), new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
+						game.addPlayer((byte) (Integer.parseInt(tokens[1])), new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
 				}
 				
 				if(tokens[0].matches("adddoor") ) 

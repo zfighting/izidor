@@ -1,6 +1,6 @@
-loadstage test3.xml 
-addplayer 1 40 50
+loadstage test4.xml 
+addplayer 1 40 40
 tick
-setforce 0 10 20
+setforce 0 50 0
 tick
-stageinfo filename
+stageinfo testresults.txt

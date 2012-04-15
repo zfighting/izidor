@@ -1,4 +1,4 @@
 loadstage test3.xml 
 addplayer 3 66 77
 tick
-stageinfo filename
+stageinfo testresults.txt

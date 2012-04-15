@@ -70,7 +70,7 @@ public class Game extends JFrame implements KeyListener
 	
 	public void addPlayer(byte tid, Vector2d p)
 	{
-		players.add(new Player(tid, p, Color.BLACK, 20, 10));
+		players.add(new Player(tid, p, Color.BLACK, 10, 20));
 	}
 	
 	// ablak létrehozása

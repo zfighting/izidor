@@ -432,8 +432,8 @@ public class Stage implements Renderable
 			}
 			// játékos elhelyezése az új helyére
 			player.moveTo(collresult.newPosition);
+			player.force.x = 0;
 			
-
 			//kulcsot fel tudunk-e venni
 			tiles[currenttile.x][currenttile.y].pickKey(collresult.newPosition);
 			
@@ -483,5 +483,10 @@ public class Stage implements Renderable
 	{
 		Index temp = getTileIndex(b);
 		tiles[temp.x][temp.y].addKey(new Key(b, position, Color.RED, 20, 10));
+	}
+	
+	public void addSpawnPoint(byte b, Vector2d position)
+	{
+		spawnPoint = new SpawnPoint(b, position);
 	}
 }
