@@ -3,26 +3,52 @@
 	<size>
 		<width>2</width>
 		<height>2</height>
-	</size>
-	
+	</size>	
 	<spawnpoint>
 		<tileid>1</tileid>
 		<x>20</x>
 		<y>10</y>
-	</spawnpoint>
-	
+	</spawnpoint>	
 	<door>
 		<tileid>2</tileid>
 		<x>120</x>
 		<y>60</y>
-	</door>
-	
+	</door>	
 	<tile>
 		<tileid>0</tileid>
-	</tile>
-	
+		<reachable_tiles>
+			<up>
+				<tileid>65</tileid>
+				<tileid>21</tileid>
+			</up>
+			<down>
+				<tileid>3</tileid>
+			</down>
+			<left>
+				<tileid>4</tileid>
+			</left>
+			<right>
+				<tileid>5</tileid>
+			</right>
+		</reachable_tiles>
+	</tile>	
 	<tile>
 		<tileid>1</tileid>
+		<reachable_tiles>
+			<up>
+				<tileid>1</tileid>
+				<tileid>2</tileid>
+			</up>
+			<down>
+				<tileid>3</tileid>
+			</down>
+			<left>
+				<tileid>4</tileid>
+			</left>
+			<right>
+				<tileid>5</tileid>
+			</right>
+		</reachable_tiles>
 		<key>
 			<x>30</x>
 			<y>90</y>
@@ -46,9 +72,23 @@
 			</vertex>	
 		</rectangle>
 	</tile>
-	
 	<tile>
 		<tileid>2</tileid>
+		<reachable_tiles>
+			<up>
+				<tileid>1</tileid>
+				<tileid>2</tileid>
+			</up>
+			<down>
+				<tileid>3</tileid>
+			</down>
+			<left>
+				<tileid>4</tileid>
+			</left>
+			<right>
+				<tileid>5</tileid>
+			</right>
+		</reachable_tiles>
 		<rectangle>
 			<vertex>
 				<x>0</x>
@@ -86,9 +126,23 @@
 			</vertex>	
 		</rectangle>
 	</tile>
-	
 	<tile>
 		<tileid>3</tileid>
+		<reachable_tiles>
+			<up>
+				<tileid>1</tileid>
+				<tileid>2</tileid>
+			</up>
+			<down>
+				<tileid>3</tileid>
+			</down>
+			<left>
+				<tileid>4</tileid>
+			</left>
+			<right>
+				<tileid>5</tileid>
+			</right>
+		</reachable_tiles>
 		<rectangle>
 			<vertex>
 				<x>0</x>

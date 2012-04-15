@@ -79,15 +79,18 @@ public abstract class XMLReader
 		Paint RGO_p = Color.BLACK;
 			
 		// Fajl megnyitasa, Document kinyerese
-		File fajl = new File(System.getProperty("user.dir") + File.separator + fn);
+		File fajl = new File(System.getProperty("user.dir") + File.separatorChar + fn);
 		DocumentBuilderFactory	dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder 		db = dbf.newDocumentBuilder();
 		Document 				xml = db.parse(fajl);
 		
 		// Aktuálisan feldolgozott node valtozoi
 		Node 		akt;
+		Node		akt2;
+		Node		akt3;
 		NodeList 	aktList;
 		NodeList	gyList;
+		NodeList	gyList2;
 		NodeList	vtxList;
 		
 		// Size feldolgozas
@@ -133,6 +136,71 @@ public abstract class XMLReader
 			// Tile letrehozasa a tileid alapjan szamitott helyen
 			// Ha a tid nagyobb mint az aktualis sor utolso elemenek tid-je, akkor uj sorba kell rakjuk
 			tl[k - 1][tid - ((k - 1) * width)] = new Tile((byte) tid);
+	
+			// Reachable tiles kiolvasása
+			gyList = ((Element)akt).getElementsByTagName("reachable_tiles");
+			akt2 = gyList.item(0);
+				
+				// UP
+				gyList = ((Element)akt2).getElementsByTagName("up");
+				akt3 = gyList.item(0);
+			
+					// Azon belül a tileid-k
+					gyList2 = ((Element)akt3).getElementsByTagName("tileid");
+					
+					// Összeset kiszedjük
+					for (int x = 0; x < gyList2.getLength(); x++)
+					{
+						int rtid = Integer.parseInt(gyList2.item(x).getFirstChild().getNodeValue());
+						tl[k - 1][tid - ((k - 1) * width)].addReachableTile((byte)rtid, Direction.UP);
+					}
+					
+				// DOWN
+				gyList = ((Element)akt2).getElementsByTagName("down");
+				akt3 = gyList.item(0);
+				
+					// Azon belül a tileid-k
+					gyList2 = ((Element)akt3).getElementsByTagName("tileid");
+						
+					// Összeset kiszedjük
+					for (int x = 0; x < gyList2.getLength(); x++)
+					{
+						int rtid = Integer.parseInt(gyList2.item(x).getFirstChild().getNodeValue());
+						tl[k - 1][tid - ((k - 1) * width)].addReachableTile((byte)rtid, Direction.DOWN);
+					}			
+			
+					// Reachable tiles kiolvasása
+					gyList = ((Element)akt).getElementsByTagName("reachable_tiles");
+					akt2 = gyList.item(0);
+					
+					
+				// LEFT
+				gyList = ((Element)akt2).getElementsByTagName("left");
+				akt3 = gyList.item(0);
+
+					// Azon belül a tileid-k
+					gyList2 = ((Element)akt3).getElementsByTagName("tileid");
+
+					// Összeset kiszedjük
+					for (int x = 0; x < gyList2.getLength(); x++)
+					{
+						int rtid = Integer.parseInt(gyList2.item(x).getFirstChild().getNodeValue());
+						tl[k - 1][tid - ((k - 1) * width)].addReachableTile((byte)rtid, Direction.LEFT);
+					}
+
+				// RIGHT
+				gyList = ((Element)akt2).getElementsByTagName("right");
+				akt3 = gyList.item(0);
+
+					// Azon belül a tileid-k
+					gyList2 = ((Element)akt3).getElementsByTagName("tileid");
+
+					// Összeset kiszedjük
+					for (int x = 0; x < gyList2.getLength(); x++)
+					{
+						int rtid = Integer.parseInt(gyList2.item(x).getFirstChild().getNodeValue());
+						tl[k - 1][tid - ((k - 1) * width)].addReachableTile((byte)rtid, Direction.RIGHT);
+					}					
 			
 			// Ha vannak benne kulcsok, akkor eltaroljuk oket
 			gyList = ((Element)akt).getElementsByTagName("key");

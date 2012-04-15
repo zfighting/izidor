@@ -24,11 +24,17 @@ public class Tile implements Renderable
 	private ArrayList<RenderableGameObject> objects;
 	// a tile-on található kulcsok listája
 	private ArrayList<Key> keys;
+	
 	// az adott tile-ból az egyes irányokba mely tile-okba lehet átmenni
+	// 0 index = UP
+	// 1 index = DOWN
+	// 2 index = LEFT
+	// 3 index = RIGHT
 	private ArrayList<Byte>[] reachableTiles;
 	
 	
 	// konstruktor
+	@SuppressWarnings("unchecked")
 	public Tile(byte tileID)
 	{
 		// azonosító mentése
@@ -38,6 +44,12 @@ public class Tile implements Renderable
 		objects = new ArrayList<RenderableGameObject>();
 		keys = new ArrayList<Key>();
 		reachableTiles = (ArrayList<Byte>[]) new ArrayList[4];
+		
+		// Ez még kellett hozzá azért írtam bele, különben NullPointerException (I.)
+		reachableTiles[0] = new ArrayList<Byte>();
+		reachableTiles[1] = new ArrayList<Byte>();
+		reachableTiles[2] = new ArrayList<Byte>();
+		reachableTiles[3] = new ArrayList<Byte>();
 	}
 	
 	// renderelhető objektumok (a tile-t felépítő elemek) hozzáadása
@@ -50,6 +62,32 @@ public class Tile implements Renderable
 	public void addKey(Key k)
 	{
 		keys.add(k);
+	}
+	
+	public void addReachableTile(byte tid, Direction dir)
+	{
+		// JRE 1.6 kompatibilis if
+		// 0 index = UP
+		// 1 index = DOWN
+		// 2 index = LEFT
+		// 3 index = RIGHT
+		if (dir == Direction.UP)
+		{
+			reachableTiles[0].add(tid);
+		}
+		else if (dir == Direction.DOWN)
+		{
+			reachableTiles[1].add(tid);
+		}
+		else if (dir == Direction.LEFT)
+		{
+			reachableTiles[2].add(tid);
+		}
+		else if (dir == Direction.RIGHT)
+		{
+			reachableTiles[3].add(tid);
+		}
+		else System.out.println("ReachableTiles indexelési hiba.");
 	}
 
 	// tile renderelése
