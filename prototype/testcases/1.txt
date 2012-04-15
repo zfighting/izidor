@@ -1,0 +1,3 @@
+loadstage test1.xml 
+tick
+stageinfo testresults.txt

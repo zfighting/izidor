@@ -1,0 +1,6 @@
+loadstage test3.xml 
+addplayer 1 40 50
+tick
+setforce 0 10 20
+tick
+stageinfo filename

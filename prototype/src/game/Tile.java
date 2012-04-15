@@ -23,7 +23,7 @@ public class Tile implements Renderable
 	// a tile-t felépítő pályaelemek (téglalapok, háromszögek) listája
 	private ArrayList<RenderableGameObject> objects;
 	// a tile-on található kulcsok listája
-	private ArrayList<Key> keys;
+	public ArrayList<Key> keys;
 	
 	// az adott tile-ból az egyes irányokba mely tile-okba lehet átmenni
 	// 0 index = UP
@@ -62,6 +62,11 @@ public class Tile implements Renderable
 	public void addKey(Key k)
 	{
 		keys.add(k);
+	}
+	
+	public int containsKey()
+	{
+		return keys.size();
 	}
 	
 	public void addReachableTile(byte tid, Direction dir)
@@ -187,7 +192,7 @@ public class Tile implements Renderable
 			currentposition = Vector2d.add(currentposition, delta);
 			
 			//ütközés lefelé
-			if(force.x > 0)
+			if(force.y > 0)
 			{
 				Iterator<RenderableGameObject> itr = objects.iterator();
 			    while (itr.hasNext())
@@ -199,7 +204,7 @@ public class Tile implements Renderable
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
 			    		{
-			    			result.newPosition.x = (float) ((((Rectangle)o).polygon.getBounds2D().getWidth() + o.position.x) + 0.01f);
+			    			result.newPosition.y = (float) ((float) 170 - ((((Rectangle)o).polygon.getBounds2D().getHeight() - o.position.y) - 0.01f));
 			    			result.collisionY = true;
 			    			break;
 			    		
@@ -215,7 +220,7 @@ public class Tile implements Renderable
 			    }
 			}
 			//ötközés felfelé
-			if(force.x < 0)
+			if(force.y < 0)
 			{
 				Iterator<RenderableGameObject> itr = objects.iterator();
 			    while (itr.hasNext())
@@ -227,7 +232,7 @@ public class Tile implements Renderable
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
 			    		{
-			    			result.newPosition.x = (float) (((Rectangle)o).polygon.getBounds2D().getX() - rect.getWidth()) + 0.01f;
+			    			result.newPosition.y = (float) (((Rectangle)o).polygon.getBounds2D().getX()) + 0.01f;
 			    			result.collisionY = true;
 			    			break;
 			    		
@@ -243,7 +248,7 @@ public class Tile implements Renderable
 			    }
 			}
 			//ütközés jobbra
-			if(force.y > 0)
+			if(force.x > 0)
 			{
 				Iterator<RenderableGameObject> itr = objects.iterator();
 			    while (itr.hasNext())
@@ -255,7 +260,7 @@ public class Tile implements Renderable
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
 			    		{
-			    			result.newPosition.y = (float) (((Rectangle)o).polygon.getBounds2D().getHeight() + o.position.y) - 0.01f;
+			    			result.newPosition.x = (float) (((Rectangle)o).polygon.getBounds2D().getWidth() + o.position.x - rect.getWidth()) - 0.01f;
 			    			result.collisionX = true;
 			    			break;
 			    		
@@ -271,7 +276,7 @@ public class Tile implements Renderable
 			    }	
 			}
 			//ütközés balra
-			if(force.y < 0)
+			if(force.x < 0)
 			{
 				Iterator<RenderableGameObject> itr = objects.iterator();
 			    while (itr.hasNext())
@@ -283,7 +288,7 @@ public class Tile implements Renderable
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
 			    		{
-			    			result.newPosition.y = (float) (((Rectangle)o).polygon.getBounds2D().getY() - rect.getHeight()) + 0.01f;
+			    			result.newPosition.x = (float) (((Rectangle)o).polygon.getBounds2D().getWidth() + o.position.x) + 0.01f;
 			    			result.collisionX = true;
 			    			break;
 			    		

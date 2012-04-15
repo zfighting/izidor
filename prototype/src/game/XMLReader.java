@@ -49,11 +49,11 @@ public abstract class XMLReader
 		
 		// Leendo spawnpoint
 		int	sp_id = -1;
-		Vector2d sp_loc = new Vector2d();
+		Vector2d sp_loc = new Vector2d(-1, -1);
 		
 		// Leendo door
 		int	dr_id = -1;
-		Vector2d dr_loc = new Vector2d();
+		Vector2d dr_loc = new Vector2d(-1, -1);
 		File door_file = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "doorSprite.png");
 		BufferedImage door_image;
 		door_image = ImageIO.read(door_file);
@@ -104,18 +104,22 @@ public abstract class XMLReader
 		
 		// Spawnpoint feldolgozas
 		aktList = xml.getElementsByTagName("spawnpoint");
-		akt = aktList.item(0);	// csak 1db lehet
-		sp_id = Integer.parseInt(gyerekTagErtek("tileid", (Element)akt));
-		sp_loc.x = Integer.parseInt(gyerekTagErtek("x", (Element)akt));
-		sp_loc.y = Integer.parseInt(gyerekTagErtek("y", (Element)akt));
-		
+		if (aktList.getLength() != 0)
+		{
+			akt = aktList.item(0);	// csak 1db lehet
+			sp_id = Integer.parseInt(gyerekTagErtek("tileid", (Element)akt));
+			sp_loc.x = Integer.parseInt(gyerekTagErtek("x", (Element)akt));
+			sp_loc.y = Integer.parseInt(gyerekTagErtek("y", (Element)akt));
+		}
 		// Door feldolgozas
 		aktList = xml.getElementsByTagName("door");
-		akt = aktList.item(0);	// csak 1db lehet
-		dr_id = Integer.parseInt(gyerekTagErtek("tileid", (Element)akt));
-		dr_loc.x = Integer.parseInt(gyerekTagErtek("x", (Element)akt));
-		dr_loc.y = Integer.parseInt(gyerekTagErtek("y", (Element)akt));
-		
+		if (aktList.getLength() != 0)
+		{
+			akt = aktList.item(0);	// csak 1db lehet
+			dr_id = Integer.parseInt(gyerekTagErtek("tileid", (Element)akt));
+			dr_loc.x = Integer.parseInt(gyerekTagErtek("x", (Element)akt));
+			dr_loc.y = Integer.parseInt(gyerekTagErtek("y", (Element)akt));
+		}
 		// Tile feldolgozas
 		aktList = xml.getElementsByTagName("tile");
 		int k = 1; //akt. tile sora

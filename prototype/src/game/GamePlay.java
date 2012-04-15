@@ -168,7 +168,13 @@ public class GamePlay extends GameState
 	@Override
 	public void update()
 	{
-		;
+		// gravitáció
+		for (Player p : game.getPlayers())
+		{
+			p.applyForce(new Vector2d (0, 5));
+			game.stage.movePlayer(p);
+		}
+		
 	}
 
 	@Override

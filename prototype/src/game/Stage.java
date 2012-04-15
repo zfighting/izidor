@@ -3,6 +3,7 @@
  */
 package game;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 
@@ -31,6 +32,50 @@ public class Stage implements Renderable
 		tiles = t;
 		spawnPoint = sp;
 		door = dr;
+	}
+	
+	public String getKeyPosition()
+	{
+		String ret = new String();
+		for( int x = 0; x < tiles.length; x++ )
+		{
+			for( int y = 0; y < tiles[x].length; y++ )
+			{
+				if( tiles[x][y].containsKey() != 0 )   // itt javítottam, .equals() volt és nem működött, -1eket adott végig
+				{
+					for (int q = 0; q < tiles[x][y].getNumberOfKeys(); q++)
+					{
+						ret = ret + (tiles[x][y].keys.get(q).position.toString());
+						ret += "\t";
+					}
+				}
+			}
+		}
+		ret += "\n";
+		return ret;
+	}
+	
+	
+	public String getTileInfo()
+	{
+		String ret = new String();
+		int tn = 0;
+		for( int x = 0; x < tiles.length; x++ )
+		{
+			for( int y = 0; y < tiles[x].length; y++ )
+			{
+				tn++;
+			}
+		}
+		
+		for (int x = 0; x < tn; x++)
+		{
+			ret += "\ttileid_" + x + ": ";
+			ret += "locationindex = " + getTileIndex((byte) x).toString();
+			ret += "\n";
+		}
+		ret += "\n";
+		return ret;
 	}
 	
 	// a komplett pályát kirenderelő metódus
@@ -191,7 +236,7 @@ public class Stage implements Renderable
 			// ha lefelé akarja elhagyni, és nincs alatta semmi, meghal (respawnol)
 			//if( /* ... lefelé akar menni és nincs alatta semmi? ... */ false )
 			if(player.force.y > 0)
-			{
+			{				
 				//játékos el akarja hagyni a tilet lefele, ha az aktuális tile amin van, a legalsó a mátrixban akkor egyértelműen meghal
 				//ha nem a legalsó tileon van, akkor megnézzük, hogy az alatta lévő tile-ra átkerülhet-e, ha nem akkor is meghal
 				if(currenttile.y == ymax || !tiles[currenttile.x][currenttile.y].canLeave(Direction.DOWN, (tiles[currenttile.x][currenttile.y + 1]).getID()))
@@ -409,24 +454,34 @@ public class Stage implements Renderable
 		
 		//kulcsok száma
 		int keys=0;
-		for(int i=0;i <2; i++)
-			for(int j=0;j <2; j++)			
+		for(int i=0; i < tiles.length; i++)
+			for(int j=0; j < tiles[0].length ; j++)			
 				keys +=tiles[i][j].getNumberOfKeys();
-		
-		
-		
+	
 		
 		return	(
-				 "Spawnpoint			: " + spawnPoint.tileID +"  "+ spawnPoint.position.x +"  "+ spawnPoint.position.x +"  "+"\n" +
-				 "Door postion		: " + door.tileID +"  "+ door.position.x +"  "+ door.position.y +"\n" +
-				 "Key position      	: " + "ennek van értelme?\n" +
-				 "TileID_1 position 	: " + getTileIndex((byte) 0) + "\n"+
-				 "TileID_2 position 	: " + getTileIndex((byte) 1) + "\n"+
-				 "TileID_3 position 	: " + getTileIndex((byte) 2) + "\n"+
-				 "TileID_4 position 	: " + getTileIndex((byte) 3) + "\n"+
-				 "Remaining keys    	: " +  keys 	+"\n" +
-				 ""
+				 "Width \t\t: " + tiles.length + "\n" +
+				 "Height \t\t: " + tiles[0].length + "\n" +
+				 "Spawnpoint \t: tileid = " + spawnPoint.tileID +",  x = "+ spawnPoint.position.x +",  y = "+ spawnPoint.position.x +"  "+"\n" +
+				 "Door postion \t: tileid = " + door.tileID +",  x = "+ door.position.x +",  y = "+ door.position.y +"\n" +
+				 "Key position(s)\t: " + getKeyPosition() +
+				 "Tile information: \n" +
+				 
+				 getTileInfo() +
+				 
+				 "Remaining keys\t: " + keys + "\n"
 				 );
 		
+	}
+
+	public void addDoor(byte b, Vector2d position)
+	{
+		door = new Door(b, position, Color.BLACK, 20, 10);	
+	}
+	
+	public void addKey(byte b, Vector2d position)
+	{
+		Index temp = getTileIndex(b);
+		tiles[temp.x][temp.y].addKey(new Key(b, position, Color.RED, 20, 10));
 	}
 }

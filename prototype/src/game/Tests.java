@@ -21,21 +21,17 @@ import engine.Vector2d;
 public class Tests 
 {
 	
-	public void TestsRun(String[] args) throws ParserConfigurationException, SAXException, IOException, InvalidTileIDException
+	public void TestsRun(String[] args, Game game) throws ParserConfigurationException, SAXException, IOException, InvalidTileIDException
     { 
 		String command 		= null; 
 		BufferedReader br	= null;
-		Stage stage 		= null;
-		Player izidor 		= null;
-		Player mortimer		= null;
+		game.stage 		= null;
 		boolean vanIzidor	= false;
 		boolean vanMortimer	= false;
 		
-		
-		
 		try
 		{			
-			FileReader fr = new FileReader("res" + File.separator +args[0]); 
+			FileReader fr = new FileReader(System.getProperty("user.dir") + File.separatorChar + args[0]); 
 			br = new BufferedReader(fr); 
 			
 			while ((command = br.readLine())!= null) 
@@ -53,30 +49,31 @@ public class Tests
 				
 				//loadstage
 				if(tokens[0].matches("loadstage"))
-					stage = XMLReader.load("res\\" + tokens[1]);
+					game.stage = XMLReader.load(File.separatorChar + "levels"  + File.separatorChar + tokens[1]);
 				
 				//stageinfo
 				// Egyik fele a stage osztályon belül van megvalósítva, másik fele itt, itt hozunk létre playereket
 				if(tokens[0].matches("stageinfo"))
 				{
-					FileWriter fw= new FileWriter("res"+ File.separator + /*System.getProperty("user.dir") + tokens[0] */ "output.txt" ); 	//ebbe írunk, ideiglenesen
+					String ps = new String();
+					FileWriter fw = new FileWriter(System.getProperty("user.dir") + File.separatorChar + tokens[1]);
+					//FileWriter fw= new FileWriter("res"+ File.separator + /*System.getProperty("user.dir") + tokens[0] */ "output.txt" ); 	//ebbe írunk, ideiglenesen
 					//System.out.println("mentés"); //consolra írás					
 				
-					fw.write(stage.toString());		//stage-en belüli kírás
+					fw.write(game.stage.toString());		//stage-en belüli kírás
+					System.out.println(game.stage.toString());
 					
 					
-					//Playerek kiírása, ha csak 1 van akkor a másik nem fut.
-					//Ha második is jön akkor a második
-					
-					if(vanIzidor && !vanMortimer)
-						fw.write("Player1 position	: " + (int)(izidor.position.x)+"  "+ (int)(izidor.position.y)+"\n")  ;
-					else if(vanIzidor && vanMortimer)
+					ps += "Player position(s)\t: ";
+					for (Player p : game.getPlayers())
 					{
-						fw.write("Player1 position	: " + (int)(izidor.position.x)+"  "+  (int)(izidor.position.y)+"\n");
-						fw.write("Player2 position	: " + (int)(mortimer.position.x)+"  "+ (int)(mortimer.position.y)+"\n");
-						
+						ps += p.toString();
+						ps += "\t";
 					}
-						
+					
+					fw.write(ps);
+					System.out.println(ps);
+					
 					fw.close();					
 				}
 				
@@ -84,50 +81,53 @@ public class Tests
 				//swap
 				if(tokens[0].matches("swap"))
 				{
-					stage.swap(Direction.valueOf(tokens[1]));					
+					game.stage.swap(Direction.valueOf(tokens[1]));					
+				}
+		
+				//TODO
+			
+				if(tokens[0].matches("setforce"))
+				{
+					game.getPlayers().get(Integer.parseInt(tokens[1])).setForce(new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
+					game.stage.movePlayer(game.getPlayers().get(Integer.parseInt(tokens[1])));
 				}
 				
 				
-				//TODO
+				if(tokens[0].matches("kill"))
+				{
+					
+				}
 				
-				
-				
-				
-				
-				if(tokens[0].matches("setforce")){}
-				
-				if(tokens[0].matches("kill")){}
-				
+				if(tokens[0].matches("tick"))
+				{
+					for (int x = 0; x < 200; x++)
+						game.globalUpdate();
+				}
 				
 				if(tokens[0].matches("addplayer") ) 
 				{
-					if(!vanIzidor)
-					{
 						SpawnPoint sp = new SpawnPoint((byte) (Integer.parseInt(tokens[1])), new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
-						izidor = new Player((byte) (Integer.parseInt(tokens[1])), sp.position, Color.BLACK, 10, 10);
-						
-					}
-					if(vanIzidor)
-					{
-						SpawnPoint sp =new SpawnPoint((byte) (Integer.parseInt(tokens[1])), new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
-						mortimer = new Player((byte) (Integer.parseInt(tokens[1])), sp.position, Color.BLACK, 10, 10);
-						vanMortimer= true;
-					}
-					vanIzidor=true;
+						game.addPlayer((byte) (Integer.parseInt(tokens[1])), sp.position);
+				}
+				
+				if(tokens[0].matches("adddoor") ) 
+				{
+						SpawnPoint sp = new SpawnPoint((byte) (Integer.parseInt(tokens[1])), new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
+						game.stage.addDoor((byte) (Integer.parseInt(tokens[1])), sp.position);
 				}
 
+				if(tokens[0].matches("addkey") ) 
+				{
+						SpawnPoint sp = new SpawnPoint((byte) (Integer.parseInt(tokens[1])), new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
+						game.stage.addKey((byte) (Integer.parseInt(tokens[1])), sp.position);
+				}
 				
 				//int j=0;
 				//while(tokens[j]!=null)
 				//{
 				//	System.out.println(tokens[j]); 		//debug consolra
 				//	j++;
-				//}
-					
-				
-
-				
-				
+				//}			
 				
 			}                  
             

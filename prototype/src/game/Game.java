@@ -5,8 +5,12 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import engine.Vector2d;
 
+
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Paint;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.io.IOException;
@@ -18,8 +22,8 @@ import java.util.TimerTask;
 public class Game extends JFrame implements KeyListener
 {
 	// játékra vonatkozó konstansok
-	private final int windowWidth  = 800;
-	private final int windowHeight = 600;
+	//private final int windowWidth  = 800;
+	//private final int windowHeight = 600;
 	
 	// a játék aktuális állapota
 	GameStates currentState = GameStates.MAINMENU;
@@ -29,7 +33,7 @@ public class Game extends JFrame implements KeyListener
 	private final GamePlay gamePlay = new GamePlay(this);
 	
 	// a pálya, amin játszunk
-	private Stage stage;
+	public Stage stage = new Stage();
 	
 	// a felület, amelyre renderelünk
 	private RenderSurface renderSurface;
@@ -51,7 +55,7 @@ public class Game extends JFrame implements KeyListener
 		this.addKeyListener(this); 
 		
 		// ablakot nyitunk
-		initUI("Izidor kalandjai", windowWidth, windowHeight);
+		//initUI("Izidor kalandjai", windowWidth, windowHeight);
 		
 		// a játék a főmenü játékállapotból indul
 		currentState = GameStates.MAINMENU;
@@ -60,29 +64,34 @@ public class Game extends JFrame implements KeyListener
 		players = new ArrayList<Player>();
 		
 		// időzítő létrehozása és elindítása
-		timer = new Timer();
-		timer.scheduleAtFixedRate(new MainLoop(), 20, 20);
+		//timer = new Timer();
+		//timer.scheduleAtFixedRate(new MainLoop(), 20, 20);
+	}
+	
+	public void addPlayer(byte tid, Vector2d p)
+	{
+		players.add(new Player(tid, p, Color.BLACK, 20, 10));
 	}
 	
 	// ablak létrehozása
-	private void initUI(String title, int width, int height)
-	{
-		// render surface létrehozása és hozzáadása az ablakhoz
-		renderSurface = new RenderSurface(this, width, height);
-		getContentPane().add(renderSurface);
-
-		// címsor beállítása
-		setTitle(title);
-		// az ablakot ne lehessen átméretezni
-		setResizable(false);
-		// ablak képernyő közepére igazítása
-		pack();
-		setLocationRelativeTo(null);
-		// X-re záruljon be...
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		// láss csodát! a technika diadala
-		setVisible(true);
-	}
+//	private void initUI(String title, int width, int height)
+//	{
+//		// render surface létrehozása és hozzáadása az ablakhoz
+//		renderSurface = new RenderSurface(this, width, height);
+//		getContentPane().add(renderSurface);
+//
+//		// címsor beállítása
+//		setTitle(title);
+//		// az ablakot ne lehessen átméretezni
+//		setResizable(false);
+//		// ablak képernyő közepére igazítása
+//		pack();
+//		setLocationRelativeTo(null);
+//		// X-re záruljon be...
+//		setDefaultCloseOperation(EXIT_ON_CLOSE);
+//		// láss csodát! a technika diadala
+//		setVisible(true);
+//	}
 	
 	// játék indítása a paraméterül kapott pályán
 	public void startGame(String stagePath)
@@ -127,8 +136,6 @@ public class Game extends JFrame implements KeyListener
 				}
 			}
 			
-			// renderelni mindenképp kell
-			renderSurface.repaint();
 		}
 	}
 	
@@ -174,18 +181,16 @@ public class Game extends JFrame implements KeyListener
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, InvalidTileIDException
     {		
 		// játék példányosítása és futtatása
-		new Game();
+		Game proto = new Game();
 		
-		new Tests().TestsRun(args);
+		new Tests().TestsRun(args, proto);
 		
 		// ne töröld ki, thx
 		// most még itt meg van hívva magában, de élesben a menülogika/endstage logika 
 		// fog új stage-et létrehozni, ott majd "currentStage = XMLReader.load("stage3.xml");"
 		// lesz vagy vmi ilyesmi, értelemszerűen. egy komplett felépített stage-el tér vissza.
 		
-		
-		
-		//kitöröltem, mert a tesztekben töltjük be.
+
 		
 		//XMLReader.load("res\\teststage.xml");
     }
@@ -213,5 +218,10 @@ public class Game extends JFrame implements KeyListener
 	public boolean[] getKeys()
 	{
 		return keys;
+	}
+	
+	public void globalUpdate()
+	{
+		this.gamePlay.update();
 	}
 }

@@ -8,7 +8,7 @@ import engine.Vector2d;
 public class Player extends RectangularRenderableGameObject
 {
 	// a játékosra ható erők eredője
-	protected Vector2d force;
+	protected Vector2d force = new Vector2d();
 	
 	
 	// konstruktor
@@ -46,4 +46,10 @@ public class Player extends RectangularRenderableGameObject
 	{
 		this.force = Vector2d.add(this.force, force);
 	}
+	
+	public String toString()
+	{
+		return "tileid: " + this.tileID + "\tx = " + position.x + "\ty = " + position.y;	
+	}
+	
 }

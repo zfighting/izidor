@@ -1,0 +1,4 @@
+loadstage test2.xml 
+adddoor 1 30 50
+tick
+stageinfo testresults.txt
