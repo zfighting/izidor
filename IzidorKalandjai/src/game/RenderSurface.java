@@ -39,6 +39,7 @@ public class RenderSurface extends JPanel
 		
 		// Graphics2D objektum létrehozása
 		Graphics2D g2d = (Graphics2D) g;
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		
 		// visszaadja a Game osztálynak, hpgy az adja tovább az aktuális játékállapotnak
 		game.render(g2d);

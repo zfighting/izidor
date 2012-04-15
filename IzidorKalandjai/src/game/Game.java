@@ -35,7 +35,7 @@ public class Game extends JFrame implements KeyListener
 	private RenderSurface renderSurface;
 	
 	// a billentyűk állapotát tároló vektor
-	boolean[] keys = new boolean[525]; 
+	private boolean[] keys = new boolean[525]; 
 	
 	// a mainloop folyamatos, fix időközönként való futtatásához felhasznált időzítő
 	private Timer timer;
@@ -84,6 +84,23 @@ public class Game extends JFrame implements KeyListener
 		setVisible(true);
 	}
 	
+	// játék indítása a paraméterül kapott pályán
+	public void startGame(String stagePath)
+	{
+		try
+		{
+			// pálya-fájl betöltése
+			stage = XMLReader.load(stagePath);
+			
+			// váltás játék módba
+			currentState = GameStates.GAMEPLAY;
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
 	// beágyazott osztály a mainloop futtatásához
 	class MainLoop extends TimerTask
 	{
@@ -104,7 +121,8 @@ public class Game extends JFrame implements KeyListener
 				
 				case GAMEPLAY :
 				{
-					;
+					gamePlay.handleInput();
+					gamePlay.update();
 					break;
 				}
 			}
@@ -123,8 +141,8 @@ public class Game extends JFrame implements KeyListener
 		{
 			// főmenüben vagyunk
 			case MAINMENU :	mainMenu.render(g); break;
-			
-			case GAMEPLAY : ; break;
+			// játék módban vagyunk
+			case GAMEPLAY : gamePlay.render(g); break;
 		}
 	}
 	
@@ -190,7 +208,6 @@ public class Game extends JFrame implements KeyListener
 	@Override
 	public void keyTyped(KeyEvent e)
 	{
-		;
 	}
 	
 	public boolean[] getKeys()

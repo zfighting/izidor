@@ -5,7 +5,7 @@ import java.awt.TexturePaint;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.awt.event.KeyEvent; 
+import java.awt.event.KeyEvent;
 
 import javax.imageio.ImageIO;
 
@@ -17,6 +17,7 @@ public class MainMenu extends GameState
 {
 	// játék címe
 	private RectangularRenderableGameObject titleSprite;
+	
 	
 	// konstruktor
 	MainMenu(Game game)
@@ -41,9 +42,15 @@ public class MainMenu extends GameState
 	@Override
 	public void handleInput()
 	{
-		if( game.getKeys()[java.awt.event.KeyEvent.VK_DOWN] == true )
+		if( game.getKeys()[KeyEvent.VK_DOWN] == true )
 		{
 			titleSprite.position.y += 0.5f;
+		}
+		
+		// enterre lépjünk át gameplay módba
+		if( game.getKeys()[KeyEvent.VK_ENTER] )
+		{
+			game.startGame("res" + File.separatorChar + "teststage2.xml");
 		}
 	}
 

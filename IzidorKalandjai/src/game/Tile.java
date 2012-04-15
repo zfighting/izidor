@@ -1,6 +1,8 @@
 package game;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Polygon;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -38,11 +40,13 @@ public class Tile implements Renderable
 		reachableTiles = (ArrayList<Byte>[]) new ArrayList[4];
 	}
 	
-	public void addRGO(RenderableGameObject o)
+	// renderelhető objektumok (a tile-t felépítő elemek) hozzáadása
+	public void addRenderableGameObject(RenderableGameObject object)
 	{
-		objects.add(o);
+		objects.add(object);
 	}
 	
+	// kulcs hozzáadása a tile-hoz
 	public void addKey(Key k)
 	{
 		keys.add(k);
@@ -52,7 +56,27 @@ public class Tile implements Renderable
 	@Override
 	public void render(Graphics2D surface)
 	{
-		// TODO Auto-generated method stub
+		// az üres tile-t nem rajzoljuk ki
+		if( tileID == 0 )
+		{
+			return;
+		}
+		
+		// keret kirajzolása
+		surface.setPaint(Color.black);
+		surface.drawRect(0, 0, 250, 170);
+		
+		// objektumok kirajzolása
+		for( RenderableGameObject object : objects )
+		{
+			object.render(surface);
+		}
+		
+		// kulcsok kirajzolása
+		for( Key k : keys )
+		{
+			k.render(surface);
+		}
 	}
 
 	// kulcsok számának lekérdezése

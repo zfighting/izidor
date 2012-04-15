@@ -4,6 +4,7 @@
 package game;
 
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 
 import engine.Vector2d;
 
@@ -21,7 +22,7 @@ public class Stage implements Renderable
 
 	// konstruktor
 	public Stage()
-	{		
+	{
 	}
 	
 	// XMLReader segédosztály, tagváltozókhoz hozzáférést biztosít
@@ -36,7 +37,37 @@ public class Stage implements Renderable
 	@Override
 	public void render(Graphics2D surface)
 	{
-		// ...
+		// középre kell igazítani a tile-ok mátrixát - itt lesz a bal felső elem
+		float margin_x = 400 - (tiles.length * 250 + (tiles.length - 1) * 10) / 2.f;
+		float margin_y = 275 - (tiles[0].length * 170 + (tiles[0].length - 1) * 10) / 2.f;
+		
+		// összes tile kirajzolása 
+		for( int x = 0; x < tiles.length; x++ )
+		{
+			for( int y = 0; y < tiles[0].length; y++ )
+			{
+				// transzformációs mátrix elmentése
+				AffineTransform af = surface.getTransform();
+				// koordinátarendszer eltolása - a tile bal felső sarkának elhelyezése a képernyőn
+				surface.translate(margin_x + x * 260, margin_y + y * 180);
+				// az adott tile kirenderelése
+				tiles[x][y].render(surface);
+				// elmentett transzformációs mátrix visszaállítása
+				surface.setTransform(af);
+			}
+		}
+		
+		// ajtó kirajzolása
+		// meg kell határozni, hogy hol van az ajtót tartalmazó tile a mátrixunkban
+		Index door_tile_index = getTileIndex(door.getTileID());
+		// transzformációs mátrix elmentése
+		AffineTransform af = surface.getTransform();
+		// koordinátarendszer eltolása - a tile bal felső sarkának elhelyezése a képernyőn
+		surface.translate(margin_x + door_tile_index.x * 260, margin_y + door_tile_index.y * 180);
+		// ajtó kirajzolása
+		door.render(surface);
+		// elmentett transzformációs mátrix visszaállítása
+		surface.setTransform(af);
 	}
 	
 	// segédfüggvény, amely megadja a paraméterül kapott tileID mátrixbeli koordinátáit
