@@ -64,15 +64,9 @@ public class Stage implements Renderable
 		{
 			for( int y = 0; y < tiles[x].length; y++ )
 			{
-				tn++;
+				ret += "\ttilelocation = " + x + "," + y + "\t tileID = " + tiles[x][y].getID();
+				ret += "\n";
 			}
-		}
-		
-		for (int x = 0; x < tn; x++)
-		{
-			ret += "\ttileid_" + x + ": ";
-			ret += "locationindex = " + getTileIndex((byte) x).toString();
-			ret += "\n";
 		}
 		ret += "\n";
 		return ret;
