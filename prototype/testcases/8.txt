@@ -1,0 +1,5 @@
+loadstage test7.xml 
+addplayer 1 40 90
+setforce 0 250 0
+tick
+stageinfo testresults.txt

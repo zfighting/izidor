@@ -20,7 +20,8 @@ public class Stage implements Renderable
 	// a pálya elhagyásának helyszíne
 	private Door door;
 
-
+	private boolean endflag = false;
+	
 	// konstruktor
 	public Stage()
 	{
@@ -54,7 +55,6 @@ public class Stage implements Renderable
 		ret += "\n";
 		return ret;
 	}
-	
 	
 	public String getTileInfo()
 	{
@@ -436,8 +436,12 @@ public class Stage implements Renderable
 			{
 				double distance = Vector2d.subtract(player.position, door.position).getLength();
 				if(distance <= tiles[currenttile.x][currenttile.y].keyPickUpRadius)
-				{
-					//ha ajtón vagyunk...
+				{	
+					if (endflag == false)
+					{
+						System.out.println("Player has finished the stage.");	
+					}
+					endflag = true;
 				}
 			}
 		}
