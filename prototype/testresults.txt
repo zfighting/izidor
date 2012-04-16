@@ -4,8 +4,8 @@ Spawnpoint 	: tileid = -1,  x = -1.0,  y = -1.0
 Door postion 	: tileid = -1,  x = -1.0,  y = -1.0
 Key position(s)	: 
 Tile information: 
-	tilelocation = 0,0	 tileID = 1
-	tilelocation = 0,1	 tileID = 0
+	tilelocation = 0,0	 tileID = 0
+	tilelocation = 0,1	 tileID = 1
 	tilelocation = 1,0	 tileID = 2
 	tilelocation = 1,1	 tileID = 3
 
