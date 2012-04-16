@@ -112,12 +112,14 @@ public class Tests
 				
 				if(tokens[0].matches("adddoor") ) 
 				{
+						// igaziból maradhat ittis spawnpoint, csak a helyét használjuk...
 						SpawnPoint sp = new SpawnPoint((byte) (Integer.parseInt(tokens[1])), new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
 						game.stage.addDoor((byte) (Integer.parseInt(tokens[1])), sp.position);
 				}
 
 				if(tokens[0].matches("addkey") ) 
 				{
+					// igaziból maradhat ittis spawnpoint, csak a helyét használjuk...
 						SpawnPoint sp = new SpawnPoint((byte) (Integer.parseInt(tokens[1])), new Vector2d(Integer.parseInt(tokens[2]), Integer.parseInt(tokens[3])));
 						game.stage.addKey((byte) (Integer.parseInt(tokens[1])), sp.position);
 				}

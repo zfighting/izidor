@@ -8,7 +8,7 @@ import engine.Vector2d;
 public class Player extends RectangularRenderableGameObject
 {
 	// a játékosra ható erők eredője
-	protected Vector2d force = new Vector2d();
+	protected Vector2d force = new Vector2d(0, 0);
 	
 	
 	// konstruktor

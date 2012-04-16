@@ -171,7 +171,7 @@ public class GamePlay extends GameState
 		// gravitáció
 		for (Player p : game.getPlayers())
 		{
-			p.applyForce(new Vector2d (0, 5));
+			p.applyForce(new Vector2d (0.0f, 5));
 			game.stage.movePlayer(p);
 		}
 		

@@ -174,7 +174,7 @@ public class Tile implements Renderable
 	{
 		//ütközés nélkül ide kerülne a rá ható erő hatására
 		Vector2d newposition = Vector2d.add(object.position, force);
-		force.x = 0;
+		
 		// ez lesz a mozgatás eredménye (az objektum új helye)
 		CollisionDetectionResult result = new CollisionDetectionResult(newposition, false, false);
 		//ekkora egységenként mozgatjuk a téglalapot(rect-et)
@@ -195,6 +195,7 @@ public class Tile implements Renderable
 			//ütközés lefelé
 			if(force.y > 0)
 			{
+				force.x = 0;
 				Iterator<RenderableGameObject> itr = objects.iterator();
 			    while (itr.hasNext())
 			    {
@@ -223,6 +224,7 @@ public class Tile implements Renderable
 			//ötközés felfelé
 			if(force.y < 0)
 			{
+				force.x = 0;
 				Iterator<RenderableGameObject> itr = objects.iterator();
 			    while (itr.hasNext())
 			    {
@@ -251,6 +253,7 @@ public class Tile implements Renderable
 			//ütközés jobbra
 			if(force.x > 0)
 			{
+				
 				Iterator<RenderableGameObject> itr = objects.iterator();
 			    while (itr.hasNext())
 			    {
@@ -261,7 +264,7 @@ public class Tile implements Renderable
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
 			    		{
-			    			result.newPosition.x = (float) (((Rectangle)o).polygon.getBounds2D().getWidth() + o.position.x - rect.getWidth()) - 0.01f;
+			    			result.newPosition.x = (float) (o.position.x - rect.getWidth()) - 0.01f;
 			    			result.collisionX = true;
 			    			break;
 			    		

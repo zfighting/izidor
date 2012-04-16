@@ -456,7 +456,7 @@ public class Stage implements Renderable
 		return	(
 				 "Width \t\t: " + tiles.length + "\n" +
 				 "Height \t\t: " + tiles[0].length + "\n" +
-				 "Spawnpoint \t: tileid = " + spawnPoint.tileID +",  x = "+ spawnPoint.position.x +",  y = "+ spawnPoint.position.x +"  "+"\n" +
+				 "Spawnpoint \t: tileid = " + spawnPoint.tileID +",  x = "+ spawnPoint.position.x +",  y = "+ spawnPoint.position.y +"  "+"\n" +
 				 "Door postion \t: tileid = " + door.tileID +",  x = "+ door.position.x +",  y = "+ door.position.y +"\n" +
 				 "Key position(s)\t: " + getKeyPosition() +
 				 "Tile information: \n" +
