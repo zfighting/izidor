@@ -57,13 +57,13 @@ public class GamePlay extends GameState
 		canSwapTiles = true;
 		
 		// betütípus létrehozása
-		statusFont = new Font("Calibri", Font.BOLD, 24);
+		//statusFont = new Font("Calibri", Font.BOLD, 24);
 		
 		// képek létrehozása, betöltése
 		try
 		{
 			// háttér létrehozása
-			File f = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "backgroundSprite.png");
+			/*File f = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "backgroundSprite.png");
 			BufferedImage bi;
 			bi = ImageIO.read(f);
 			TexturePaint background_paint = new TexturePaint(bi, new Rectangle2D.Float(0, 0, bi.getWidth(), bi.getHeight()));
@@ -71,7 +71,7 @@ public class GamePlay extends GameState
 			
 			// statusbar képének létrehozása
 			GradientPaint statusbar_paint = new GradientPaint(0, 0, new Color(0, 0, 0, 0), 0, 50, new Color(70, 70, 70), false);
-			statusBarSprite = new RectangularRenderableGameObject((byte)1, new Vector2d(0, 550), statusbar_paint, 800, 50);
+			statusBarSprite = new RectangularRenderableGameObject((byte)1, new Vector2d(0, 550), statusbar_paint, 800, 50);*/
 		}
 		catch( Exception e )
 		{
@@ -83,7 +83,7 @@ public class GamePlay extends GameState
 	@Override
 	public void handleInput()
 	{
-		boolean[] keys = game.getKeys();
+	/*	//boolean[] keys = game.getKeys();
 		
 		// --- játékmódváltások kezelése ---
 		
@@ -162,7 +162,7 @@ public class GamePlay extends GameState
 		else
 		{
 			;
-		}
+		}*/
 	}
 
 	@Override
@@ -177,7 +177,7 @@ public class GamePlay extends GameState
 		
 	}
 
-	@Override
+	/*@Override
 	public void render(Graphics2D g)
 	{
 		// háttér kirajzolása
@@ -194,5 +194,5 @@ public class GamePlay extends GameState
 		g.setFont(statusFont);
 		g.drawString(currentMode == GameMode.SLIDING_PUZZLE ? "Tilitoli játékmód" : "Ugrabugrálás játékmód", 10, 585);
 	}
-
+*/
 }

@@ -1,9 +1,11 @@
 loadstage test9.xml 
 addplayer 1 40 90
-addkey 1 60 90
-adddoor 1 90 90
-setforce 0 20 0
+addkey 1 70 90
+adddoor 1 100 90
+stageinfo
+setforce 0 30 0
 tick
+stageinfo
 setforce 0 30 0
 tick
 stageinfo testresults.txt

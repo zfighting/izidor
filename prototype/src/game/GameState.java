@@ -1,6 +1,6 @@
 package game;
 
-import java.awt.Graphics2D;
+//import java.awt.Graphics2D;
 
 // az egyes játékállapotokat megvalósító osztályok absztrakt ősosztálya
 // minden játékállapotban szükséges függvényeket deklarálja
@@ -22,5 +22,5 @@ public abstract class GameState
 	public abstract void update();
 	
 	// rajzolás
-	public abstract void render(Graphics2D g);
+	//public abstract void render(Graphics2D g);
 }

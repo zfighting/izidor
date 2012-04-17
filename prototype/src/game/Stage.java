@@ -273,7 +273,7 @@ public class Stage implements Renderable
 							{
 								if (endflag == false)
 								{
-									System.out.println("Player has finished the stage.");	
+									//System.out.println("Player has finished the stage.");	
 								}
 								endflag = true;
 							}
@@ -296,6 +296,7 @@ public class Stage implements Renderable
 				Direction direction  /* ... meghatározni a force alapján ... */ ;
 				byte destinationTileID  /* ... meghatározni az aktuális tile indexei és a direction alapján ... */ = player.tileID ;
 	
+				// felfelé hagyja el a tile-t
 				if(player.force.y < 0)
 				{
 					direction = Direction.UP;
@@ -318,7 +319,7 @@ public class Stage implements Renderable
 								{
 									if (endflag == false)
 									{
-										System.out.println("Player has finished the stage.");	
+										//System.out.println("Player has finished the stage.");	
 									}
 									endflag = true;
 								}
@@ -369,7 +370,7 @@ public class Stage implements Renderable
 								{
 									if (endflag == false)
 									{
-										System.out.println("Player has finished the stage.");	
+										//System.out.println("Player has finished the stage.");	
 									}
 									endflag = true;
 								}
@@ -417,7 +418,7 @@ public class Stage implements Renderable
 								{
 									if (endflag == false)
 									{
-										System.out.println("Player has finished the stage.");	
+										//System.out.println("Player has finished the stage.");	
 									}
 									endflag = true;
 								}
@@ -469,7 +470,9 @@ public class Stage implements Renderable
 				{	
 					if (endflag == false)
 					{
-						System.out.println("Player has finished the stage.");	
+						// menü kezeli a betöltést, az pedig grafikus, így a prototípusban csak az event triggerelése van benne.
+						System.out.println("Player has finished the stage.");
+						//player.force.x = player.force.y = 0;
 					}
 					endflag = true;
 				}

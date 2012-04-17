@@ -19,7 +19,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 // legfőbb osztály...
-public class Game extends JFrame implements KeyListener
+public class Game 
 {
 	// játékra vonatkozó konstansok
 	//private final int windowWidth  = 800;
@@ -29,14 +29,10 @@ public class Game extends JFrame implements KeyListener
 	GameStates currentState = GameStates.MAINMENU;
 	
 	// az egyes játékállapotokhoz tartozó objektumok
-	private final MainMenu mainMenu = new MainMenu(this);
 	private final GamePlay gamePlay = new GamePlay(this);
 	
 	// a pálya, amin játszunk
 	public Stage stage = new Stage();
-	
-	// a felület, amelyre renderelünk
-	private RenderSurface renderSurface;
 	
 	// a billentyűk állapotát tároló vektor
 	private boolean[] keys = new boolean[525]; 
@@ -52,7 +48,7 @@ public class Game extends JFrame implements KeyListener
 	public Game()
 	{
 		// keylistener létrehozása a billentyűzetkezeléshez
-		this.addKeyListener(this); 
+		//this.addKeyListener(this); 
 		
 		// ablakot nyitunk
 		//initUI("Izidor kalandjai", windowWidth, windowHeight);
@@ -123,15 +119,15 @@ public class Game extends JFrame implements KeyListener
 				// főmenüben vagyunk
 				case MAINMENU :
 				{
-					mainMenu.handleInput();
-					mainMenu.update();
+					//mainMenu.handleInput();
+					//mainMenu.update();
 					break;
 				}
 				
 				case GAMEPLAY :
 				{
-					gamePlay.handleInput();
-					gamePlay.update();
+					//gamePlay.handleInput();
+					//gamePlay.update();
 					break;
 				}
 			}
@@ -141,7 +137,7 @@ public class Game extends JFrame implements KeyListener
 	
 	// a játék kirajzolása az aktuális játékállapotnak megfelelően
 	// ezt a függvényt a renderSurface rajzoló metódusa hívja meg
-	public void render(Graphics2D g)
+/*	public void render(Graphics2D g)
 	{
 		// a kapott Graphics2D objektum továbbadása az aktuális játékállapot rajzoló függvényének
 		switch( currentState )
@@ -151,7 +147,7 @@ public class Game extends JFrame implements KeyListener
 			// játék módban vagyunk
 			case GAMEPLAY : gamePlay.render(g); break;
 		}
-	}
+	}*/
 	
 	// stage lekérdezése - a gamestate-eknek kell
 	public Stage getStage()
@@ -166,10 +162,6 @@ public class Game extends JFrame implements KeyListener
 	}
 	
 	// a rendereléshez használt felület lekérdezése
-	public RenderSurface getRenderSurface()
-	{
-		return renderSurface;
-	}
 	
 	// aktuális játékállapot lekérdezése
 	public GameStates getCurrentState()
@@ -196,7 +188,7 @@ public class Game extends JFrame implements KeyListener
     }
 
 	// billentyűleütés esemény lekezelése
-	@Override
+	/*	@Override
 	public void keyPressed(KeyEvent e)
 	{
 		keys[e.getKeyCode()] = true;
@@ -218,7 +210,7 @@ public class Game extends JFrame implements KeyListener
 	public boolean[] getKeys()
 	{
 		return keys;
-	}
+	}*/
 	
 	public void globalUpdate()
 	{
