@@ -134,7 +134,7 @@ public class Tile implements Renderable
 		//az object a rá ható force általi új poziciója
 		Vector2d newposition = Vector2d.add(object.position, force);
 		//ha ez az új pozició nincs benne a tile-ban, akkor elhagyná a tile-t
-		if(newposition.x>width || newposition.x < 0 || newposition.y < 0 || newposition.y > height)
+		if(newposition.x>getWidth() || newposition.x < 0 || newposition.y < 0 || newposition.y > height)
 			return true;
 		
 
@@ -320,5 +320,10 @@ public class Tile implements Renderable
 	public byte getID()
 	{
 		return tileID;
+	}
+
+	public static int getWidth()
+	{
+		return width;
 	}
 }

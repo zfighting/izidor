@@ -229,7 +229,7 @@ public class Stage implements Renderable
 			
 			// ha lefelé akarja elhagyni, és nincs alatta semmi, meghal (respawnol)
 			//if( /* ... lefelé akar menni és nincs alatta semmi? ... */ false )
-			if(player.force.y > 0)
+			if(player.force.y > 0 && player.force.x == 0)
 			{				
 				//játékos el akarja hagyni a tilet lefele, ha az aktuális tile amin van, a legalsó a mátrixban akkor egyértelműen meghal
 				//ha nem a legalsó tileon van, akkor megnézzük, hogy az alatta lévő tile-ra átkerülhet-e, ha nem akkor is meghal
@@ -287,7 +287,7 @@ public class Stage implements Renderable
 				// ehhez először meg kell határozni hogy melyik irányba menne, melyik tile van ott, majd meghívni
 				// az aktuális tile canLeave metódusát ezekkel a paraméterekkel...
 				Direction direction  /* ... meghatározni a force alapján ... */ ;
-				byte destinationTileID  /* ... meghatározni az aktuális tile indexei és a direction alapján ... */ ;
+				byte destinationTileID  /* ... meghatározni az aktuális tile indexei és a direction alapján ... */ = player.tileID ;
 				
 				if(player.force.y < 0)
 				{
@@ -333,7 +333,9 @@ public class Stage implements Renderable
 				if(player.force.x > 0)
 				{
 					direction = Direction.RIGHT;
-					destinationTileID = tiles[currenttile.x + 1][currenttile.y].getID();
+					//
+					if(currenttile.x < xmax)
+						destinationTileID = tiles[currenttile.x + 1][currenttile.y].getID();
 					if(tiles[currenttile.x][currenttile.y].canLeave(Direction.RIGHT, destinationTileID))
 					{
 						try
@@ -365,6 +367,7 @@ public class Stage implements Renderable
 					{
 					//erő nullázása
 					player.force.x = player.force.y = 0;
+					player.position.x = Tile.getWidth() - player.width - 0.01f;
 					}
 				}
 				
