@@ -264,16 +264,19 @@ public class Stage implements Renderable
 						
 						//kulcsot fel tudunk-e venni
 						tiles[currenttile.x][currenttile.y + 1].pickKey(new Vector2d(player.position.x , 0));
-						
+						int keys=0;
+						for(int i=0; i < tiles.length; i++)
+							for(int j=0; j < tiles[0].length ; j++)			
+								keys +=tiles[i][j].getNumberOfKeys();
 						//ajtón állunk-e
-						if(player.tileID == door.tileID)
+						if(player.tileID == door.tileID && keys == 0)
 						{
 							double distance = Vector2d.subtract(player.position, door.position).getLength();
 							if(distance <= tiles[currenttile.x][currenttile.y + 1].keyPickUpRadius)
 							{
 								if (endflag == false)
 								{
-									//System.out.println("Player has finished the stage.");	
+									System.out.println("\n\n ### Player has finished the stage. ###");
 								}
 								endflag = true;
 							}
@@ -310,16 +313,19 @@ public class Stage implements Renderable
 							
 							//kulcsot fel tudunk-e venni
 							tiles[currenttile.x][currenttile.y - 1].pickKey(new Vector2d(player.position.x , 170-player.height));
-							
+							int keys=0;
+							for(int i=0; i < tiles.length; i++)
+								for(int j=0; j < tiles[0].length ; j++)			
+									keys +=tiles[i][j].getNumberOfKeys();
 							//ajtón állunk-e
-							if(player.tileID == door.tileID)
+							if(player.tileID == door.tileID && keys == 0)
 							{
 								double distance = Vector2d.subtract(player.position, door.position).getLength();
 								if(distance <= tiles[currenttile.x][currenttile.y - 1].keyPickUpRadius)
 								{
 									if (endflag == false)
 									{
-										//System.out.println("Player has finished the stage.");	
+										System.out.println("\n\n ### Player has finished the stage. ###");
 									}
 									endflag = true;
 								}
@@ -361,16 +367,19 @@ public class Stage implements Renderable
 							
 							//kulcsot fel tudunk-e venni
 							tiles[currenttile.x][currenttile.y + 1].pickKey(new Vector2d(0, player.position.y));
-							
+							int keys=0;
+							for(int i=0; i < tiles.length; i++)
+								for(int j=0; j < tiles[0].length ; j++)			
+									keys +=tiles[i][j].getNumberOfKeys();
 							//ajtón állunk-e
-							if(player.tileID == door.tileID)
+							if(player.tileID == door.tileID && keys == 0)
 							{
 								double distance = Vector2d.subtract(player.position, door.position).getLength();
 								if(distance <= tiles[currenttile.x][currenttile.y + 1].keyPickUpRadius)
 								{
 									if (endflag == false)
 									{
-										//System.out.println("Player has finished the stage.");	
+										System.out.println("\n\n ### Player has finished the stage. ###");
 									}
 									endflag = true;
 								}
@@ -409,16 +418,19 @@ public class Stage implements Renderable
 
 							//kulcsot fel tudunk-e venni
 							tiles[currenttile.x][currenttile.y - 1].pickKey(new Vector2d(250-player.width , player.position.y));
-							
+							int keys=0;
+							for(int i=0; i < tiles.length; i++)
+								for(int j=0; j < tiles[0].length ; j++)			
+									keys +=tiles[i][j].getNumberOfKeys();
 							//ajtón állunk-e
-							if(player.tileID == door.tileID)
+							if(player.tileID == door.tileID && keys == 0)
 							{
 								double distance = Vector2d.subtract(player.position, door.position).getLength();
 								if(distance <= tiles[currenttile.x][currenttile.y - 1].keyPickUpRadius)
 								{
 									if (endflag == false)
 									{
-										//System.out.println("Player has finished the stage.");	
+										System.out.println("\n\n ### Player has finished the stage. ###");
 									}
 									endflag = true;
 								}
@@ -458,6 +470,7 @@ public class Stage implements Renderable
 			}
 			// játékos elhelyezése az új helyére
 			player.moveTo(collresult.newPosition);
+			player.force.x = 0;
 			
 			//kulcsot fel tudunk-e venni
 			tiles[currenttile.x][currenttile.y].pickKey(collresult.newPosition);
@@ -466,12 +479,16 @@ public class Stage implements Renderable
 			if(player.tileID == door.tileID)
 			{
 				double distance = Vector2d.subtract(player.position, door.position).getLength();
-				if(distance <= tiles[currenttile.x][currenttile.y].keyPickUpRadius)
+				int keys=0;
+				for(int i=0; i < tiles.length; i++)
+					for(int j=0; j < tiles[0].length ; j++)			
+						keys +=tiles[i][j].getNumberOfKeys();
+				if(distance <= tiles[currenttile.x][currenttile.y].keyPickUpRadius && keys == 0)
 				{	
 					if (endflag == false)
 					{
 						// menü kezeli a betöltést, az pedig grafikus, így a prototípusban csak az event triggerelése van benne.
-						System.out.println("Player has finished the stage.");
+						System.out.println("\n\n ### Player has finished the stage. ###");
 						//player.force.x = player.force.y = 0;
 					}
 					endflag = true;

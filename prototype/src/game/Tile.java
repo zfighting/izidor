@@ -182,6 +182,7 @@ public class Tile implements Renderable
 		Vector2d delta = new Vector2d((newposition.x - object.position.x) / 10.0f, (newposition.y - object.position.y) / 10.0f);
 		//object jelenlegi pozicioja
 		Vector2d currentposition = object.position;
+		currentposition = Vector2d.add(currentposition, delta);
 		
 		//egységenkénti mozgatás
 		for( int i = 0; i < 10; i++ )
@@ -321,9 +322,6 @@ public class Tile implements Renderable
 			
 			
 		}
-		
-		
-		
 		return result; 
 	}
 	
