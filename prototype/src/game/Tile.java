@@ -210,8 +210,8 @@ public class Tile implements Renderable
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		//o.position = Vector2d.subtract(o.position, new Vector2d(0.01f, 0.01f));
 			    		Rectangle2D primitiverect = ((Rectangle)o).polygon.getBounds2D();
-			    		System.out.println(((Rectangle)o).polygon.intersects(rect));
-			    		System.out.println(((Rectangle)o).polygon.getBounds2D().getY() >= currentposition.y);
+			    		//System.out.println(((Rectangle)o).polygon.intersects(rect));
+			    		//System.out.println(((Rectangle)o).polygon.getBounds2D().getY() >= currentposition.y);
 			    		
 			    		if( ((Rectangle)o).polygon.intersects(rect) && ((Rectangle)o).polygon.getBounds2D().getY() >= currentposition.y)
 			    		{

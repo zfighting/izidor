@@ -213,6 +213,8 @@ public class Stage implements Renderable
 	// paraméterül kapott játékos objektum mozgatása
 	public void movePlayer(Player player)
 	{
+		Player oldplayer = new Player(player.getTileID(), player.position, Color.BLACK, 10, 20);
+		
 		Index currenttile = getTileIndex( player.tileID );
 		
 		//mekkora maga a játék, 2x2-es vagy 3x3-as
@@ -293,7 +295,7 @@ public class Stage implements Renderable
 				// az aktuális tile canLeave metódusát ezekkel a paraméterekkel...
 				Direction direction  /* ... meghatározni a force alapján ... */ ;
 				byte destinationTileID  /* ... meghatározni az aktuális tile indexei és a direction alapján ... */ = player.tileID ;
-				
+	
 				if(player.force.y < 0)
 				{
 					direction = Direction.UP;
@@ -351,8 +353,11 @@ public class Stage implements Renderable
 						{
 							//átmegyünk a másik tile-ra
 							player.moveTo(destinationTileID, new Vector2d(0 , player.position.y));
+							// Ki kell vonni a már előző tileban megtett forcenyi erőt az új tilebeni megfelelő erővektorhoz
+							player.force.x = player.force.x - (Tile.getWidth() - (oldplayer.position.x));
+							player.moveTo(destinationTileID, new Vector2d(player.force.x , player.position.y));
+							player.force.x = 0;
 							
-
 							//kulcsot fel tudunk-e venni
 							tiles[currenttile.x][currenttile.y + 1].pickKey(new Vector2d(0, player.position.y));
 							
@@ -389,23 +394,26 @@ public class Stage implements Renderable
 				if(player.force.x < 0)
 				{
 					direction = Direction.LEFT;
-					if(currenttile.x > 0)
-						destinationTileID = tiles[currenttile.x - 1][currenttile.y].getID();
+					if(currenttile.y > 0)
+						destinationTileID = tiles[currenttile.x][currenttile.y - 1].getID();
 					if(tiles[currenttile.x][currenttile.y].canLeave(Direction.LEFT, destinationTileID))
 					{
 						try
 						{
 							//átmegyünk a másik tile-ra
-							player.moveTo(destinationTileID, new Vector2d(250-player.width , player.position.y));
+							player.moveTo(destinationTileID, new Vector2d(0, player.position.y));	
+							player.force.x = Tile.getWidth() - (oldplayer.force.x + oldplayer.position.x + oldplayer.getWidth());
+							player.moveTo(destinationTileID, new Vector2d(player.force.x , player.position.y));
+							player.force.x = 0;
 
 							//kulcsot fel tudunk-e venni
-							tiles[currenttile.x - 1][currenttile.y].pickKey(new Vector2d(250-player.width , player.position.y));
+							tiles[currenttile.x][currenttile.y - 1].pickKey(new Vector2d(250-player.width , player.position.y));
 							
 							//ajtón állunk-e
 							if(player.tileID == door.tileID)
 							{
 								double distance = Vector2d.subtract(player.position, door.position).getLength();
-								if(distance <= tiles[currenttile.x - 1][currenttile.y].keyPickUpRadius)
+								if(distance <= tiles[currenttile.x][currenttile.y - 1].keyPickUpRadius)
 								{
 									if (endflag == false)
 									{
@@ -449,7 +457,6 @@ public class Stage implements Renderable
 			}
 			// játékos elhelyezése az új helyére
 			player.moveTo(collresult.newPosition);
-			player.force.x = 0;
 			
 			//kulcsot fel tudunk-e venni
 			tiles[currenttile.x][currenttile.y].pickKey(collresult.newPosition);
