@@ -229,11 +229,6 @@ public class Tile implements Renderable
 			    		}
 			    	
 			    	}
-			    	//háromszög-e
-			    	else
-			    	{
-			    	//...	
-			    	}
 			
 			    }
 			    force.x = temp.x;
@@ -260,11 +255,6 @@ public class Tile implements Renderable
 			    		
 			    		}
 			    	
-			    	}
-			    	//háromszög-e
-			    	else
-			    	{
-			    	//...	
 			    	}
 			
 			    }
@@ -297,12 +287,7 @@ public class Tile implements Renderable
 			    		}
 			    	
 			    	}
-			    	//háromszög-e
-			    	else
-			    	{
-			    	//...	
-			    	}
-			
+
 			    }	
 			}
 			//ütközés balra
@@ -329,11 +314,6 @@ public class Tile implements Renderable
 			    		
 			    		}
 			    	
-			    	}
-			    	//háromszög-e
-			    	else
-			    	{
-			    	//...	
 			    	}
 			
 			    }

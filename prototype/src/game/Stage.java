@@ -269,7 +269,11 @@ public class Stage implements Renderable
 							double distance = Vector2d.subtract(player.position, door.position).getLength();
 							if(distance <= tiles[currenttile.x][currenttile.y + 1].keyPickUpRadius)
 							{
-								//ha ajtón vagyunk...
+								if (endflag == false)
+								{
+									System.out.println("Player has finished the stage.");	
+								}
+								endflag = true;
 							}
 						}
 						return;
@@ -310,7 +314,11 @@ public class Stage implements Renderable
 								double distance = Vector2d.subtract(player.position, door.position).getLength();
 								if(distance <= tiles[currenttile.x][currenttile.y - 1].keyPickUpRadius)
 								{
-									//ha ajtón vagyunk...
+									if (endflag == false)
+									{
+										System.out.println("Player has finished the stage.");	
+									}
+									endflag = true;
 								}
 							}
 						
@@ -335,25 +343,30 @@ public class Stage implements Renderable
 				{
 					direction = Direction.RIGHT;
 					//
-					if(currenttile.x < xmax)
-						destinationTileID = tiles[currenttile.x + 1][currenttile.y].getID();
+					if(currenttile.y < ymax)
+						destinationTileID = tiles[currenttile.x][currenttile.y + 1].getID();
 					if(tiles[currenttile.x][currenttile.y].canLeave(Direction.RIGHT, destinationTileID))
 					{
 						try
 						{
 							//átmegyünk a másik tile-ra
 							player.moveTo(destinationTileID, new Vector2d(0 , player.position.y));
+							
 
 							//kulcsot fel tudunk-e venni
-							tiles[currenttile.x + 1][currenttile.y].pickKey(new Vector2d(0, player.position.y));
+							tiles[currenttile.x][currenttile.y + 1].pickKey(new Vector2d(0, player.position.y));
 							
 							//ajtón állunk-e
 							if(player.tileID == door.tileID)
 							{
 								double distance = Vector2d.subtract(player.position, door.position).getLength();
-								if(distance <= tiles[currenttile.x + 1][currenttile.y].keyPickUpRadius)
+								if(distance <= tiles[currenttile.x][currenttile.y + 1].keyPickUpRadius)
 								{
-									//ha ajtón vagyunk...
+									if (endflag == false)
+									{
+										System.out.println("Player has finished the stage.");	
+									}
+									endflag = true;
 								}
 							}
 							return;
@@ -394,7 +407,11 @@ public class Stage implements Renderable
 								double distance = Vector2d.subtract(player.position, door.position).getLength();
 								if(distance <= tiles[currenttile.x - 1][currenttile.y].keyPickUpRadius)
 								{
-									//ha ajtón vagyunk...
+									if (endflag == false)
+									{
+										System.out.println("Player has finished the stage.");	
+									}
+									endflag = true;
 								}
 							}
 							return;
