@@ -54,21 +54,22 @@ public abstract class XMLReader
 		// Leendo door
 		int	dr_id = -1;
 		Vector2d dr_loc = new Vector2d(-1, -1);
-		File door_file = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "doorSprite.png");
-		BufferedImage door_image;
-		door_image = ImageIO.read(door_file);
-		TexturePaint door_paint = new TexturePaint(door_image, new Rectangle2D.Float(0, 0, door_image.getWidth(), door_image.getHeight()));
-		Paint doorr_paint = new TexturePaint(door_image, new Rectangle2D.Float(0, 0, door_image.getWidth(), door_image.getHeight()));
+		//File door_file = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "doorSprite.png");
+		//BufferedImage door_image;
+		//door_image = ImageIO.read(door_file);
+		//TexturePaint door_paint = new TexturePaint(door_image, new Rectangle2D.Float(0, 0, door_image.getWidth(), door_image.getHeight()));
+		Paint door_paint = Color.BLACK;
 		float door_w = 10;
 		float door_h = 20;
 		
 		// Leendo key
 		int	ky_id = -1;
 		Vector2d ky_loc = new Vector2d();
-		File key_file = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "keySprite.png");
-		BufferedImage key_image;
-		key_image = ImageIO.read(key_file);
-		TexturePaint key_paint = new TexturePaint(key_image, new Rectangle2D.Float(0, 0, key_image.getWidth(), key_image.getHeight()));
+		//File key_file = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "keySprite.png");
+		//BufferedImage key_image;
+		//key_image = ImageIO.read(key_file);
+		//TexturePaint key_paint = new TexturePaint(key_image, new Rectangle2D.Float(0, 0, key_image.getWidth(), key_image.getHeight()));
+		Paint key_paint = Color.BLACK;
 		float key_width = 20;
 		float key_height = 14;
 		
