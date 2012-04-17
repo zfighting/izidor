@@ -375,7 +375,8 @@ public class Stage implements Renderable
 				if(player.force.x < 0)
 				{
 					direction = Direction.LEFT;
-					destinationTileID = tiles[currenttile.x - 1][currenttile.y].getID();
+					if(currenttile.x > 0)
+						destinationTileID = tiles[currenttile.x - 1][currenttile.y].getID();
 					if(tiles[currenttile.x][currenttile.y].canLeave(Direction.LEFT, destinationTileID))
 					{
 						try
@@ -407,6 +408,7 @@ public class Stage implements Renderable
 					{
 					//erő nullázása
 					player.force.x = player.force.y = 0;
+					player.position.x = 0 + 0.01f;
 					}
 				}
 			}

@@ -230,7 +230,7 @@ public class Tile implements Renderable
 			    {
 			    	RenderableGameObject o = itr.next();
 			    	//megnézzük h téglalap-e
-			    	if( o.getClass() == Rectangle.class)
+			    	if( o.getClass().equals(Rectangle.class))
 			    	{
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
@@ -259,7 +259,7 @@ public class Tile implements Renderable
 			    {
 			    	RenderableGameObject o = itr.next();
 			    	//megnézzük h téglalap-e
-			    	if( o.getClass() == Rectangle.class)
+			    	if( o.getClass().equals(Rectangle.class))
 			    	{
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
@@ -287,7 +287,7 @@ public class Tile implements Renderable
 			    {
 			    	RenderableGameObject o = itr.next();
 			    	//megnézzük h téglalap-e
-			    	if( o.getClass() == Rectangle.class)
+			    	if(o.getClass().equals(Rectangle.class))
 			    	{
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
