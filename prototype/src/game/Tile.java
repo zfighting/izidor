@@ -3,6 +3,7 @@ package game;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -183,7 +184,7 @@ public class Tile implements Renderable
 		Vector2d currentposition = object.position;
 		
 		//egységenkénti mozgatás
-		for( int i = 0; i < 5; i++ )
+		for( int i = 0; i < 10; i++ )
 		{
 			
 			//segéd téglalap, bal felső sarka, a currentpositionban van, mérete akkora mint a Player.
@@ -191,23 +192,38 @@ public class Tile implements Renderable
 			java.awt.geom.Rectangle2D rect = new java.awt.geom.Rectangle2D.Float(currentposition.x, currentposition.y, object.width, object.height); 
 			
 			currentposition = Vector2d.add(currentposition, delta);
+			rect = new java.awt.geom.Rectangle2D.Float(currentposition.x, currentposition.y, object.width, object.height); 
 			
 			//ütközés lefelé
 			if(force.y > 0)
 			{
+				Vector2d temp = new Vector2d(force.x, force.y);
 				force.x = 0;
 				Iterator<RenderableGameObject> itr = objects.iterator();
 			    while (itr.hasNext())
 			    {
 			    	RenderableGameObject o = itr.next();
+			    	//System.out.println("rectangle: " + o.toString());
 			    	//megnézzük h téglalap-e
 			    	if( o.getClass().equals(Rectangle.class))
 			    	{
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
-			    		if( ((Rectangle)o).polygon.intersects(rect) )
+			    		//o.position = Vector2d.subtract(o.position, new Vector2d(0.01f, 0.01f));
+			    		Rectangle2D primitiverect = ((Rectangle)o).polygon.getBounds2D();
+			    		System.out.println(((Rectangle)o).polygon.intersects(rect));
+			    		System.out.println(((Rectangle)o).polygon.getBounds2D().getY() >= currentposition.y);
+			    		
+			    		if( ((Rectangle)o).polygon.intersects(rect) && ((Rectangle)o).polygon.getBounds2D().getY() >= currentposition.y)
 			    		{
+					    	//System.out.println("ütközés lefele: " + o.toString());
+					    	result.newPosition.x = currentposition.x;
 			    			result.newPosition.y = (float) ((float) 170 - ((Rectangle)o).polygon.getBounds2D().getHeight() - rect.getHeight()) - 0.01f;
 			    			result.collisionY = true;
+			    			
+			    			// !!!!!!!!!!!!!!!
+			    			currentposition = result.newPosition;
+			    			rect = new java.awt.geom.Rectangle2D.Float(currentposition.x, currentposition.y, object.width, object.height); 
+			    			
 			    			break;
 			    		
 			    		}
@@ -220,10 +236,12 @@ public class Tile implements Renderable
 			    	}
 			
 			    }
+			    force.x = temp.x;
 			}
-			//ötközés felfelé
+			//ütközés felfelé
 			if(force.y < 0)
 			{
+				Vector2d temp = new Vector2d(force.x, force.y);
 				force.x = 0;
 				Iterator<RenderableGameObject> itr = objects.iterator();
 			    while (itr.hasNext())
@@ -235,6 +253,7 @@ public class Tile implements Renderable
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
 			    		{
+			    			result.newPosition.x = currentposition.x;
 			    			result.newPosition.y = (float) (((Rectangle)o).polygon.getBounds2D().getX()) + 0.01f;
 			    			result.collisionY = true;
 			    			break;
@@ -249,6 +268,7 @@ public class Tile implements Renderable
 			    	}
 			
 			    }
+			    force.x = temp.x;
 			}
 			//ütközés jobbra
 			if(force.x > 0)
@@ -264,8 +284,14 @@ public class Tile implements Renderable
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
 			    		{
-			    			result.newPosition.x = (float) (o.position.x - rect.getWidth()) - 0.01f;
+			    			result.newPosition.y = currentposition.y;
+			    			result.newPosition.x = (float) (((Rectangle)o).polygon.getBounds2D().getX() - rect.getWidth()) - 0.01f;
 			    			result.collisionX = true;
+			    			
+			    			// !!!!!!!!!!
+			    			currentposition = result.newPosition;
+			    			rect = new java.awt.geom.Rectangle2D.Float(currentposition.x, currentposition.y, object.width, object.height); 
+			    			
 			    			break;
 			    		
 			    		}
@@ -292,8 +318,13 @@ public class Tile implements Renderable
 			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
 			    		if( ((Rectangle)o).polygon.intersects(rect) )
 			    		{
-			    			result.newPosition.x = (float) (((Rectangle)o).polygon.getBounds2D().getWidth() + o.position.x) + 0.01f;
+			    			result.newPosition.y = currentposition.y;
+			    			result.newPosition.x = (float) (((Rectangle)o).polygon.getBounds2D().getWidth() + ((Rectangle)o).polygon.getBounds2D().getX()) + 0.01f;
 			    			result.collisionX = true;
+			    			
+			    			currentposition = result.newPosition;
+			    			rect = new java.awt.geom.Rectangle2D.Float(currentposition.x, currentposition.y, object.width, object.height); 
+			    			
 			    			break;
 			    		
 			    		}

@@ -239,6 +239,7 @@ public class Stage implements Renderable
 					// respawnol = visszakerül a spawnpoint-ra
 					try
 					{
+						System.out.println("Respawn, pos: " + player.position.toString());
 						player.moveTo(spawnPoint.getTileID(), spawnPoint.position);
 						
 						//erő nullázása

@@ -1,6 +1,8 @@
 loadstage test5.xml 
-addplayer 1 90 30
+addplayer 1 90 40
 tick
 setforce 0 100 0
+tick
+tick
 tick
 stageinfo testresults.txt

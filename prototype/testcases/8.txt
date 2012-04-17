@@ -1,5 +1,5 @@
-loadstage test7.xml 
-addplayer 1 40 90
-setforce 0 250 0
+loadstage test8.xml 
+addplayer 2 40 90
+setforce 0 300 0
 tick
 stageinfo testresults.txt

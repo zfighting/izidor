@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -26,8 +27,7 @@ public class Tests
 		String command 		= null; 
 		BufferedReader br	= null;
 		game.stage 		= null;
-		boolean vanIzidor	= false;
-		boolean vanMortimer	= false;
+		ArrayList<Player> playerlist = new ArrayList();
 		
 		try
 		{			
@@ -92,16 +92,15 @@ public class Tests
 					//game.stage.movePlayer(game.getPlayers().get(Integer.parseInt(tokens[1])));
 				}
 				
-				
-				if(tokens[0].matches("kill"))
-				{
-					
-				}
-				
 				if(tokens[0].matches("tick"))
 				{
-					for (int x = 0; x < 2000; x++)
+					for (int x = 0; x < 30; x++)
+					{
+						// force refresh
+						for (Player p : game.getPlayers())
+							p.applyForce(new Vector2d(0, 0));
 						game.globalUpdate();
+					}
 				}
 				
 				if(tokens[0].matches("addplayer") ) 
