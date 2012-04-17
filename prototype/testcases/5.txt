@@ -5,4 +5,5 @@ setforce 0 100 0
 tick
 tick
 tick
+tick
 stageinfo testresults.txt
