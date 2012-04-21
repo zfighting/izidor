@@ -50,7 +50,7 @@ public class MainMenu extends GameState
 		// enterre lépjünk át gameplay módba
 		if( game.getKeys()[KeyEvent.VK_ENTER] )
 		{
-			game.startGame("res" + File.separatorChar + "teststage2.xml");
+			game.startGame("res" + File.separatorChar + "03.xml");
 		}
 	}
 
