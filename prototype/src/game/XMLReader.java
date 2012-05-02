@@ -62,7 +62,7 @@ public abstract class XMLReader
 		float door_w = 10;
 		float door_h = 20;
 		
-		// Leendo key
+		// Leendo key objektum
 		int	ky_id = -1;
 		Vector2d ky_loc = new Vector2d();
 		//File key_file = new File(System.getProperty("user.dir") + File.separatorChar + "res" + File.separatorChar + "keySprite.png");
