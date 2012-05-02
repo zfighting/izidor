@@ -175,19 +175,6 @@ public class Game extends JFrame implements KeyListener
     {		
 		// játék példányosítása és futtatása
 		new Game();
-		
-		new Tests().TestsRun(args);
-		
-		// ne töröld ki, thx
-		// most még itt meg van hívva magában, de élesben a menülogika/endstage logika 
-		// fog új stage-et létrehozni, ott majd "currentStage = XMLReader.load("stage3.xml");"
-		// lesz vagy vmi ilyesmi, értelemszerűen. egy komplett felépített stage-el tér vissza.
-		
-		
-		
-		//kitöröltem, mert a tesztekben töltjük be.
-		
-		//XMLReader.load("res\\teststage.xml");
     }
 
 	// billentyűleütés esemény lekezelése
