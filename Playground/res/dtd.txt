@@ -1,0 +1,20 @@
+<!DOCTYPE stage[ 
+
+<!ELEMENT stage (size, spawnpoint, door, tile, tile, tile, tile+)> 
+<!ELEMENT size (width, height)> 
+<!ELEMENT spawnpoint (tileid, x, y)> 
+<!ELEMENT door (tileid, x, y)> 
+<!ELEMENT tile (tileid, key?, rectangle*, triangle*)> 
+<!ELEMENT key (x, y)> 
+
+<!ELEMENT rectangle (vertex, vertex, vertex, vertex)> 
+<!ELEMENT triangle (vertex, vertex, vertex)> 
+<!ELEMENT vertex (x, y)> 
+
+<!ELEMENT width (#PCDATA)> 
+<!ELEMENT height (#PCDATA)> 
+<!ELEMENT tileid (#PCDATA)> 
+<!ELEMENT x (#PCDATA)> 
+<!ELEMENT y (#PCDATA)> 
+
+]>
