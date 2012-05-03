@@ -4,7 +4,7 @@
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
 || 04.14.  ||  20:00   || 23:00    || Farkas || XML betöltő kiegészítése, stage és tile renderer megírása ||
 || 05.02.  ||  22:00   || 05.03. 03:00    || Farkas || Kódbázis áttekintése, apró hibajavítások. Menürendszer implementálása és tesztelése. Ütközésdetektálás újratervezése. ||
-|| 05.03.  ||  17:00   || 18:00    || Farkas || Tile-ok közötti áthaladás és kulcsok felvételének implementálása és tesztelése ||
+|| 05.03.  ||  17:00   || 18:00    || Farkas || Ütközésdetektálás, valamint tile-ok közötti áthaladás és kulcsok felvételének implementálása és tesztelése ||
 || 04.20.  ||  12:00   || 18:00    || Böjti  || 01-03 pálya elkészítse ||
 || 05.01.  ||  10:00   || 19:00    || Böjti  || 04-09 pálya elkészítse ||
 
