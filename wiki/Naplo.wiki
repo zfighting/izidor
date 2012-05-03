@@ -1,10 +1,11 @@
 #summary Munkanapló.
 
-= Következő beadandó (grafikus) naplója =
+= Aktuális beadandó (grafikus) naplója =
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
 || 04.14.  ||  20:00   || 23:00    || Farkas || XML betöltő kiegészítése, stage és tile renderer megírása ||
+|| 05.02.  ||  22:00   || 05.03. 03:00    || Farkas || Kódbázis áttekintése, apró hibajavítások. Menürendszer implementálása és tesztelése. Ütközésdetektálás újratervezése. ||
 
-= Aktuális beadandó naplója =
+= Előző beadandó naplója =
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
 || 04.04.  ||  20:00   || 21:00    || Farkas, Böjti, Horváth  || Közös megbeszélés, kódbázis áttekintése ||
 || 04.13.  ||  20:00   || 04.14. 04:00    || Farkas || Játéklogika implementálása ||
