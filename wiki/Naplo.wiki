@@ -7,6 +7,7 @@
 || 05.03.  ||  17:00   || 18:00    || Farkas || Ütközésdetektálás, valamint tile-ok közötti áthaladás és kulcsok felvételének implementálása és tesztelése ||
 || 04.20.  ||  12:00   || 18:00    || Böjti  || 01-03 pálya elkészítse ||
 || 05.01.  ||  10:00   || 19:00    || Böjti  || 04-09 pálya elkészítse ||
+|| 05.03.  ||  21:30   || 24:00    || Farkas || Ugrálás és gravitáció implementálása, finomhangolása. Pályaválasztó implementálása, menü kibővítése a háttérzene vezérlésére szolgáló menüelemmel. ||
 
 = Előző beadandó naplója =
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
