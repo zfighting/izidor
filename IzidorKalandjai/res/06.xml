@@ -7,8 +7,8 @@
 	
 	<spawnpoint>
 		<tileid>1</tileid>
-		<x>40</x>
-		<y>120</y>
+		<x>150</x>
+		<y>31</y>
 	</spawnpoint>
 	
 	<door>
@@ -132,7 +132,8 @@
 			</up>
 			<down>
 			</down>
-			<left><tileid>1</tileid>
+			<left>
+				<tileid>3</tileid>
 			</left>
 			<right>
 				<tileid>3</tileid>
@@ -250,10 +251,10 @@
 			<down>
 			</down>
 			<left>
-							<tileid>1</tileid>
+				<tileid>1</tileid>
 			</left>
 			<right>
-							<tileid>2</tileid>
+				<tileid>2</tileid>
 			</right>
 		</reachable_tiles>
 

@@ -7,7 +7,7 @@
 	
 	<spawnpoint>
 		<tileid>1</tileid>
-		<x>50</x>
+		<x>180</x>
 		<y>30</y>
 	</spawnpoint>
 	
@@ -39,14 +39,14 @@
 			<down>
 			</down>
 			<left>
+				<tileid>3</tileid>
 			</left>
 			<right>
-				<tileid>2</tileid>
 			</right>
 		</reachable_tiles>
 		<key>
 			<x>220</x>
-			<y>30</y>
+			<y>40</y>
 		</key>
 		<rectangle>
 			<vertex>
@@ -55,11 +55,11 @@
 			</vertex>
 			<vertex>
 				<x>0</x>
-				<y>30</y>
+				<y>15</y>
 			</vertex>	
 			<vertex>
 				<x>110</x>
-				<y>30</y>
+				<y>15</y>
 			</vertex>	
 			<vertex>
 				<x>110</x>
@@ -156,6 +156,7 @@
 			<left>
 			</left>
 			<right>
+				<tileid>1</tileid>
 				<tileid>3</tileid>
 			</right>
 		</reachable_tiles>
@@ -166,11 +167,11 @@
 			</vertex>
 			<vertex>
 				<x>0</x>
-				<y>30</y>
+				<y>15</y>
 			</vertex>	
 			<vertex>
 				<x>250</x>
-				<y>30</y>
+				<y>15</y>
 			</vertex>	
 			<vertex>
 				<x>250</x>
@@ -285,10 +286,10 @@
 			<down>
 			</down>
 			<left>
-							<tileid>1</tileid>
+				<tileid>1</tileid>
+				<tileid>2</tileid>
 			</left>
 			<right>
-							<tileid>2</tileid>
 			</right>
 		</reachable_tiles>
 		
