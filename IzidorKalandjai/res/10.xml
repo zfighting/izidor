@@ -46,6 +46,7 @@
 			<x>50</x>
 			<y>40</y>
 		</key>
+
 		</reachable_tiles>
 		<rectangle>
 			<vertex>
@@ -54,14 +55,14 @@
 			</vertex>
 			<vertex>
 				<x>0</x>
-				<y>60</y>
+				<y>40</y>
 			</vertex>	
 			<vertex>
-				<x>30</x>
-				<y>60</y>
+				<x>20</x>
+				<y>40</y>
 			</vertex>	
 			<vertex>
-				<x>30</x>
+				<x>20</x>
 				<y>0</y>
 			</vertex>	
 		</rectangle>
@@ -73,14 +74,14 @@
 			</vertex>
 			<vertex>
 				<x>0</x>
-				<y>30</y>
+				<y>20</y>
 			</vertex>	
 			<vertex>
-				<x>60</x>
-				<y>30</y>
+				<x>40</x>
+				<y>20</y>
 			</vertex>	
 			<vertex>
-				<x>60</x>
+				<x>40</x>
 				<y>0</y>
 			</vertex>	
 		</rectangle>
@@ -440,11 +441,11 @@
 			</vertex>
 			<vertex>
 				<x>190</x>
-				<y>30</y>
+				<y>20</y>
 			</vertex>	
 			<vertex>
 				<x>250</x>
-				<y>30</y>
+				<y>20</y>
 			</vertex>	
 			<vertex>
 				<x>250</x>
@@ -454,16 +455,16 @@
 		
 		<rectangle>
 			<vertex>
-				<x>220</x>
+				<x>230</x>
 				<y>0</y>
 			</vertex>
 			<vertex>
-				<x>220</x>
-				<y>60</y>
+				<x>230</x>
+				<y>40</y>
 			</vertex>	
 			<vertex>
 				<x>250</x>
-				<y>60</y>
+				<y>40</y>
 			</vertex>	
 			<vertex>
 				<x>250</x>
@@ -492,8 +493,6 @@
 		
 		
 	</tile>
-	
-	
 	
 	<tile>
 		<tileid>2</tileid>
@@ -509,52 +508,192 @@
 			<right>
 			</right>
 		</reachable_tiles>
+		<key>
+			<x>87</x>
+			<y>110</y>
+		</key>
 
 		<rectangle>
 			<vertex>
 				<x>0</x>
-				<y>0</y>
+				<y>155</y>
 			</vertex>
 			<vertex>
 				<x>0</x>
 				<y>170</y>
 			</vertex>	
 			<vertex>
+				<x>27</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>27</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>27</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>55</x>
+				<y>115</y>
+			</vertex>
+			<vertex>
+				<x>55</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>115</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>82</x>
+				<y>130</y>
+			</vertex>
+			<vertex>
+				<x>82</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
 				<x>110</x>
 				<y>170</y>
 			</vertex>	
 			<vertex>
 				<x>110</x>
-				<y>0</y>
+				<y>130</y>
 			</vertex>	
 		</rectangle>
-		
-		
-		
-				<rectangle>
+		<rectangle>
 			<vertex>
-				<x>140</x>
+				<x>110</x>
+				<y>110</y>
+			</vertex>
+			<vertex>
+				<x>110</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>110</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>137</x>
+				<y>150</y>
+			</vertex>
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>150</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>165</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>194</x>
+				<y>160</y>
+			</vertex>
+			<vertex>
+				<x>194</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>160</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>221</x>
+				<y>100</y>
+			</vertex>
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>100</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>221</x>
 				<y>0</y>
 			</vertex>
 			<vertex>
-				<x>140</x>
-				<y>170</y>
+				<x>221</x>
+				<y>40</y>
 			</vertex>	
 			<vertex>
 				<x>250</x>
-				<y>170</y>
+				<y>40</y>
 			</vertex>	
 			<vertex>
 				<x>250</x>
 				<y>0</y>
 			</vertex>	
-		</rectangle>
-		
-		
-		
+		</rectangle>		
 	</tile>
-	
-	
 	
 	<tile>
 		<tileid>3</tileid>
@@ -571,46 +710,241 @@
 							
 			</right>
 		</reachable_tiles>
-
-
-		
+<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
 		<rectangle>
 			<vertex>
-				<x>30</x>
-				<y>30</y>
+				<x>27</x>
+				<y>143</y>
 			</vertex>
 			<vertex>
-				<x>30</x>
-				<y>140</y>
+				<x>27</x>
+				<y>170</y>
 			</vertex>	
 			<vertex>
-				<x>220</x>
-				<y>140</y>
+				<x>55</x>
+				<y>170</y>
 			</vertex>	
 			<vertex>
-				<x>220</x>
-				<y>30</y>
+				<x>55</x>
+				<y>143</y>
 			</vertex>	
 		</rectangle>
-		
-				<rectangle>
+		<rectangle>
+			<vertex>
+				<x>55</x>
+				<y>129</y>
+			</vertex>
+			<vertex>
+				<x>55</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>129</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>82</x>
+				<y>110</y>
+			</vertex>
+			<vertex>
+				<x>82</x>
+				<y>170</y>
+			</vertex>	
 			<vertex>
 				<x>110</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>110</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>110</x>
+				<y>91</y>
+			</vertex>
+			<vertex>
+				<x>110</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>91</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>137</x>
+				<y>73</y>
+			</vertex>
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>73</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>165</x>
+				<y>55</y>
+			</vertex>
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>55</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>194</x>
+				<y>36</y>
+			</vertex>
+			<vertex>
+				<x>194</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>36</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>221</x>
+				<y>18</y>
+			</vertex>
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>235</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>235</x>
+				<y>18</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>235</x>
 				<y>0</y>
 			</vertex>
 			<vertex>
-				<x>110</x>
-				<y>30</y>
+				<x>235</x>
+				<y>170</y>
 			</vertex>	
 			<vertex>
-				<x>140</x>
-				<y>30</y>
+				<x>250</x>
+				<y>170</y>
 			</vertex>	
 			<vertex>
-				<x>140</x>
+				<x>250</x>
 				<y>0</y>
 			</vertex>	
 		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>50</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>60</y>
+			</vertex>	
+			<vertex>
+				<x>60</x>
+				<y>60</y>
+			</vertex>	
+			<vertex>
+				<x>60</x>
+				<y>50</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>60</x>
+				<y>35</y>
+			</vertex>
+			<vertex>
+				<x>60</x>
+				<y>75</y>
+			</vertex>	
+			<vertex>
+				<x>70</x>
+				<y>55</y>
+			</vertex>	
+			<vertex>
+				<x>70</x>
+				<y>56</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>140</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>140</x>
+				<y>10</y>
+			</vertex>	
+			<vertex>
+				<x>190</x>
+				<y>10</y>
+			</vertex>	
+			<vertex>
+				<x>190</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+
 						
 				
 	</tile>
@@ -627,7 +961,234 @@
 			<right>
 			</right>
 		</reachable_tiles>
-	</tile><tile>
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>40</y>
+			</vertex>	
+			<vertex>
+				<x>20</x>
+				<y>40</y>
+			</vertex>	
+			<vertex>
+				<x>20</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>20</y>
+			</vertex>	
+			<vertex>
+				<x>60</x>
+				<y>20</y>
+			</vertex>	
+			<vertex>
+				<x>60</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		
+		<rectangle>
+			<vertex>
+				<x>180</x>
+				<y>50</y>
+			</vertex>
+			<vertex>
+				<x>180</x>
+				<y>60</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>60</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>50</y>
+			</vertex>	
+		</rectangle>
+		
+		
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>27</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>27</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>55</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>55</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>82</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>82</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>110</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>110</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>137</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>165</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>194</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>194</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>221</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+
+		
+		
+		
+		
+	</tile>
+	
+	<tile>
 		<tileid>5</tileid>
 		<reachable_tiles>
 			<up>
@@ -639,7 +1200,70 @@
 			<right>
 			</right>
 		</reachable_tiles>
-	</tile><tile>
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>20</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>20</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		
+			<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>80</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>100</y>
+			</vertex>	
+			<vertex>
+				<x>109</x>
+				<y>100</y>
+			</vertex>	
+			<vertex>
+				<x>109</x>
+				<y>80</y>
+			</vertex>	
+		</rectangle>
+		
+				<rectangle>
+			<vertex>
+				<x>141</x>
+				<y>80</y>
+			</vertex>
+			<vertex>
+				<x>141</x>
+				<y>100</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>100</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>80</y>
+			</vertex>	
+		</rectangle>
+		
+		
+		
+		
+		
+	</tile>
+	
+	<tile>
 		<tileid>6</tileid>
 		<reachable_tiles>
 			<up>
@@ -651,7 +1275,267 @@
 			<right>
 			</right>
 		</reachable_tiles>
-	</tile><tile>
+		<rectangle>
+			<vertex>
+				<x>190</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>190</x>
+				<y>20</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>20</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		
+		<rectangle>
+			<vertex>
+				<x>230</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>230</x>
+				<y>40</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>40</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>40</y>
+			</vertex>	
+			<vertex>
+				<x>20</x>
+				<y>40</y>
+			</vertex>	
+			<vertex>
+				<x>20</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>20</y>
+			</vertex>	
+			<vertex>
+				<x>40</x>
+				<y>20</y>
+			</vertex>	
+			<vertex>
+				<x>40</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>20</y>
+			</vertex>	
+			<vertex>
+				<x>60</x>
+				<y>20</y>
+			</vertex>	
+			<vertex>
+				<x>60</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		
+				<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>27</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>27</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>55</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>55</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>82</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>82</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>110</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>110</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>137</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>165</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>194</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>194</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>221</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>
+		
+	</tile>
+	
+	<tile>
 		<tileid>7</tileid>
 		<reachable_tiles>
 			<up>
@@ -663,7 +1547,172 @@
 			<right>
 			</right>
 		</reachable_tiles>
-	</tile><tile>
+		
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>100</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>100</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>27</x>
+				<y>160</y>
+			</vertex>
+			<vertex>
+				<x>27</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>160</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>55</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>55</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>82</x>
+				<y>150</y>
+			</vertex>
+			<vertex>
+				<x>82</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>150</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>110</x>
+				<y>110</y>
+			</vertex>
+			<vertex>
+				<x>110</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>110</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>137</x>
+				<y>130</y>
+			</vertex>
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>130</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>165</x>
+				<y>115</y>
+			</vertex>
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>115</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>194</x>
+				<y>145</y>
+			</vertex>
+			<vertex>
+				<x>194</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>145</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>221</x>
+				<y>155</y>
+			</vertex>
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>155</y>
+			</vertex>	
+		</rectangle>		
+	</tile>
+	
+	<tile>
 		<tileid>8</tileid>
 		<reachable_tiles>
 			<up>
@@ -675,6 +1724,321 @@
 			<right>
 			</right>
 		</reachable_tiles>
+		
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>18</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>18</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>27</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>27</x>
+				<y>37</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>37</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>55</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>55</x>
+				<y>55</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>55</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>82</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>82</x>
+				<y>74</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>74</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>110</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>110</x>
+				<y>92</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>92</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>137</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>137</x>
+				<y>110</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>110</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>165</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>165</x>
+				<y>129</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>129</y>
+			</vertex>	
+			<vertex>
+				<x>194</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>194</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>194</x>
+				<y>147</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>147</y>
+			</vertex>	
+			<vertex>
+				<x>221</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>221</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>221</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>221</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>221</x>
+				<y>40</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>40</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>	
+		
+		
+		
+
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>70</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>88</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>88</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>70</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>27</x>
+				<y>88</y>
+			</vertex>
+			<vertex>
+				<x>27</x>
+				<y>106</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>106</y>
+			</vertex>	
+			<vertex>
+				<x>55</x>
+				<y>88</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>55</x>
+				<y>106</y>
+			</vertex>
+			<vertex>
+				<x>55</x>
+				<y>125</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>125</y>
+			</vertex>	
+			<vertex>
+				<x>82</x>
+				<y>106</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>82</x>
+				<y>125</y>
+			</vertex>
+			<vertex>
+				<x>82</x>
+				<y>142</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>142</y>
+			</vertex>	
+			<vertex>
+				<x>110</x>
+				<y>125</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>110</x>
+				<y>142</y>
+			</vertex>
+			<vertex>
+				<x>110</x>
+				<y>161</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>161</y>
+			</vertex>	
+			<vertex>
+				<x>137</x>
+				<y>142</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>137</x>
+				<y>161</y>
+			</vertex>
+			<vertex>
+				<x>137</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>165</x>
+				<y>161</y>
+			</vertex>	
+		</rectangle>
+		
+		
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>88</y>
+			</vertex>
+			<vertex>
+				<x>120</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>155</x>
+				<y>170</y>
+			</vertex>	
+			<vertex>
+				<x>27</x>
+				<y>88</y>
+			</vertex>	
+		</rectangle>
+		
+		
 	</tile>
 		
 	
