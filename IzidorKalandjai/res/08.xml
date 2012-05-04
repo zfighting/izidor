@@ -8,7 +8,7 @@
 	<spawnpoint>
 		<tileid>1</tileid>
 		<x>40</x>
-		<y>110</y>
+		<y>120</y>
 	</spawnpoint>
 	
 	<door>
@@ -35,18 +35,19 @@
 		<tileid>1</tileid>
 		<reachable_tiles>
 			<up>
+				<tileid>2</tileid>
 			</up>
-			<down>			
+			<down>
 				<tileid>2</tileid>
 			</down>
 			<left>
 			</left>
 			<right>
 			</right>
-			<key>
-				<x>50</x>
-				<y>40</y>
-			</key>
+		<key>
+			<x>50</x>
+			<y>40</y>
+		</key>
 		</reachable_tiles>
 		<rectangle>
 			<vertex>
@@ -85,8 +86,9 @@
 				<y>0</y>
 			</vertex>	
 		</rectangle>
-
-		<rectangle>
+		
+		
+				<rectangle>
 			<vertex>
 				<x>0</x>
 				<y>0</y>
@@ -104,7 +106,9 @@
 				<y>0</y>
 			</vertex>	
 		</rectangle>
-	
+		
+		
+		
 		<rectangle>
 			<vertex>
 				<x>220</x>
@@ -144,7 +148,7 @@
 			</vertex>	
 		</rectangle>	
 		
-		<rectangle>
+			<rectangle>
 			<vertex>
 				<x>0</x>
 				<y>140</y>
@@ -181,17 +185,21 @@
 				<y>140</y>
 			</vertex>	
 		</rectangle>
+		
 	</tile>
-
+	
+	
+	
 	<tile>
 		<tileid>2</tileid>
 		<reachable_tiles>
 			<up>
+				<tileid>1</tileid>
 			</up>
 			<down>
 				<tileid>1</tileid>
 			</down>
-			<left>			
+			<left>
 			</left>
 			<right>
 			</right>
@@ -215,7 +223,9 @@
 				<y>0</y>
 			</vertex>	
 		</rectangle>
-
+		
+		
+		
 		<rectangle>
 			<vertex>
 				<x>140</x>
@@ -235,38 +245,53 @@
 			</vertex>	
 		</rectangle>
 	</tile>
-
 	<tile>
 		<tileid>3</tileid>
 		<reachable_tiles>
 			<up>
 			</up>
 			<down>
-			<tileid>1</tileid>
 			</down>
 			<left>
 			</left>
-			<right>							
+			<right>
 			</right>
 		</reachable_tiles>
-
 		<rectangle>
 			<vertex>
-				<x>0</x>
+				<x>30</x>
+				<y>30</y>
+			</vertex>
+			<vertex>
+				<x>30</x>
+				<y>140</y>
+			</vertex>	
+			<vertex>
+				<x>220</x>
+				<y>140</y>
+			</vertex>	
+			<vertex>
+				<x>220</x>
+				<y>30</y>
+			</vertex>	
+		</rectangle>
+		<rectangle>
+			<vertex>
+				<x>110</x>
 				<y>0</y>
 			</vertex>
 			<vertex>
-				<x>0</x>
-				<y>100</y>
+				<x>110</x>
+				<y>30</y>
 			</vertex>	
 			<vertex>
-				<x>250</x>
-				<y>100</y>
+				<x>140</x>
+				<y>30</y>
 			</vertex>	
 			<vertex>
-				<x>250</x>
+				<x>140</x>
 				<y>0</y>
 			</vertex>	
-		</rectangle>
-	</tile>	
+		</rectangle>		
+	</tile>
 </stage>

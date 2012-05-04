@@ -37,12 +37,12 @@
 			<up>
 			</up>
 			<down>
-			<tileid>2</tileid>
+				<tileid>2</tileid>
 			</down>
 			<left>
 			</left>
 			<right>
-			<tileid>3</tileid>				
+				<tileid>3</tileid>				
 			</right>
 		</reachable_tiles>
 		<key>
@@ -161,26 +161,21 @@
 				<y>70</y>
 			</vertex>	
 		</rectangle>	
-		
 	</tile>
-	
-	
-	
 	<tile>
 		<tileid>2</tileid>
 		<reachable_tiles>
 			<up>
-			<tileid>1</tileid>
+				<tileid>1</tileid>
 			</up>
 			<down>
-			<tileid>3</tileid>
+				<tileid>3</tileid>
 			</down>
 			<left>			
 			</left>
 			<right>
 			</right>
 		</reachable_tiles>
-
 		<rectangle>
 			<vertex>
 				<x>0</x>
@@ -199,7 +194,6 @@
 				<y>0</y>
 			</vertex>	
 		</rectangle>
-		
 			<rectangle>
 			<vertex>
 				<x>220</x>
@@ -218,7 +212,6 @@
 				<y>0</y>
 			</vertex>	
 		</rectangle>
-		
 		<rectangle>
 			<vertex>
 				<x>0</x>
@@ -255,7 +248,6 @@
 				<y>140</y>
 			</vertex>	
 		</rectangle>		
-
 		<rectangle>
 			<vertex>
 				<x>220</x>
@@ -274,7 +266,6 @@
 				<y>0</y>
 			</vertex>	
 		</rectangle>
-		
 		<rectangle>
 		<vertex>
 				<x>110</x>
@@ -293,7 +284,6 @@
 				<y>140</y>
 			</vertex>	
 		</rectangle>
-		
 		<rectangle>
 			<vertex>
 				<x>220</x>
@@ -312,8 +302,6 @@
 				<y>70</y>
 			</vertex>	
 		</rectangle>	
-		
-		
 		<rectangle>
 			<vertex>
 				<x>80</x>
@@ -333,14 +321,10 @@
 			</vertex>	
 		</rectangle>		
 	</tile>
-	
-	
-	
 	<tile>
 		<tileid>3</tileid>
 		<reachable_tiles>
 			<up>
-				<tileid>1</tileid>
 				<tileid>2</tileid>
 			</up>
 			<down>
@@ -352,8 +336,6 @@
 							
 			</right>
 		</reachable_tiles>
-
-
 		<rectangle>
 			<vertex>
 				<x>110</x>
@@ -372,8 +354,6 @@
 				<y>0</y>
 			</vertex>	
 		</rectangle>
-		
-		
 		<rectangle>
 			<vertex>
 				<x>0</x>
@@ -391,15 +371,8 @@
 				<x>60</x>
 				<y>0</y>
 			</vertex>	
-		</rectangle>
-		
-		
-		
-			
-		
-		
-		
-			<rectangle>
+		</rectangle>	
+		<rectangle>
 			<vertex>
 				<x>0</x>
 				<y>140</y>
@@ -417,8 +390,7 @@
 				<y>140</y>
 			</vertex>	
 		</rectangle>	
-
-			<rectangle>
+		<rectangle>
 			<vertex>
 				<x>0</x>
 				<y>70</y>
@@ -436,7 +408,6 @@
 				<y>70</y>
 			</vertex>	
 		</rectangle>			
-
 		<rectangle>
 			<vertex>
 				<x>220</x>
@@ -455,8 +426,6 @@
 				<y>0</y>
 			</vertex>	
 		</rectangle>	
-		
-		
 		<rectangle>
 			<vertex>
 				<x>0</x>
@@ -475,11 +444,5 @@
 				<y>70</y>
 			</vertex>	
 		</rectangle>		
-				
 	</tile>
-		
-	
-
-	
-	
 </stage>

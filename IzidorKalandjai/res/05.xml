@@ -40,6 +40,7 @@
 			</down>
 			<left>
 				<tileid>3</tileid>
+				<tileid>2</tileid>
 			</left>
 			<right>
 			</right>
@@ -286,15 +287,33 @@
 			<down>
 			</down>
 			<left>
-				<tileid>1</tileid>
 				<tileid>2</tileid>
 			</left>
 			<right>
+				<tileid>1</tileid>
 			</right>
 		</reachable_tiles>
 		
 		
 		
+		<rectangle>
+			<vertex>
+				<x>0</x>
+				<y>0</y>
+			</vertex>
+			<vertex>
+				<x>0</x>
+				<y>15</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>15</y>
+			</vertex>	
+			<vertex>
+				<x>250</x>
+				<y>0</y>
+			</vertex>	
+		</rectangle>
 		<rectangle>
 			<vertex>
 				<x>0</x>

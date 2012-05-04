@@ -35,15 +35,14 @@
 		<tileid>1</tileid>
 		<reachable_tiles>
 			<up>
-			<tileid>3</tileid>
+				<tileid>3</tileid>
 			</up>
 			<down>
 			</down>
 			<left>
 			</left>
 			<right>
-			<tileid>3</tileid>
-				
+				<tileid>3</tileid>
 			</right>
 		</reachable_tiles>
 		<rectangle>
@@ -203,7 +202,7 @@
 				<y>140</y>
 			</vertex>	
 		</rectangle>		
-<rectangle>
+		<rectangle>
 			<vertex>
 				<x>0</x>
 				<y>140</y>
@@ -229,10 +228,10 @@
 		<tileid>3</tileid>
 		<reachable_tiles>
 			<up>
-			<tileid>2</tileid>
+				<tileid>2</tileid>
 			</up>
 			<down>
-			<tileid>1</tileid>
+				<tileid>1</tileid>
 			</down>
 			<left>
 				<tileid>1</tileid>

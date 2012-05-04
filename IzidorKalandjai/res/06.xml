@@ -136,10 +136,9 @@
 				<tileid>3</tileid>
 			</left>
 			<right>
-				<tileid>3</tileid>
 			</right>
 		</reachable_tiles>
-						<key>
+		<key>
 			<x>80</x>
 			<y>120</y>
 		</key>
@@ -181,7 +180,7 @@
 			</vertex>	
 		</rectangle>
 		
-				<rectangle>
+		<rectangle>
 			<vertex>
 				<x>110</x>
 				<y>0</y>
