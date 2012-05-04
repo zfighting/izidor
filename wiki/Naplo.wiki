@@ -10,6 +10,7 @@
 || 05.03.  ||  21:30   || 24:00    || Farkas || Ugrálás és gravitáció implementálása, finomhangolása. Pályaválasztó implementálása, főmenü kibővítése a háttérzene vezérlésére szolgáló menüelemmel. ||
 || 05.04.  ||  00:30   || 02:00    || Farkas || Zeneválasztó és zenelejátszó implementálása és tesztelése. ||
 || 05.04.  ||  15:00   || 20:00    || Böjti  || 10. pálya elkészítse ||
+|| 05.04.  ||  15:00   || 19:30    || Horváth, Farkas  || 1-9. pályák tesztelése, felmerülő hibák javítása. Egy új pálya elkészítése. ||
 
 = Előző beadandó naplója =
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
