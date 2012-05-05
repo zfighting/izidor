@@ -12,6 +12,7 @@
 || 05.04.  ||  15:00   || 20:00    || Böjti  || 10. pálya elkészítse ||
 || 05.04.  ||  15:00   || 19:30    || Horváth, Farkas  || 1-9. pályák tesztelése, felmerülő hibák javítása. Egy új pálya elkészítése. ||
 || 05.04.  ||  22:30   || 05.05. 00:30    || Farkas  || Intro játékállapot bevezetése, implementálása. ||
+|| 05.05.  ||  14:30   || 16:30    || Farkas  || "Készítők" játékállapot implementálása. ||
 
 = Előző beadandó naplója =
 || *Dátum* || *Mettől* || *Meddig* || *Ki*    || *Mit* ||
