@@ -15,7 +15,6 @@ public abstract class Primitive extends RenderableGameObject
 	public Polygon polygon;
 	
 	
-	
 	// konstruktor
 	public Primitive(byte tileID, Vector2d position, Paint paint, Polygon polygon)
 	{

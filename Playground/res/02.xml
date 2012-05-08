@@ -6,9 +6,9 @@
 	</size>
 	
 	<spawnpoint>
-		<tileid>1</tileid>
-		<x>40</x>
-		<y>120</y>
+		<tileid>2</tileid>
+		<x>50</x>
+		<y>80</y>
 	</spawnpoint>
 	
 	<door>
@@ -155,6 +155,7 @@
 			<right>
 			</right>
 		</reachable_tiles>
+
 		<rectangle>
 			<vertex>
 				<x>0</x>

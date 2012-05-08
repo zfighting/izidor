@@ -1,3 +1,0 @@
-loadstage teststage.xml 
-swap UP
-stageinfo filename

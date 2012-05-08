@@ -2,7 +2,7 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.Polygon;
+import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -13,23 +13,18 @@ import engine.Vector2d;
 // a játékos, tilitoli módban ezek cserélődnek fel...
 public class Tile implements Renderable
 {
-	// minden tile mérete fix - ezek a magic numberek azalapján lettek kitalálva, hogy 3x3-mas pálya még kiférjen a 800x600-as ablakba
-	private static final int width = 250;
-	private static final int height = 170;
+	// minden tile mérete fix - ezek a magic numberek az alapján lettek kitalálva, hogy 3x3-mas pálya még kiférjen a 800x600-as ablakba
+	public static final int width = 250;
+	public static final int height = 170;
 	// a kulcsfelvételnél használt távolság - a játékos akkor veszi fel a kulcsot, ha ennél közelebb van a kulcshoz
-	public static final float keyPickUpRadius = 5;
+	public static final float pickUpRadius = 10;
 	// a tile egyedi azonosítója, a 0-s ID az ÜRES pályarészt jelenti
 	private byte tileID;
 	// a tile-t felépítő pályaelemek (téglalapok, háromszögek) listája
 	private ArrayList<RenderableGameObject> objects;
 	// a tile-on található kulcsok listája
 	private ArrayList<Key> keys;
-	
 	// az adott tile-ból az egyes irányokba mely tile-okba lehet átmenni
-	// 0 index = UP
-	// 1 index = DOWN
-	// 2 index = LEFT
-	// 3 index = RIGHT
 	private ArrayList<Byte>[] reachableTiles;
 	
 	
@@ -38,14 +33,12 @@ public class Tile implements Renderable
 	public Tile(byte tileID)
 	{
 		// azonosító mentése
-		this.tileID = tileID;			// ide majd még valami ellenőrzés kell
+		this.tileID = tileID;
 
 		// listák létrehozása
 		objects = new ArrayList<RenderableGameObject>();
 		keys = new ArrayList<Key>();
 		reachableTiles = (ArrayList<Byte>[]) new ArrayList[4];
-		
-		// Ez még kellett hozzá azért írtam bele, különben NullPointerException (I.)
 		reachableTiles[0] = new ArrayList<Byte>();
 		reachableTiles[1] = new ArrayList<Byte>();
 		reachableTiles[2] = new ArrayList<Byte>();
@@ -59,35 +52,15 @@ public class Tile implements Renderable
 	}
 	
 	// kulcs hozzáadása a tile-hoz
-	public void addKey(Key k)
+	public void addKey(Key key)
 	{
-		keys.add(k);
+		keys.add(key);
 	}
 	
-	public void addReachableTile(byte tid, Direction dir)
+	// elérhető tile hozzáadása az ezeket tartalmazó listához
+	public void addReachableTile(byte tileID, Direction direction)
 	{
-		// JRE 1.6 kompatibilis if
-		// 0 index = UP
-		// 1 index = DOWN
-		// 2 index = LEFT
-		// 3 index = RIGHT
-		if (dir == Direction.UP)
-		{
-			reachableTiles[0].add(tid);
-		}
-		else if (dir == Direction.DOWN)
-		{
-			reachableTiles[1].add(tid);
-		}
-		else if (dir == Direction.LEFT)
-		{
-			reachableTiles[2].add(tid);
-		}
-		else if (dir == Direction.RIGHT)
-		{
-			reachableTiles[3].add(tid);
-		}
-		else System.out.println("ReachableTiles indexelési hiba.");
+		reachableTiles[direction.ordinal()].add(tileID);
 	}
 
 	// tile renderelése
@@ -123,20 +96,7 @@ public class Tile implements Renderable
 		return keys.size();
 	}
 	
-	// megadja, hogy a paraméterül kapott objektum a rá ható erő hatására elhagyná-e a tile-t
-	public boolean objectLeaves(RectangularRenderableGameObject object, Vector2d force)
-	{
-		//az object a rá ható force általi új poziciója
-		Vector2d newposition = Vector2d.add(object.position, force);
-		//ha ez az új pozició nincs benne a tile-ban, akkor elhagyná a tile-t
-		if(newposition.x>width || newposition.x < 0 || newposition.y < 0 || newposition.y > height)
-			return true;
-		
-
-		return false;
-	}
-	
-	// megadja, hogy az adott tile-ból az adott irányban át lehet-e menni a destinationTileID azonosítójú tile-ba.
+	// megadja, hogy ebből a tile-ból az adott irányban át lehet-e menni a destinationTileID azonosítójú tile-ba.
 	public boolean canLeave(Direction direction, byte destinationTileID)
 	{
 		// ha az adott irányhoz tartozó listában benne van az elérni kívánt tile azonosítója, akkor át lehet rá menni
@@ -153,10 +113,10 @@ public class Tile implements Renderable
 			Key k = iterator.next();
 			
 			// távlság kiszámítása
-			double distance = Vector2d.subtract(position, k.position).getLength();
+			double distance = Vector2d.subtract(position, new Vector2d(k.position.x + k.getWidth() / 2, k.position.y + k.getHeight() / 2)).getLength();
 			
 			// ha egy bizonyos távolságon belül van, töröljük a kulcsot
-			if(distance <= keyPickUpRadius)
+			if(distance <= pickUpRadius)
 			{
 				iterator.remove();
 			}
@@ -165,149 +125,86 @@ public class Tile implements Renderable
 	
 	// objektum mozgatása az adott tile-on belül a rá ható erő hatására, ütközésdetektálással
 	// a visszatérési érték a paraméterül kapott objektum új pozíciója
-	public CollisionDetectionResult moveObject(RectangularRenderableGameObject object, Vector2d force)
+	public Vector2d moveObject(RectangularRenderableGameObject object, Vector2d force)
 	{
-		//ütközés nélkül ide kerülne a rá ható erő hatására
-		Vector2d newposition = Vector2d.add(object.position, force);
-		// ez lesz a mozgatás eredménye (az objektum új helye)
-		CollisionDetectionResult result = new CollisionDetectionResult(newposition, false, false);
-		//ekkora egységenként mozgatjuk a téglalapot(rect-et)
-		Vector2d delta = new Vector2d((newposition.x - object.position.x) / 10.0f, (newposition.y - object.position.y) / 10.0f);
-		//object jelenlegi pozicioja
-		Vector2d currentposition = object.position;
+		// jelenlegi pozíció
+		Vector2d current_position = object.position;
 		
-		//egységenkénti mozgatás
-		for( int i = 0; i < 5; i++ )
+		// cél pozíció - ide mozgatná a rá ható erővektor
+		Vector2d target_position = new Vector2d();
+		target_position.x = current_position.x;
+		target_position.y = current_position.y;
+		
+		// mozgatás vízszintesen
+		if( force.x != 0 )
 		{
+			// eltoljuk
+			target_position.x += force.x;
 			
-			//segéd téglalap, bal felső sarka, a currentpositionban van, mérete akkora mint a Player.
-			//Ezt a téglalapot használjuk fel az ütközések detektelásához.
-			java.awt.geom.Rectangle2D rect = new java.awt.geom.Rectangle2D.Float(currentposition.x, currentposition.y, object.width, object.height); 
+			// befoglaló téglalap
+			Rectangle2D target_rectangle = new Rectangle2D.Float(target_position.x, target_position.y, object.getWidth(), object.getHeight());
 			
-			currentposition = Vector2d.add(currentposition, delta);
-			
-			//ütközés lefelé
-			if(force.x > 0)
+			// vizsgálat, hogy a cél téglalap metszésben van-e bármelyik játékelemmel
+			for( RenderableGameObject game_object : objects )
 			{
-				Iterator<RenderableGameObject> itr = objects.iterator();
-			    while (itr.hasNext())
-			    {
-			    	RenderableGameObject o = itr.next();
-			    	//megnézzük h téglalap-e
-			    	if( o.getClass() == Rectangle.class)
-			    	{
-			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
-			    		if( ((Rectangle)o).polygon.intersects(rect) )
-			    		{
-			    			result.newPosition.x = (float) ((((Rectangle)o).polygon.getBounds2D().getWidth() + o.position.x) + 0.01f);
-			    			result.collisionY = true;
-			    			break;
-			    		
-			    		}
-			    	
-			    	}
-			    	//háromszög-e
-			    	else
-			    	{
-			    	//...	
-			    	}
-			
-			    }
+				if( game_object.getClass().getSuperclass().equals(Primitive.class) )
+				{
+					Primitive primitive = (Primitive)game_object;
+					if( primitive.polygon.intersects(target_rectangle) )
+					{
+						// van metszés -> vízszintesen nem mozoghat az objektum
+						target_position.x = current_position.x;
+						break;
+					}
+				}
 			}
-			//ötközés felfelé
-			if(force.x < 0)
+		}
+		
+		// mozgatás függőlegesen
+		if( force.y != 0 )
+		{
+			// eltoljuk
+			target_position.y += force.y;
+			
+			// befoglaló téglalap
+			Rectangle2D target_rectangle = new Rectangle2D.Float(target_position.x, target_position.y, object.getWidth(), object.getHeight());
+			
+			// vizsgálat, hogy a cél téglalap metszésben van-e bármelyik játékelemmel
+			for( RenderableGameObject game_object : objects )
 			{
-				Iterator<RenderableGameObject> itr = objects.iterator();
-			    while (itr.hasNext())
-			    {
-			    	RenderableGameObject o = itr.next();
-			    	//megnézzük h téglalap-e
-			    	if( o.getClass() == Rectangle.class)
-			    	{
-			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
-			    		if( ((Rectangle)o).polygon.intersects(rect) )
-			    		{
-			    			result.newPosition.x = (float) (((Rectangle)o).polygon.getBounds2D().getX() - rect.getWidth()) + 0.01f;
-			    			result.collisionY = true;
-			    			break;
-			    		
-			    		}
-			    	
-			    	}
-			    	//háromszög-e
-			    	else
-			    	{
-			    	//...	
-			    	}
-			
-			    }
+				if( game_object.getClass().getSuperclass().equals(Primitive.class) )
+				{
+					Primitive primitive = (Primitive)game_object;
+					if( primitive.polygon.intersects(target_rectangle) )
+					{
+						// van metszés -> függőlegesen nem mozoghat az objektum
+						target_position.y = current_position.y;
+						
+						// ha játékos objektumot mozgatunk, és az vagy felfelé vagy lefelé mozogva akadálynak ütközött,
+						// akkor a rá ható eredő y komponensét nullázzuk, ezzel leállítva a gravitációs gyorsulást vagy ugrást
+						if( object.getClass().equals(Player.class) )
+						{
+							// ha lefelé mozgott, akkor az azt jelenti, hogy talajra érkezett, tehát ezután újra tud majd ugrani
+							if( force.y > 0 )
+							{
+								((Player)object).canJump = true;
+							}
+							// a függőleges irányú gyorsulás pedig mindenképp megáll
+							((Player)object).force.y = 0;
+						}
+						
+						break;
+					}
+				}
 			}
-			//ütközés jobbra
-			if(force.y > 0)
-			{
-				Iterator<RenderableGameObject> itr = objects.iterator();
-			    while (itr.hasNext())
-			    {
-			    	RenderableGameObject o = itr.next();
-			    	//megnézzük h téglalap-e
-			    	if( o.getClass() == Rectangle.class)
-			    	{
-			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
-			    		if( ((Rectangle)o).polygon.intersects(rect) )
-			    		{
-			    			result.newPosition.y = (float) (((Rectangle)o).polygon.getBounds2D().getHeight() + o.position.y) - 0.01f;
-			    			result.collisionX = true;
-			    			break;
-			    		
-			    		}
-			    	
-			    	}
-			    	//háromszög-e
-			    	else
-			    	{
-			    	//...	
-			    	}
-			
-			    }	
-			}
-			//ütközés balra
-			if(force.y < 0)
-			{
-				Iterator<RenderableGameObject> itr = objects.iterator();
-			    while (itr.hasNext())
-			    {
-			    	RenderableGameObject o = itr.next();
-			    	//megnézzük h téglalap-e
-			    	if( o.getClass() == Rectangle.class)
-			    	{
-			    		//ütközés van a segédtéglalap és a pályát alkotó téglap között
-			    		if( ((Rectangle)o).polygon.intersects(rect) )
-			    		{
-			    			result.newPosition.y = (float) (((Rectangle)o).polygon.getBounds2D().getY() - rect.getHeight()) + 0.01f;
-			    			result.collisionX = true;
-			    			break;
-			    		
-			    		}
-			    	
-			    	}
-			    	//háromszög-e
-			    	else
-			    	{
-			    	//...	
-			    	}
-			
-			    }
-			}
-			
-			
 		}
 		
 		
-		
-		return result; 
+		// eredmény visszaadása
+		return target_position;
 	}
 	
-	//tileID adja vissza
+	// tileID-t adja vissza
 	public byte getID()
 	{
 		return tileID;

@@ -5,6 +5,7 @@ package game;
 
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
+import java.awt.geom.Rectangle2D;
 
 import engine.Vector2d;
 
@@ -33,14 +34,36 @@ public class Stage implements Renderable
 		door = dr;
 	}
 	
+	// spawnpoint lekérdezése - szükséges például a játékos objektumok elhelyezéséhez pályabetöltés után
+	public SpawnPoint getSpawnPoint()
+	{
+		return spawnPoint;
+	}
+	
+	// segédfüggvény, amely a paraméterül kapott Graphics2D objektumot a szintén paraméterül kapott tile-ba transzformálja
+	public void translateSurfaceToTile(Graphics2D surface, byte tileID)
+	{
+		// tömbbeli indexek lekérdezése
+		Index index = getTileIndex(tileID);
+		
+		// eltolás alkalmazása
+		translateSurfaceToTile(surface, index.x, index.y);
+	}
+	// belső használatra szánt függvény - ugyanaz mint az előző, csak nem tileID-t vár, hanem tömbindexeket
+	protected void translateSurfaceToTile(Graphics2D surface, int x, int y)
+	{
+		// margók kiszámítása (bal felső elem elhelyezése úgy, hogy a tile-ok mátrixa a képernyőn középre kerüljön)
+		float margin_x = 400 - (tiles.length * Tile.width + (tiles.length - 1) * 10) / 2.f;
+		float margin_y = 275 - (tiles[0].length * Tile.height + (tiles[0].length - 1) * 10) / 2.f;
+		
+		// eltolás alkalmazása
+		surface.translate(margin_x + x * (Tile.width + 10), margin_y + y * (Tile.height + 10));
+	}
+	
 	// a komplett pályát kirenderelő metódus
 	@Override
 	public void render(Graphics2D surface)
 	{
-		// középre kell igazítani a tile-ok mátrixát - itt lesz a bal felső elem
-		float margin_x = 400 - (tiles.length * 250 + (tiles.length - 1) * 10) / 2.f;
-		float margin_y = 275 - (tiles[0].length * 170 + (tiles[0].length - 1) * 10) / 2.f;
-		
 		// összes tile kirajzolása 
 		for( int x = 0; x < tiles.length; x++ )
 		{
@@ -49,7 +72,7 @@ public class Stage implements Renderable
 				// transzformációs mátrix elmentése
 				AffineTransform af = surface.getTransform();
 				// koordinátarendszer eltolása - a tile bal felső sarkának elhelyezése a képernyőn
-				surface.translate(margin_x + x * 260, margin_y + y * 180);
+				translateSurfaceToTile(surface, x, y);
 				// az adott tile kirenderelése
 				tiles[x][y].render(surface);
 				// elmentett transzformációs mátrix visszaállítása
@@ -58,12 +81,10 @@ public class Stage implements Renderable
 		}
 		
 		// ajtó kirajzolása
-		// meg kell határozni, hogy hol van az ajtót tartalmazó tile a mátrixunkban
-		Index door_tile_index = getTileIndex(door.getTileID());
 		// transzformációs mátrix elmentése
 		AffineTransform af = surface.getTransform();
 		// koordinátarendszer eltolása - a tile bal felső sarkának elhelyezése a képernyőn
-		surface.translate(margin_x + door_tile_index.x * 260, margin_y + door_tile_index.y * 180);
+		translateSurfaceToTile(surface, door.getTileID());
 		// ajtó kirajzolása
 		door.render(surface);
 		// elmentett transzformációs mátrix visszaállítása
@@ -75,9 +96,6 @@ public class Stage implements Renderable
 	{
 		public int x, y;
 		public Index(int x, int y) { this.x = x; this.y = y; }
-		
-		public String toString()
-		{return Integer.toString(x)+ Integer.toString(y);}
 	}
 	protected Index getTileIndex(byte tileID)
 	{
@@ -85,7 +103,7 @@ public class Stage implements Renderable
 		{
 			for( int y = 0; y < tiles[x].length; y++ )
 			{
-				if( tiles[x][y].getID()==(tileID))   // itt javítottam, .equals() volt és nem működött, -1eket adott végig
+				if( tiles[x][y].getID() == tileID )
 				{
 					return new Index(x, y);
 				}
@@ -100,7 +118,6 @@ public class Stage implements Renderable
 	public void swap(Direction direction)
 	{
 		// üres tile indexeinek megkeresése
-		
 		Index empty = getTileIndex((byte) 0);
 		
 		// ellenőrzés, hogy lehet-e cserélni (üres elem melletti indexek ellenőrzése)
@@ -112,11 +129,13 @@ public class Stage implements Renderable
 		int xmax = tiles[0].length -1;
 		
 		//ha az empty tile nincs benne a mátrixban
-		if(empty.x <0 || empty.x>xmax || empty.y<0 || empty.y>ymax)
+		if( empty.x <0 || empty.x>xmax || empty.y<0 || empty.y>ymax )
+		{
 			throw new RuntimeException();
+		}
 		
-		switch(direction){
-		
+		switch(direction)
+		{
 		//ha a legalsó sorban van az üres tile, akkor nem tudunk fölfele nyílra mozgatni
 		case UP: if(empty.y == ymax) canSwap = false; break;
 		
@@ -128,20 +147,14 @@ public class Stage implements Renderable
 		
 		//ha a legjobboldalibb oszlopban van az üres tile, akkor nem tudunk a bal nyíl hatására tilet mozgatni
 		case LEFT: if(empty.x == xmax) canSwap = false; break;
-		
-		
 		}
-		
-		
-		//canSwap = false;
 		
 		// ha lehetséges, felcseréljük a 2 elemet
 		if( canSwap )
 		{
 			switch( direction )
 			{
-			
-			case UP:  	Tile temp = tiles[empty.x][empty.y];
+			case UP:    Tile temp = tiles[empty.x][empty.y];
 						tiles[empty.x][empty.y] = tiles[empty.x][empty.y + 1];
 						tiles[empty.x][empty.y + 1] = temp;
 						break;
@@ -162,271 +175,144 @@ public class Stage implements Renderable
 						tiles[empty.x][empty.y] = tiles[empty.x + 1][empty.y];
 						tiles[empty.x + 1][empty.y] = temp;
 						break;
-
-				
-			
 			}
-			
 		}
 	}
 	
+	// kipörgették-e a pályát?
+	// ha a paraméterül kapott objektum az ajtó közelében van, és már nincs kulcs a tile-okon, akkor igen
+	public boolean isFinished(Vector2d position, byte tileID)
+	{
+		// kulcsok megszámlálása
+		int number_of_keys = 0;
+		for( int x = 0; x < tiles.length; x++ )
+		{
+			for( int y = 0; y < tiles[0].length; y++ )
+			{
+				number_of_keys += tiles[x][y].getNumberOfKeys();
+			}
+		}
+		
+		// ha teljesülnek a feltételek
+		if( (number_of_keys == 0) && (tileID == door.getTileID()) && (Vector2d.subtract(position, new Vector2d(door.position.x + door.getWidth() / 2, door.position.y + door.getHeight() / 2)).getLength() <= Tile.pickUpRadius) )
+		{
+			return true;
+		}
+		
+		return false;
+	}
 	
 	// paraméterül kapott játékos objektum mozgatása
 	public void movePlayer(Player player)
 	{
-		Index currenttile = getTileIndex( player.tileID );
+		// melyik tile-ban van éppen a játékos?
+		Index player_tile_index = getTileIndex(player.getTileID());
 		
-		//mekkora maga a játék, 2x2-es vagy 3x3-as
-		int ymax = tiles.length -1; 
-		int xmax = tiles[0].length -1;
+		// továbbadjuk a játékost az őt tartalmazó tile-nak, mozgassa az.
+		// a visszaadott eredmény a játékos új pozíciója
+		Vector2d new_position = tiles[player_tile_index.x][player_tile_index.y].moveObject(player, player.force);
 		
-		// ellenőrzés, hogy a játékos elhagyná-e az aktuális tile-t
-		Index currentTileIndex = getTileIndex(player.getTileID());
-		boolean leavesTile = tiles[currentTileIndex.x][currentTileIndex.y].objectLeaves(player, player.getForce());
+		// a játékos erre a tile-ra kerül a mozgás során. kezdetben ez a mostani tile, ezt a tile.moveobject(...) nem módosítja
+		byte new_tile_id = player.getTileID();
 		
-		// ha el akarja hagyni a tile-t...
-		if( leavesTile )
+		// a tile-on belüli mozgatást elvégezte a tile.moveObject(...). az új pozíción azonban kilóghat a játékos az adott tile-ról
+		// ebben az esetben meg kell vizsgálni, hogy az adott irányba a játékos elhagyhatja-e a tile-ját
+		// így történik meg a tile-ok közötti áthaladás
+		
+		// befoglaló téglalap az új helyen
+		Rectangle2D target_rectangle = new Rectangle2D.Float(new_position.x, new_position.y, player.getWidth(), player.getHeight());
+		
+		// kilóg-e felfelé
+		if( target_rectangle.intersects(0, -Tile.height, Tile.width, Tile.height) )
 		{
-			
-			// ha lefelé akarja elhagyni, és nincs alatta semmi, meghal (respawnol)
-			//if( /* ... lefelé akar menni és nincs alatta semmi? ... */ false )
-			if(player.force.y > 0)
+			// ha van felette tile és a felette lévő tile nem az üres tile, és át is lehet rá menni...
+			if( (player_tile_index.y > 0) &&
+				(tiles[player_tile_index.x][player_tile_index.y - 1].getID() != 0) &&
+				(tiles[player_tile_index.x][player_tile_index.y].canLeave(Direction.UP, tiles[player_tile_index.x][player_tile_index.y - 1].getID())) )
 			{
-				//játékos el akarja hagyni a tilet lefele, ha az aktuális tile amin van, a legalsó a mátrixban akkor egyértelműen meghal
-				//ha nem a legalsó tileon van, akkor megnézzük, hogy az alatta lévő tile-ra átkerülhet-e, ha nem akkor is meghal
-				if(currenttile.y == ymax || !tiles[currenttile.x][currenttile.y].canLeave(Direction.DOWN, (tiles[currenttile.x][currenttile.y + 1]).getID()))
-				{
-				
-					// respawnol = visszakerül a spawnpoint-ra
-					try
-					{
-						player.moveTo(spawnPoint.getTileID(), spawnPoint.position);
-						
-						//erő nullázása
-						player.force.x = player.force.y = 0;
-						return;
-					}
-					catch (InvalidTileIDException e)
-					{
-						// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
-						e.printStackTrace();
-					}
-				}
-				//lefele elhagyja a Tilet
-				else
-				{
-					try
-					{
-						//átmegyünk a másik tile-ra
-						player.moveTo((tiles[currenttile.x][currenttile.y + 1]).getID(), new Vector2d(player.position.x , 0));
-						
-						//kulcsot fel tudunk-e venni
-						tiles[currenttile.x][currenttile.y + 1].pickKey(new Vector2d(player.position.x , 0));
-						
-						//ajtón állunk-e
-						if(player.tileID == door.tileID)
-						{
-							double distance = Vector2d.subtract(player.position, door.position).getLength();
-							if(distance <= tiles[currenttile.x][currenttile.y + 1].keyPickUpRadius)
-							{
-								//ha ajtón vagyunk...
-							}
-						}
-						return;
-					}
-					catch (InvalidTileIDException e)
-					{
-						// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
-						e.printStackTrace();
-					}
-				}
-				
+				// akkor átmegy rá
+				new_tile_id = tiles[player_tile_index.x][player_tile_index.y - 1].getID();
+				new_position.y = Tile.height - player.getHeight() + new_position.y;
 			}
+			// ellenkező esetben megakad a "plafonban"
 			else
 			{
-				// ellenőrzés, hogy az aktuális tile-t az adott irányban elhagyhatja-e a játékos
-				// ehhez először meg kell határozni hogy melyik irányba menne, melyik tile van ott, majd meghívni
-				// az aktuális tile canLeave metódusát ezekkel a paraméterekkel...
-				Direction direction  /* ... meghatározni a force alapján ... */ ;
-				byte destinationTileID  /* ... meghatározni az aktuális tile indexei és a direction alapján ... */ ;
-				
-				if(player.force.y < 0)
-				{
-					direction = Direction.UP;
-					destinationTileID = tiles[currenttile.x][currenttile.y - 1].getID();
-					if(tiles[currenttile.x][currenttile.y].canLeave(Direction.UP, destinationTileID))
-					{
-						try
-						{
-							//átmegyünk a másik tile-ra
-							player.moveTo(destinationTileID, new Vector2d(player.position.x , 170-player.height));
-							
-							//kulcsot fel tudunk-e venni
-							tiles[currenttile.x][currenttile.y - 1].pickKey(new Vector2d(player.position.x , 170-player.height));
-							
-							//ajtón állunk-e
-							if(player.tileID == door.tileID)
-							{
-								double distance = Vector2d.subtract(player.position, door.position).getLength();
-								if(distance <= tiles[currenttile.x][currenttile.y - 1].keyPickUpRadius)
-								{
-									//ha ajtón vagyunk...
-								}
-							}
-						
-							
-							return;
-						}
-						catch (InvalidTileIDException e)
-						{
-							// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
-							e.printStackTrace();
-						}	
-					}
-					else
-					{
-					//erő nullázása	
-					player.force.x = player.force.y = 0;
-					}
-					
-				}
-				//jobbra hagyná el a tilet
-				if(player.force.x > 0)
-				{
-					direction = Direction.RIGHT;
-					destinationTileID = tiles[currenttile.x + 1][currenttile.y].getID();
-					if(tiles[currenttile.x][currenttile.y].canLeave(Direction.RIGHT, destinationTileID))
-					{
-						try
-						{
-							//átmegyünk a másik tile-ra
-							player.moveTo(destinationTileID, new Vector2d(0 , player.position.y));
-
-							//kulcsot fel tudunk-e venni
-							tiles[currenttile.x + 1][currenttile.y].pickKey(new Vector2d(0, player.position.y));
-							
-							//ajtón állunk-e
-							if(player.tileID == door.tileID)
-							{
-								double distance = Vector2d.subtract(player.position, door.position).getLength();
-								if(distance <= tiles[currenttile.x + 1][currenttile.y].keyPickUpRadius)
-								{
-									//ha ajtón vagyunk...
-								}
-							}
-							return;
-						}
-						catch (InvalidTileIDException e)
-						{
-							// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
-							e.printStackTrace();
-						}	
-					}
-					else
-					{
-					//erő nullázása
-					player.force.x = player.force.y = 0;
-					}
-				}
-				
-				//balra hagyná el a tilet
-				if(player.force.x < 0)
-				{
-					direction = Direction.LEFT;
-					destinationTileID = tiles[currenttile.x - 1][currenttile.y].getID();
-					if(tiles[currenttile.x][currenttile.y].canLeave(Direction.LEFT, destinationTileID))
-					{
-						try
-						{
-							//átmegyünk a másik tile-ra
-							player.moveTo(destinationTileID, new Vector2d(250-player.width , player.position.y));
-
-							//kulcsot fel tudunk-e venni
-							tiles[currenttile.x - 1][currenttile.y].pickKey(new Vector2d(250-player.width , player.position.y));
-							
-							//ajtón állunk-e
-							if(player.tileID == door.tileID)
-							{
-								double distance = Vector2d.subtract(player.position, door.position).getLength();
-								if(distance <= tiles[currenttile.x - 1][currenttile.y].keyPickUpRadius)
-								{
-									//ha ajtón vagyunk...
-								}
-							}
-							return;
-						}
-						catch (InvalidTileIDException e)
-						{
-							// valami komoly hiba van a rendszerben, ha a spawnpoint az üres tile-ra van helyezve!
-							e.printStackTrace();
-						}	
-					}
-					else
-					{
-					//erő nullázása
-					player.force.x = player.force.y = 0;
-					}
-				}
+				new_position.y = 0;
 			}
 		}
-		else
+		// kilóg-e lefelé
+		else if( target_rectangle.intersects(0, Tile.height, Tile.width, Tile.height) )
 		{
-			// a játékos nem akarja elhagyni az aktuális tile-t, hanem azon belül mozog
-			// megkérdezzük a tile-t, hogy hová kell kerülnie
-			CollisionDetectionResult collresult = tiles[currentTileIndex.x][currentTileIndex.y].moveObject(player, player.getForce());
-			//ha volt ütközés
-			//függöleges tengely mentén
-			if(collresult.collisionY == true)
+			// ha van alatta tile és az alatta lévő tile nem az üres tile, és át is lehet rá menni...
+			if( (player_tile_index.y < tiles[0].length - 1) &&
+				(tiles[player_tile_index.x][player_tile_index.y + 1].getID() != 0) &&
+				(tiles[player_tile_index.x][player_tile_index.y].canLeave(Direction.DOWN, tiles[player_tile_index.x][player_tile_index.y + 1].getID())) )
 			{
-				player.force.y = 0;
+				// akkor átmegy rá
+				new_tile_id = tiles[player_tile_index.x][player_tile_index.y + 1].getID();
+				new_position.y =  new_position.y + player.getHeight() - Tile.height;
 			}
-			//vizszintes tengely mentén
-			if(collresult.collisionX == true)
+			// ellenkező esetben meghal, azaz respawnol
+			else
 			{
-				player.force.x = 0;
-			}
-			// játékos elhelyezése az új helyére
-			player.moveTo(collresult.newPosition);
-			
-
-			//kulcsot fel tudunk-e venni
-			tiles[currenttile.x][currenttile.y].pickKey(collresult.newPosition);
-			
-			//ajtón állunk-e
-			if(player.tileID == door.tileID)
-			{
-				double distance = Vector2d.subtract(player.position, door.position).getLength();
-				if(distance <= tiles[currenttile.x][currenttile.y].keyPickUpRadius)
-				{
-					//ha ajtón vagyunk...
-				}
+				new_position.x = spawnPoint.position.x;
+				new_position.y = spawnPoint.position.y;
+				new_tile_id = spawnPoint.getTileID();
+				player.setForce(new Vector2d(0, 0));
 			}
 		}
-	}
-	
-	public String toString()
-	{
+		// kilóg-e balra
+		else if( target_rectangle.intersects(-Tile.width, 0, Tile.width, Tile.height) )
+		{
+			// ha van tőle balra tile és a balra lévő tile nem az üres tile, és át is lehet rá menni...
+			if( (player_tile_index.x > 0) &&
+				(tiles[player_tile_index.x - 1][player_tile_index.y].getID() != 0) &&
+				(tiles[player_tile_index.x][player_tile_index.y].canLeave(Direction.LEFT, tiles[player_tile_index.x - 1][player_tile_index.y].getID())) )
+			{
+				// akkor átmegy rá
+				new_tile_id = tiles[player_tile_index.x - 1][player_tile_index.y].getID();
+				new_position.x = Tile.width - player.getWidth() + new_position.x;
+			}
+			// ellenkező esetben megakad a falban
+			else
+			{
+				new_position.x = 0;
+			}
+		}
+		// kilóg-e jobbra
+		else if( target_rectangle.intersects(Tile.width, 0, Tile.width, Tile.height) )
+		{
+			// ha van tőle jobbra tile és a jobbra lévő tile nem az üres tile, és át is lehet rá menni...
+			if( (player_tile_index.x < tiles.length - 1) &&
+				(tiles[player_tile_index.x + 1][player_tile_index.y].getID() != 0) &&
+				(tiles[player_tile_index.x][player_tile_index.y].canLeave(Direction.RIGHT, tiles[player_tile_index.x + 1][player_tile_index.y].getID())) )
+			{
+				// akkor átmegy rá
+				new_tile_id = tiles[player_tile_index.x + 1][player_tile_index.y].getID();
+				new_position.x = new_position.x + player.getWidth() - Tile.width;
+			}
+			// ellenkező esetben megakad a falban
+			else
+			{
+				new_position.x = Tile.width - player.getWidth();
+			}
+		}
 		
-		//kulcsok száma
-		int keys=0;
-		for(int i=0;i <2; i++)
-			for(int j=0;j <2; j++)			
-				keys +=tiles[i][j].getNumberOfKeys();
+		
+		// most már tudjuk, hogy hová kerül a játékos, fel lehet vele vetetni a kulcsokat
+		player_tile_index = getTileIndex(new_tile_id);
+		tiles[player_tile_index.x][player_tile_index.y].pickKey(new Vector2d(new_position.x + player.getWidth() / 2, new_position.y + player.getHeight() / 2));
 		
 		
-		
-		
-		return	(
-				 "Spawnpoint			: " + spawnPoint.tileID +"  "+ spawnPoint.position.x +"  "+ spawnPoint.position.x +"  "+"\n" +
-				 "Door postion		: " + door.tileID +"  "+ door.position.x +"  "+ door.position.y +"\n" +
-				 "Key position      	: " + "ennek van értelme?\n" +
-				 "TileID_1 position 	: " + getTileIndex((byte) 0) + "\n"+
-				 "TileID_2 position 	: " + getTileIndex((byte) 1) + "\n"+
-				 "TileID_3 position 	: " + getTileIndex((byte) 2) + "\n"+
-				 "TileID_4 position 	: " + getTileIndex((byte) 3) + "\n"+
-				 "Remaining keys    	: " +  keys 	+"\n" +
-				 ""
-				 );
-		
+		// játékos elhelyezése az új pozíciójába
+		try
+		{
+			player.moveTo(new_tile_id, new_position);
+		}
+		catch (InvalidTileIDException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

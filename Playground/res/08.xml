@@ -35,14 +35,16 @@
 		<tileid>1</tileid>
 		<reachable_tiles>
 			<up>
+				<tileid>2</tileid>
 			</up>
-			<down><tileid>3</tileid>
+			<down>
+				<tileid>2</tileid>
 			</down>
 			<left>
 			</left>
 			<right>
 			</right>
-					<key>
+		<key>
 			<x>50</x>
 			<y>40</y>
 		</key>
@@ -192,12 +194,12 @@
 		<tileid>2</tileid>
 		<reachable_tiles>
 			<up>
+				<tileid>1</tileid>
 			</up>
 			<down>
-			<tileid>1</tileid>
+				<tileid>1</tileid>
 			</down>
 			<left>
-			
 			</left>
 			<right>
 			</right>
@@ -224,7 +226,7 @@
 		
 		
 		
-				<rectangle>
+		<rectangle>
 			<vertex>
 				<x>140</x>
 				<y>0</y>
@@ -242,31 +244,19 @@
 				<y>0</y>
 			</vertex>	
 		</rectangle>
-		
-		
-		
 	</tile>
-	
-	
-	
 	<tile>
 		<tileid>3</tileid>
 		<reachable_tiles>
 			<up>
 			</up>
 			<down>
-			<tileid>1</tileid>
 			</down>
 			<left>
-							<tileid>1</tileid>
 			</left>
 			<right>
-							
 			</right>
 		</reachable_tiles>
-
-
-		
 		<rectangle>
 			<vertex>
 				<x>30</x>
@@ -285,8 +275,7 @@
 				<y>30</y>
 			</vertex>	
 		</rectangle>
-		
-				<rectangle>
+		<rectangle>
 			<vertex>
 				<x>110</x>
 				<y>0</y>
@@ -303,13 +292,6 @@
 				<x>140</x>
 				<y>0</y>
 			</vertex>	
-		</rectangle>
-						
-				
+		</rectangle>		
 	</tile>
-		
-	
-
-	
-	
 </stage>

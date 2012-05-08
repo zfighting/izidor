@@ -15,6 +15,9 @@ public abstract class GameState
 		this.game = game;
 	}
 	
+	// játékállapot inicializálása - akkor fut le, mikor ebbe a módba váltunk
+	public abstract void initState();
+	
 	// inputkezelés
 	public abstract void handleInput();
 	

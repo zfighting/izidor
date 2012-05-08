@@ -3,7 +3,7 @@ package game;
 import java.awt.Paint;
 import engine.Vector2d;
 
-// renderelhető játékelemek ősosztálya
+// renderelhető játékelemek absztrakt ősosztálya
 public abstract class RenderableGameObject extends GameObject implements Renderable
 {
 	// a kirajzolás során felhasznált, Paint interface-t megvalósító objektum

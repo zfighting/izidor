@@ -1,2 +1,0 @@
-loadstage teststage.xml 
-stageinfo filename
