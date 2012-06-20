@@ -38,11 +38,4 @@ public class Vector2d
 	{
 		return new Vector2d(a.x - b.x, a.y - b.y);
 	}
-	
-	// Stringgé alakító függvény
-	public String toString()
-	{
-		return "x = " + this.x + "\ty = " + this.y;	
-	}
-	
 }
