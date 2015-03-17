@@ -1,0 +1,73 @@
+# Aktuális beadandó (grafikus) naplója #
+| **Dátum** | **Mettől** | **Meddig** | **Ki**    | **Mit** |
+|:-----------|:------------|:-----------|:----------|:--------|
+| 04.14.  |  20:00   | 23:00    | Farkas | XML betöltő kiegészítése, stage és tile renderer megírása |
+| 05.02.  |  22:00   | 05.03. 03:00    | Farkas | Kódbázis áttekintése, apró hibajavítások. Menürendszer implementálása és tesztelése. Ütközésdetektálás újratervezése. |
+| 05.03.  |  17:00   | 18:00    | Farkas | Ütközésdetektálás, valamint tile-ok közötti áthaladás és kulcsok felvételének implementálása és tesztelése |
+| 04.20.  |  12:00   | 18:00    | Böjti  | 01-03 pálya elkészítse |
+| 05.01.  |  10:00   | 19:00    | Böjti  | 04-09 pálya elkészítse |
+| 05.03.  |  21:30   | 24:00    | Farkas | Ugrálás és gravitáció implementálása, finomhangolása. Pályaválasztó implementálása, főmenü kibővítése a háttérzene vezérlésére szolgáló menüelemmel. |
+| 05.04.  |  00:30   | 02:00    | Farkas | Zeneválasztó és zenelejátszó implementálása és tesztelése. |
+| 05.04.  |  15:00   | 20:00    | Böjti  | 10. pálya elkészítse |
+| 05.04.  |  15:00   | 19:30    | Horváth, Farkas  | 1-9. pályák tesztelése, felmerülő hibák javítása. Egy új pálya elkészítése. |
+| 05.04.  |  22:30   | 05.05. 00:30    | Farkas  | Intro játékállapot bevezetése, implementálása. |
+| 05.05.  |  14:30   | 16:30    | Farkas  | "Készítők" játékállapot implementálása. |
+
+# Előző beadandó naplója #
+| **Dátum** | **Mettől** | **Meddig** | **Ki**    | **Mit** |
+|:-----------|:------------|:-----------|:----------|:--------|
+| 04.04.  |  20:00   | 21:00    | Farkas, Böjti, Horváth  | Közös megbeszélés, kódbázis áttekintése |
+| 04.13.  |  20:00   | 04.14. 04:00    | Farkas | Játéklogika implementálása |
+| 04.13.  |  20:00   | 04.14. 04:00    | Böjti | Parancsfájl betöltő- és értelmező megírása |
+| 04.13.  |  20:00   | 04.14. 04:00    | Horváth | Ütközésdetektálás és játékos mozgatásának megírása |
+
+
+# Előző beadandó naplója #
+| **Dátum** | **Mettől** | **Meddig** | **Ki**    | **Mit** |
+|:-----------|:------------|:-----------|:----------|:--------|
+| 03.15.  |  17:00   | 17:50    | Farkas  | Skeleton implementálása |
+| 03.18.  |  10:00   | 13:00    | Farkas  | Skeletonfejlesztése|
+| 03.18.  |  10:00   | 13:00    | Varga   | Skeletonfejlesztése|
+| 03.18.  |  10:00   | 13:00    | Böjti   | Dokumentáció|
+| 03.18.  |  10:00   | 13:00    | Horváth | Dokumentáció|
+| 03.18.  |  22:00   | 23:00    | Farkas  | Véglegesítás|
+
+
+
+# Előre végzett feladatok naplója #
+
+| **Dátum** | **Mettől** | **Meddig** | **Ki**    | **Mit** |
+|:-----------|:------------|:-----------|:----------|:--------|
+| 02.25.  |  21:00   | 00:00    | Farkas  | Osztályhierarchia tervezése, felelősségek meghatározása |
+| 02.25.  |  21:00   | 00:00    | Böjti   | Osztályhierarchia tervezése, felelősségek meghatározása |
+| 02.25.  |  16:00   | 19:00    | Varga   | XMLReader osztály megírása |
+| 02.28.  |  22:00   | 00:30    | Farkas   | class diagram továbbfejlesztése; néhány hiányzó metódus implementálása; szín, gradiens és textúrakezelés megvalósítása és tesztelése |
+
+
+# Már leadott naplók #
+
+Egyelőre üres, az első beadandó naplóját majd ha lesz időm beírom.
+
+| **Dátum** | **Mettől** | **Meddig** | **Ki**    | **Mit** |
+|:-----------|:------------|:-----------|:----------|:--------|
+| 02.24.  |  22:00   | 23:00    | Farkas, Horváth, Varga  | Értekezlet. Döntés: Esti fejlesztősession beosztása, lásd következő pontok |
+| 02.24.  |  22:00   | 03:00    | Farkas  | Programmodell megalkotása, modellezés, brainstorming|
+| 02.24.  |  22:00   | 03:00    | Horváth | Kiszolgáló osztályok modellezése, brainstorming|
+| 02.24.  |  22:00   | 03:00    | Varga   | SVN szerver létrehozása, konfigurálása, Subversion konfigurálása, brainstorming|
+| 02.25.  |  14:00   | 16:00    | Varga   | Class diagramok rajzolása |
+| 02.26.  |  18:00   | 22:00    | Farkas  | Osztálydiagram fejlesztése|
+| 02.26.  |  18:00   | 22:00    | Horváth  | Szekvenciadiagram rajzolása|
+| 02.26.  |  18:00   | 22:00    | Böjti  | Szekvenciadiagram rajzolása|
+| 02.26.  |  21:00   | 01:30   |Varga | UML, javítás, dokumentumszerkesztés|
+| 03.05.  |  00:00   | 5:00    | Farkas  | Osztályok kifejtése |
+| 03.05.  |  09:00   | 13:00    | Farkas  | Objektumkatalógus |
+| 03.05.  |  09:00   | 13:00    | Böjti  | Szekvenciadiagram készítése|
+| 03.05.  |  09:00   | 13:00    | Varga  | Szekvenciadiagram készítése, dokumentumszerkesztés |
+| 03.05.  |  09:00   | 11:00    | Horváth  | Kisegítés |
+| **Dátum** | **Mettől** | **Meddig** | **Ki**    | **Mit** |
+| 03. 10. | 20:00    | 23:00    | Farkas  | értekezlet, use case diagramok megrajzolása papíron |
+| 03. 10. | 20:00    | 23:00    | Böjti  | értekezlet, use case diagramok megrajzolása papíron |
+| 03. 10. | 20:00    | 23:00    | Horváth  | értekezlet, use case diagramok megrajzolása papíron |
+| 03. 11. | 13:00    | 19:00    | Farkas  | Architektúra, tesztesetek |
+| 03. 11. | 13:00    | 20:00    | Varga  | Use-case-ek kidolgozása, dokumentálás, digitalizálás |
+| 03. 11. | 16:00    | 18:00    | Böjti  | Szkeleton kezelői felület |

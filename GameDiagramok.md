@@ -1,0 +1,10 @@
+# Bevezető #
+
+IzidorKalandjai UML diagramjai. Ha valamin változtatni kell, írj nekem (István).
+
+
+# Részletek #
+
+**Game Class Diagram**
+
+![http://www.dj-beat.hu/phimage/content/20120225163454_c07750b42d.png](http://www.dj-beat.hu/phimage/content/20120225163454_c07750b42d.png)
